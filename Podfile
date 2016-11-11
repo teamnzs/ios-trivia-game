@@ -6,5 +6,9 @@ target 'ios-trivia-game' do
   use_frameworks!
 
   # Pods for ios-trivia-game
+  pod 'AFNetworking', '~> 3.0.0'
+  pod 'MBProgressHUD', '~> 0.9.1'
+  pod 'BDBOAuth1Manager', '~> 2.0.0'
+  pod 'SwiftIconFont'
 
 end
