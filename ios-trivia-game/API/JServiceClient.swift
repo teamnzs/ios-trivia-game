@@ -7,5 +7,8 @@
 //
 
 import Foundation
+import AFNetworking
 
-
+class JServiceClient: AFHTTPSessionManager {
+    static let instance = JServiceClient()
+}
