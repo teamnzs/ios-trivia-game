@@ -5,7 +5,8 @@ target 'ios-trivia-game' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for ios-trivia-game
+# Pods for ios-trivia-game
+  pod 'Alamofire', '~> 4.0'
   pod 'AFNetworking', '~> 3.0.0'
   pod 'MBProgressHUD', '~> 0.9.1'
   pod 'BDBOAuth1Manager', '~> 2.0.0'
