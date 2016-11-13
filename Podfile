@@ -13,3 +13,9 @@ target 'ios-trivia-game' do
   pod 'SwiftIconFont'
 
 end
+
+target 'ios-trivia-gameTests' do
+  use_frameworks!
+  
+  pod 'Nimble'
+end

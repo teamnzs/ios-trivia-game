@@ -75,7 +75,7 @@ class JServiceClient {
         afRequest(api: "\(JServiceClient.jServiceApiUrl)clues", parameters: parameters, success: success, failure: failure)
     }
     
-    fileprivate let popularCategories: [String: String] =
+    let popularCategories: [String: String] =
         [
             "306" : "Potpourriiii",
             "136" : "Stupid Answers",
