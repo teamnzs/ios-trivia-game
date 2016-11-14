@@ -26,4 +26,12 @@ class TriviaCategory: NSObject {
         self.title = (dictionary["title"] as? String) ?? ""
         self.count = (dictionary["clues_count"] as? Int) ?? 0
     }
+    
+    func getJson() -> [String: Any] {
+        return [
+            "id": self.id as Any,
+            "title": self.title as Any,
+            "clues_count": self.count as Any
+        ]
+    }
 }

@@ -21,12 +21,5 @@ class Question: NSObject {
         self.answer_text = dictionary["answer_text"] as? String
     }
     
-    func getJson() -> [String: Any] {
-        return [
-            "id": self.id,
-            "room_id": self.room_id,
-            "question_text": self.question_text,
-            "answer_text": self.answer_text
-        ]
-    }
+    
 }
