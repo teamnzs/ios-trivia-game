@@ -25,7 +25,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         if (User.currentUser != nil) {
             // This user is signed in
             
-            print ("The user is signed in!")
+            Logger.instance.log(logLevel: .info, message: "The user is signed in!")
             let ref = FIRDatabase.database().reference()
             ref.child(Constants.GAME_ROOM_TABLE_NAME).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
@@ -34,31 +34,31 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // gives all the rooms
                 for (roomId, roomInfo) in value! {
                     let gameRoom = GameRoom(dictionary: roomInfo as! NSDictionary)
-                    print ("RoomId: \(roomId) \(gameRoom.getJson())")
+                    Logger.instance.log(logLevel: .info, message: "RoomId: \(roomId) \(gameRoom.getJson())")
                 }
             }) { (error) in
-                print(error.localizedDescription)
+                Logger.instance.log(logLevel: .error, message: error.localizedDescription)
             }
             
         } else {
-            print ("The user is not signed in!")
+            Logger.instance.log(logLevel: .info, message: "The user is not signed in!")
         }
         
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print ("Did log out") 
+        Logger.instance.log(logLevel: .info, message: "Did log out")
     }
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print ("Successfully login! \(result)")
-        print (result.token.tokenString)
+        Logger.instance.log(logLevel: .info, message: "Successfully login! \(result)")
+        Logger.instance.log(logLevel: .info, message: result.token.tokenString)
         
         User.loginWithFb(fbAccessToken: result.token.tokenString, completion: {(success: FIRUser?, error: Error?) -> Void in
             if (error == nil) {
-                print ("Successfully logged in! \(success)")
-                print (success.debugDescription)
+                Logger.instance.log(logLevel: .info, message: "Successfully logged in! \(success)")
+                Logger.instance.log(logLevel: .info, message: success.debugDescription)
                 User.currentUser = User.convertFirUserToUser(firUser: success!)
-                print (User.currentUser?.getJson() as Any)
+                Logger.instance.log(logLevel: .info, message: User.currentUser?.getJson() as Any)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: userDidLoginNotification), object: nil)
             }
         })
@@ -82,25 +82,25 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         JServiceClient.instance.categories(success: { (response) in
             Logger.instance.log(logLevel: .info, message: "success categories")
         }, failure: { (error) in
-            print(error.debugDescription)
+            Logger.instance.log(logLevel: .error, message: error.debugDescription)
         })
         
         JServiceClient.instance.category(id: 11496, success: { (response) in
             Logger.instance.log(logLevel: .info, message: "success category")
         }, failure: { (error) in
-            print(error.debugDescription)
+            Logger.instance.log(logLevel: .error, message: error.debugDescription)
         })
         
         JServiceClient.instance.clues(categoryId: 136, offset: 200, success: { (response) in
             Logger.instance.log(logLevel: .info, message: "success clues")
         }, failure: { (error) in
-            print(error.debugDescription)
+            Logger.instance.log(logLevel: .error, message: error.debugDescription)
         })
         
         JServiceClient.instance.random(count: 10, success: { (response) in
             Logger.instance.log(logLevel: .info, message: "success random")
         }, failure: { (error) in
-            print(error.debugDescription)
+            Logger.instance.log(logLevel: .error, message: error.debugDescription)
         })
     }
 }
