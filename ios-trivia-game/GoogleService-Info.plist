@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>658610474328-qfh1crv2fdahihshm6mvq63525dau9vl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.658610474328-qfh1crv2fdahihshm6mvq63525dau9vl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAC_jxMlx5LcCtG5ujiYDv0NVoqPDwhRiw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>658610474328</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.teamnzs.triviagame</string>
+	<key>PROJECT_ID</key>
+	<string>mindgame-91529</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mindgame-91529.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:658610474328:ios:92d6c2059b799124</string>
+	<key>DATABASE_URL</key>
+	<string>https://mindgame-91529.firebaseio.com</string>
+</dict>
+</plist>

@@ -7,19 +7,75 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+import FirebaseAuth
+import FirebaseDatabase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         testJService()
+        
+        testFbLogin()
+        
+        // The right way is to use FIRAuth
+        if (User.currentUser != nil) {
+            // This user is signed in
+            
+            print ("The user is signed in!")
+            let ref = FIRDatabase.database().reference()
+            ref.child(Constants.GAME_ROOM_TABLE_NAME).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                
+                // gives all the rooms
+                for (roomId, roomInfo) in value! {
+                    let gameRoom = GameRoom(dictionary: roomInfo as! NSDictionary)
+                    print ("RoomId: \(roomId) \(gameRoom.getJson())")
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+        } else {
+            print ("The user is not signed in!")
+        }
+        
     }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print ("Did log out") 
+    }
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        print ("Successfully login! \(result)")
+        print (result.token.tokenString)
+        
+        User.loginWithFb(fbAccessToken: result.token.tokenString, completion: {(success: FIRUser?, error: Error?) -> Void in
+            if (error == nil) {
+                print ("Successfully logged in! \(success)")
+                print (success.debugDescription)
+                User.currentUser = User.convertFirUserToUser(firUser: success!)
+                print (User.currentUser?.getJson() as Any)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: userDidLoginNotification), object: nil)
+            }
+        })
+    }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func testFbLogin() {
+        let login = FBSDKLoginButton()
+        view.addSubview(login)
+        login.center = view.center
+        login.delegate = self
     }
 
     func testJService() {

@@ -11,5 +11,10 @@ target 'ios-trivia-game' do
   pod 'MBProgressHUD', '~> 0.9.1'
   pod 'BDBOAuth1Manager', '~> 2.0.0'
   pod 'SwiftIconFont'
-
+  pod 'FirebaseAuth'
+  pod 'Firebase/Database'
+  pod 'Firebase'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
 end
