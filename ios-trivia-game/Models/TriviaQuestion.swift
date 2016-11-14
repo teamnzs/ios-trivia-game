@@ -34,6 +34,7 @@ class TriviaQuestion: NSObject {
     var question: String?
     var value: Int?
     var category: TriviaCategory?
+    var roomId: Int?
     
     init(dictionary: NSDictionary) {
         self.id = (dictionary["id"] as? Int) ?? 0
@@ -41,5 +42,17 @@ class TriviaQuestion: NSObject {
         self.question = (dictionary["question"] as? String) ?? ""
         self.value = (dictionary["value"] as? Int) ?? 0
         self.category = TriviaCategory(dictionary: (dictionary["category"] as? NSDictionary)!)
+        self.roomId = 0
+    }
+    
+    func getJson() -> [String: Any] {
+        return [
+            "id": self.id as Any,
+            "room_id": self.roomId as Any,
+            "question_text": self.question as Any,
+            "answer_text": self.answer as Any,
+            "category": self.category?.getJson() as Any,
+            "value": self.value as Any
+        ]
     }
 }
