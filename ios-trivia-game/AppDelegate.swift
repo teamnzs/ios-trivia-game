@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-//import FBSDKCoreKit
 import FacebookCore
 
 @UIApplicationMain
@@ -20,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
-        
-        //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
 
@@ -57,10 +54,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("facebook launch")
         return SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
-//    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool
-//    {
-//        return SDKApplicationDelegate.shared.application(app, open: url, options: options)
-//    }
 }
 

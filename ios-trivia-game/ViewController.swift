@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-//import FBSDKLoginKit
 import FirebaseAuth
 import FirebaseDatabase
 import FacebookCore
@@ -21,8 +20,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         testJService()
-        
-        //testFbLogin()
         initFBLogin()
         
         // The right way is to use FIRAuth
@@ -49,38 +46,11 @@ class ViewController: UIViewController {
         }
         
     }
-    
-//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-//        Logger.instance.log(logLevel: .info, message: "Did log out")
-//    }
-//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-//        Logger.instance.log(logLevel: .info, message: "Successfully login! \(result)")
-//        Logger.instance.log(logLevel: .info, message: result.token.tokenString)
-//        
-//        User.loginWithFb(fbAccessToken: result.token.tokenString, completion: {(success: FIRUser?, error: Error?) -> Void in
-//            if (error == nil) {
-//                Logger.instance.log(logLevel: .info, message: "Successfully logged in! \(success)")
-//                Logger.instance.log(logLevel: .info, message: success.debugDescription)
-//                User.currentUser = User.convertFirUserToUser(firUser: success!)
-//                Logger.instance.log(logLevel: .info, message: User.currentUser?.getJson() as Any)
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: userDidLoginNotification), object: nil)
-//            }
-//        })
-//    }
-
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    func testFbLogin() {
-//        let login = FBSDKLoginButton()
-//        view.addSubview(login)
-//        login.center = view.center
-//        login.delegate = self
-//    }
 
     func testJService() {
         JServiceClient.instance.categories(success: { (response) in
@@ -133,6 +103,7 @@ class ViewController: UIViewController {
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Logged in!")
+                // @Zhia : Feel free to grab this authToken for Firebase - Nari
                 print(accessToken.authenticationToken)
             }
         }
