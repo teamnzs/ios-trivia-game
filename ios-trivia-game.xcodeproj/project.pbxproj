@@ -25,7 +25,6 @@
 		A8B32BA91DDC0163003A0B1C /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BA81DDC0163003A0B1C /* QuestionViewController.swift */; };
 		A8B32BAB1DDC0181003A0B1C /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BAA1DDC0181003A0B1C /* AnswerViewController.swift */; };
 		A8B32BAD1DDC019C003A0B1C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BAC1DDC019C003A0B1C /* ResultsViewController.swift */; };
-		A8B32BAF1DDC01BC003A0B1C /* CountdownTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BAE1DDC01BC003A0B1C /* CountdownTransitionViewController.swift */; };
 		A8B32BB31DDC036B003A0B1C /* FinalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BB21DDC036B003A0B1C /* FinalScoreViewController.swift */; };
 		A8B32BB51DDC0379003A0B1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */; };
 		A8B6EA321DD9A7AA00CB8699 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B6EA2E1DD9A7AA00CB8699 /* Answer.swift */; };
@@ -61,7 +60,6 @@
 		A8B32BA81DDC0163003A0B1C /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionViewController.swift; path = ViewControllers/QuestionViewController.swift; sourceTree = "<group>"; };
 		A8B32BAA1DDC0181003A0B1C /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerViewController.swift; path = ViewControllers/AnswerViewController.swift; sourceTree = "<group>"; };
 		A8B32BAC1DDC019C003A0B1C /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = ViewControllers/ResultsViewController.swift; sourceTree = "<group>"; };
-		A8B32BAE1DDC01BC003A0B1C /* CountdownTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountdownTransitionViewController.swift; path = ViewControllers/CountdownTransitionViewController.swift; sourceTree = "<group>"; };
 		A8B32BB21DDC036B003A0B1C /* FinalScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinalScoreViewController.swift; path = ViewControllers/FinalScoreViewController.swift; sourceTree = "<group>"; };
 		A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
 		A8B6EA2E1DD9A7AA00CB8699 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = Models/Answer.swift; sourceTree = "<group>"; };
@@ -179,7 +177,6 @@
 				A8B32BA81DDC0163003A0B1C /* QuestionViewController.swift */,
 				A8B32BAA1DDC0181003A0B1C /* AnswerViewController.swift */,
 				A8B32BAC1DDC019C003A0B1C /* ResultsViewController.swift */,
-				A8B32BAE1DDC01BC003A0B1C /* CountdownTransitionViewController.swift */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -351,7 +348,6 @@
 				A8B32BB51DDC0379003A0B1C /* HomeViewController.swift in Sources */,
 				A8B32B961DDBFF4A003A0B1C /* CameraViewController.swift in Sources */,
 				A83ACC821DD2D14B00DAF701 /* AppDelegate.swift in Sources */,
-				A8B32BAF1DDC01BC003A0B1C /* CountdownTransitionViewController.swift in Sources */,
 				A8B32BA41DDC00D8003A0B1C /* GameOptionsViewController.swift in Sources */,
 				1A805B6D1DD996F900A70691 /* TriviaCategory.swift in Sources */,
 				A8B32B981DDBFFCB003A0B1C /* MainTabViewController.swift in Sources */,

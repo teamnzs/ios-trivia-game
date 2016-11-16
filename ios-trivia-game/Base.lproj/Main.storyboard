@@ -391,9 +391,6 @@
                                 <rect key="frame" x="138" y="448" width="98" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next Question"/>
-                                <connections>
-                                    <segue destination="T3Y-eP-e4G" kind="presentation" id="iYT-JO-60w"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,34 +402,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myw-y1-I8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8268" y="1849.0254872563719"/>
-        </scene>
-        <!--Countdown Transition-->
-        <scene sceneID="cAB-Xr-MNg">
-            <objects>
-                <viewController storyboardIdentifier="com.iostriviagame.countdowntransitionviewcontroller" title="Countdown Transition" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lvx-UQ-wJM" customClass="CountdownTransitionViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J2x-pL-1bP"/>
-                        <viewControllerLayoutGuide type="bottom" id="7aZ-ef-jf6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OEN-iv-Dk1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Countdown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBX-5B-DOM">
-                                <rect key="frame" x="166" y="258" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Zob-yv-d4l"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3e-20-yH9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="10495.200000000001" y="1849.0254872563719"/>
         </scene>
         <!--Home-->
         <scene sceneID="JEF-po-8TB">
@@ -616,24 +585,6 @@
             </objects>
             <point key="canvasLocation" x="7328.8000000000002" y="1848.1259370314845"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="M0v-IV-byZ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T3Y-eP-e4G" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="LXB-hJ-WxB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Lvx-UQ-wJM" kind="relationship" relationship="rootViewController" id="QDl-fc-jOh"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="stZ-Hu-Y6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9556" y="1848.1259370314845"/>
-        </scene>
         <!--Final Score-->
         <scene sceneID="v3S-0A-jEc">
             <objects>
@@ -698,6 +649,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wbq-Wi-rbA"/>
+        <segue reference="i4e-KK-Hzd"/>
     </inferredMetricsTieBreakers>
 </document>
