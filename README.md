@@ -4,10 +4,10 @@
 
 The following functionalities are completed:
 
-- [Trivia API](http://jservice.io) integration
-- Firebase SDK integration
-- Facebook SDK integration
-- Basic viewController flows
+- [x] [Trivia API](http://jservice.io) integration
+- [x] Firebase SDK integration
+- [x] Facebook SDK integration
+- [x] Basic viewController flows
 
 ## Milestone 2
 
