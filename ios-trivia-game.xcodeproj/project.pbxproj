@@ -11,10 +11,22 @@
 		1A805B6D1DD996F900A70691 /* TriviaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B671DD996F900A70691 /* TriviaCategory.swift */; };
 		1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B681DD996F900A70691 /* TriviaQuestion.swift */; };
 		A83ACC821DD2D14B00DAF701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */; };
-		A83ACC841DD2D14B00DAF701 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83ACC831DD2D14B00DAF701 /* ViewController.swift */; };
 		A83ACC871DD2D14B00DAF701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC851DD2D14B00DAF701 /* Main.storyboard */; };
 		A83ACC891DD2D14B00DAF701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC881DD2D14B00DAF701 /* Assets.xcassets */; };
 		A83ACC8C1DD2D14B00DAF701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC8A1DD2D14B00DAF701 /* LaunchScreen.storyboard */; };
+		A8B32B901DDBE709003A0B1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32B8F1DDBE709003A0B1C /* LoginViewController.swift */; };
+		A8B32B941DDBEA7E003A0B1C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32B931DDBEA7E003A0B1C /* ProfileViewController.swift */; };
+		A8B32B961DDBFF4A003A0B1C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32B951DDBFF4A003A0B1C /* CameraViewController.swift */; };
+		A8B32B981DDBFFCB003A0B1C /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32B971DDBFFCB003A0B1C /* MainTabViewController.swift */; };
+		A8B32BA01DDC00A6003A0B1C /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32B9F1DDC00A6003A0B1C /* CreateGameViewController.swift */; };
+		A8B32BA21DDC00C1003A0B1C /* SelectFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BA11DDC00C1003A0B1C /* SelectFriendsViewController.swift */; };
+		A8B32BA41DDC00D8003A0B1C /* GameOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BA31DDC00D8003A0B1C /* GameOptionsViewController.swift */; };
+		A8B32BA61DDC00F8003A0B1C /* CountdownGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BA51DDC00F8003A0B1C /* CountdownGameViewController.swift */; };
+		A8B32BA91DDC0163003A0B1C /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BA81DDC0163003A0B1C /* QuestionViewController.swift */; };
+		A8B32BAB1DDC0181003A0B1C /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BAA1DDC0181003A0B1C /* AnswerViewController.swift */; };
+		A8B32BAD1DDC019C003A0B1C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BAC1DDC019C003A0B1C /* ResultsViewController.swift */; };
+		A8B32BB31DDC036B003A0B1C /* FinalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BB21DDC036B003A0B1C /* FinalScoreViewController.swift */; };
+		A8B32BB51DDC0379003A0B1C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */; };
 		A8B6EA321DD9A7AA00CB8699 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B6EA2E1DD9A7AA00CB8699 /* Answer.swift */; };
 		A8B6EA331DD9A7AA00CB8699 /* GameRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B6EA2F1DD9A7AA00CB8699 /* GameRoom.swift */; };
 		A8B6EA341DD9A7AA00CB8699 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B6EA301DD9A7AA00CB8699 /* User.swift */; };
@@ -33,11 +45,23 @@
 		381FCCC7CD6510BD05EB2001 /* Pods-ios-trivia-game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-trivia-game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-trivia-game/Pods-ios-trivia-game.debug.xcconfig"; sourceTree = "<group>"; };
 		A83ACC7E1DD2D14B00DAF701 /* ios-trivia-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-trivia-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A83ACC831DD2D14B00DAF701 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A83ACC861DD2D14B00DAF701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A83ACC881DD2D14B00DAF701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83ACC8B1DD2D14B00DAF701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A83ACC8D1DD2D14B00DAF701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8B32B8F1DDBE709003A0B1C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
+		A8B32B931DDBEA7E003A0B1C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ViewControllers/ProfileViewController.swift; sourceTree = "<group>"; };
+		A8B32B951DDBFF4A003A0B1C /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ViewControllers/CameraViewController.swift; sourceTree = "<group>"; };
+		A8B32B971DDBFFCB003A0B1C /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabViewController.swift; path = ViewControllers/MainTabViewController.swift; sourceTree = "<group>"; };
+		A8B32B9F1DDC00A6003A0B1C /* CreateGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateGameViewController.swift; path = ViewControllers/CreateGameViewController.swift; sourceTree = "<group>"; };
+		A8B32BA11DDC00C1003A0B1C /* SelectFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendsViewController.swift; path = ViewControllers/SelectFriendsViewController.swift; sourceTree = "<group>"; };
+		A8B32BA31DDC00D8003A0B1C /* GameOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOptionsViewController.swift; path = ViewControllers/GameOptionsViewController.swift; sourceTree = "<group>"; };
+		A8B32BA51DDC00F8003A0B1C /* CountdownGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountdownGameViewController.swift; path = ViewControllers/CountdownGameViewController.swift; sourceTree = "<group>"; };
+		A8B32BA81DDC0163003A0B1C /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionViewController.swift; path = ViewControllers/QuestionViewController.swift; sourceTree = "<group>"; };
+		A8B32BAA1DDC0181003A0B1C /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerViewController.swift; path = ViewControllers/AnswerViewController.swift; sourceTree = "<group>"; };
+		A8B32BAC1DDC019C003A0B1C /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultsViewController.swift; path = ViewControllers/ResultsViewController.swift; sourceTree = "<group>"; };
+		A8B32BB21DDC036B003A0B1C /* FinalScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinalScoreViewController.swift; path = ViewControllers/FinalScoreViewController.swift; sourceTree = "<group>"; };
+		A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ViewControllers/HomeViewController.swift; sourceTree = "<group>"; };
 		A8B6EA2E1DD9A7AA00CB8699 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = Models/Answer.swift; sourceTree = "<group>"; };
 		A8B6EA2F1DD9A7AA00CB8699 /* GameRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameRoom.swift; path = Models/GameRoom.swift; sourceTree = "<group>"; };
 		A8B6EA301DD9A7AA00CB8699 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
@@ -97,12 +121,12 @@
 		A83ACC801DD2D14B00DAF701 /* ios-trivia-game */ = {
 			isa = PBXGroup;
 			children = (
+				A8B32B8E1DDBE6E7003A0B1C /* ViewControllers */,
 				1A3686141DD853D100CBEB41 /* ios-trivia-game.entitlements */,
 				B29BE1F91DD7BB3B000DD684 /* Logger */,
 				B29BE1F41DD7B7D8000DD684 /* Models */,
 				A8E1ED9D1DD5A01100460AA5 /* API */,
 				A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */,
-				A83ACC831DD2D14B00DAF701 /* ViewController.swift */,
 				A83ACC851DD2D14B00DAF701 /* Main.storyboard */,
 				A83ACC881DD2D14B00DAF701 /* Assets.xcassets */,
 				A83ACC8A1DD2D14B00DAF701 /* LaunchScreen.storyboard */,
@@ -111,6 +135,50 @@
 				1A36860A1DD83CCC00CBEB41 /* Constants.swift */,
 			);
 			path = "ios-trivia-game";
+			sourceTree = "<group>";
+		};
+		A8B32B8E1DDBE6E7003A0B1C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */,
+				A8B32BA71DDC0129003A0B1C /* Game */,
+				A8B32B9E1DDC006F003A0B1C /* CreateGame */,
+				A8B32B9D1DDC0058003A0B1C /* Profile */,
+				A8B32B8F1DDBE709003A0B1C /* LoginViewController.swift */,
+				A8B32B971DDBFFCB003A0B1C /* MainTabViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A8B32B9D1DDC0058003A0B1C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A8B32B931DDBEA7E003A0B1C /* ProfileViewController.swift */,
+				A8B32B951DDBFF4A003A0B1C /* CameraViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		A8B32B9E1DDC006F003A0B1C /* CreateGame */ = {
+			isa = PBXGroup;
+			children = (
+				A8B32B9F1DDC00A6003A0B1C /* CreateGameViewController.swift */,
+				A8B32BA11DDC00C1003A0B1C /* SelectFriendsViewController.swift */,
+				A8B32BA31DDC00D8003A0B1C /* GameOptionsViewController.swift */,
+				A8B32BA51DDC00F8003A0B1C /* CountdownGameViewController.swift */,
+			);
+			name = CreateGame;
+			sourceTree = "<group>";
+		};
+		A8B32BA71DDC0129003A0B1C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				A8B32BB21DDC036B003A0B1C /* FinalScoreViewController.swift */,
+				A8B32BA81DDC0163003A0B1C /* QuestionViewController.swift */,
+				A8B32BAA1DDC0181003A0B1C /* AnswerViewController.swift */,
+				A8B32BAC1DDC019C003A0B1C /* ResultsViewController.swift */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 		A8E1ED9D1DD5A01100460AA5 /* API */ = {
@@ -271,13 +339,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B32BA91DDC0163003A0B1C /* QuestionViewController.swift in Sources */,
+				A8B32B901DDBE709003A0B1C /* LoginViewController.swift in Sources */,
+				A8B32BB31DDC036B003A0B1C /* FinalScoreViewController.swift in Sources */,
 				1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */,
-				A83ACC841DD2D14B00DAF701 /* ViewController.swift in Sources */,
+				A8B32BA21DDC00C1003A0B1C /* SelectFriendsViewController.swift in Sources */,
 				B29BE1FD1DD7BB6B000DD684 /* Logger.swift in Sources */,
+				A8B32BB51DDC0379003A0B1C /* HomeViewController.swift in Sources */,
+				A8B32B961DDBFF4A003A0B1C /* CameraViewController.swift in Sources */,
 				A83ACC821DD2D14B00DAF701 /* AppDelegate.swift in Sources */,
+				A8B32BA41DDC00D8003A0B1C /* GameOptionsViewController.swift in Sources */,
 				1A805B6D1DD996F900A70691 /* TriviaCategory.swift in Sources */,
+				A8B32B981DDBFFCB003A0B1C /* MainTabViewController.swift in Sources */,
+				A8B32B941DDBEA7E003A0B1C /* ProfileViewController.swift in Sources */,
+				A8B32BAB1DDC0181003A0B1C /* AnswerViewController.swift in Sources */,
+				A8B32BA01DDC00A6003A0B1C /* CreateGameViewController.swift in Sources */,
 				A8B6EA331DD9A7AA00CB8699 /* GameRoom.swift in Sources */,
 				A8E541571DD9A9EB002D6AA4 /* JServiceClient.swift in Sources */,
+				A8B32BA61DDC00F8003A0B1C /* CountdownGameViewController.swift in Sources */,
+				A8B32BAD1DDC019C003A0B1C /* ResultsViewController.swift in Sources */,
 				A8E541581DD9A9EB002D6AA4 /* Constants.swift in Sources */,
 				A8B6EA341DD9A7AA00CB8699 /* User.swift in Sources */,
 				A8B6EA321DD9A7AA00CB8699 /* Answer.swift in Sources */,

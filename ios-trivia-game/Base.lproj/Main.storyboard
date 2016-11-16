@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="L05-zL-78Q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="com.iostriviagame.loginviewcontroller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,9 +22,633 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PUc-qu-zUa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1079.2" y="137.18140929535232"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="sJ5-f0-65A">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.profileviewcontroller" title="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HBI-hK-ZaA" customClass="ProfileViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eZw-NQ-bat"/>
+                        <viewControllerLayoutGuide type="bottom" id="Rdc-MH-Viv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YhV-Am-whU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ProfileViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDH-ay-JSE">
+                                <rect key="frame" x="50" y="154" width="161" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kgp-wu-ZpO">
+                                <rect key="frame" x="67" y="183" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aov-bl-ZyF">
+                                <rect key="frame" x="164" y="319" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="UpN-wj-CWf" kind="presentation" id="aoz-Yv-aQP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LcN-6B-hQe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8gr-U1-xoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="-692"/>
+        </scene>
+        <!--Create Game-->
+        <scene sceneID="Hip-9V-azj">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.creategameviewcontroller" title="Create Game" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jnB-a7-d1f" customClass="CreateGameViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qqb-LE-yCp"/>
+                        <viewControllerLayoutGuide type="bottom" id="wrF-2g-tiC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hiE-cI-Qil">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pQH-3C-ivh">
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="zPH-hQ-QGO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Select Friends" id="IdT-Su-Ot1">
+                            <connections>
+                                <segue destination="5bb-5X-bDg" kind="presentation" id="Rhg-fv-kwA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sc6-y6-hMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="985"/>
+        </scene>
+        <!--Select Friends-->
+        <scene sceneID="O9A-OK-qR9">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.selectfriendsviewcontroller" title="Select Friends" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ekw-Vi-1cd" customClass="SelectFriendsViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kxs-jd-7ey"/>
+                        <viewControllerLayoutGuide type="bottom" id="cWH-lg-DsN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ioa-ST-NVK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MJN-il-Oi4">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="7oK-RW-j68"/>
+                        <barButtonItem key="rightBarButtonItem" title="Game Options" id="xxQ-Jt-ZgS">
+                            <connections>
+                                <segue destination="RHu-CO-bv6" kind="presentation" id="i62-4Y-TYv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="71R-dY-Qol" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6193" y="985"/>
+        </scene>
+        <!--Game Options-->
+        <scene sceneID="WIF-eH-bCI">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.gameoptionsviewcontroller" title="Game Options" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i5F-5m-G0r" customClass="GameOptionsViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DGi-hl-F0h"/>
+                        <viewControllerLayoutGuide type="bottom" id="aZ3-Jj-nKP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E7g-ao-b0b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U8R-8s-BFc">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="lWX-YV-zGc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Start Game" id="UPb-KT-vZq">
+                            <connections>
+                                <segue destination="Dzo-UG-g8U" kind="presentation" id="uZo-eF-jm3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5f-Zy-EFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8270" y="985"/>
+        </scene>
+        <!--Countdown Timer-->
+        <scene sceneID="Fep-cM-JEj">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.countdowngameviewcontroller" title="Countdown Timer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Trc-Zx-aGL" customClass="CountdownGameViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EkE-fy-RE8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jb5-fb-AMm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ebO-m0-wfI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-GZ-M09">
+                                <rect key="frame" x="166" y="442" width="43" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ready"/>
+                                <connections>
+                                    <segue destination="kGA-Pt-17m" kind="presentation" id="4yp-7P-9DL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f28-yV-MOF">
+                                <rect key="frame" x="163" y="480" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="x7p-qk-2YF" kind="presentation" id="i4e-KK-Hzd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ke3-Ht-DAk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1NI-xe-B7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10495.200000000001" y="984.55772113943033"/>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="Fkp-Aj-4Q0">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.cameraviewcontroller" title="Camera" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3NU-9e-hgp" customClass="CameraViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="w4z-W3-9qE"/>
+                        <viewControllerLayoutGuide type="bottom" id="vOp-4C-mto"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="p1t-Pt-7YH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CameraViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoQ-XE-ipX">
+                                <rect key="frame" x="51" y="228" width="259" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="i3V-kl-keG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6LQ-1i-TSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6158" y="-694"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="z0B-33-ztS">
+            <objects>
+                <navigationController storyboardIdentifier="LoginNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L05-zL-78Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aDk-JX-xBc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tjQ-DQ-cWW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LSA-gU-PYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="137"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="3Ru-EJ-r82">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="m7Y-W7-Oab" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="DaE-g1-Pa7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="i4x-pF-DAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HBI-hK-ZaA" kind="relationship" relationship="rootViewController" id="8UH-GD-WiG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HaJ-Jz-crm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3223" y="-694"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kEh-N9-dgl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UpN-wj-CWf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xzj-M9-BFF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3NU-9e-hgp" kind="relationship" relationship="rootViewController" id="PW5-BE-uDt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWJ-dE-RdD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5217" y="-694"/>
+        </scene>
+        <!--Main Tab View Controller-->
+        <scene sceneID="0hZ-lJ-au3">
+            <objects>
+                <tabBarController storyboardIdentifier="com.iostriviagame.maintabviewcontroller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="x7p-qk-2YF" customClass="MainTabViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Z2Q-dC-xf0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="m7Y-W7-Oab" kind="relationship" relationship="viewControllers" id="Nhh-8p-W2J"/>
+                        <segue destination="X9v-Hd-GYg" kind="relationship" relationship="viewControllers" id="Oq7-r9-bUh"/>
+                        <segue destination="cX4-A5-CR5" kind="relationship" relationship="viewControllers" id="WHK-9I-4D8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LgG-wb-20O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2193" y="136"/>
+        </scene>
+        <!--Create-->
+        <scene sceneID="YKS-GH-nq8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X9v-Hd-GYg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Create" id="3PX-mo-79e"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PfN-jp-rFR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jnB-a7-d1f" kind="relationship" relationship="rootViewController" id="P51-ie-YQH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fcL-4U-JHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3225" y="985"/>
+        </scene>
+        <!--Question-->
+        <scene sceneID="pe3-Mu-R6R">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.questionviewcontroller" title="Question" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y5u-Gb-HDi" customClass="QuestionViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IJS-yt-IZd"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Lb-g0-9Hu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4af-9o-GRX" customClass="Question">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71X-rq-Y2s">
+                                <rect key="frame" x="163" y="429" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <segue destination="1wV-hE-H6O" kind="presentation" id="hGR-zp-MND"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fzj-KQ-vri">
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="R67-JY-3bU"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddY-xj-uSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4164" y="1849.0254872563719"/>
+        </scene>
+        <!--Answer-->
+        <scene sceneID="TTs-Mm-5qd">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.answerviewcontroller" title="Answer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mI7-Lz-9Wi" customClass="AnswerViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wfZ-Qu-Ekm"/>
+                        <viewControllerLayoutGuide type="bottom" id="cte-39-Kot"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bUL-wt-CUr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78r-jN-B4w">
+                                <rect key="frame" x="163" y="411" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <segue destination="OYM-1H-SDT" kind="presentation" id="Bgt-E0-dNT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-d9-MHz">
+                                <rect key="frame" x="142" y="483" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Last Question"/>
+                                <connections>
+                                    <segue destination="xWC-Yo-6sB" kind="presentation" id="ViW-uz-VHm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="u9y-eq-cDf">
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="BmM-dM-Ryv"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G35-ca-4xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6192.8000000000002" y="1849.0254872563719"/>
+        </scene>
+        <!--Results-->
+        <scene sceneID="pnQ-aN-5wD">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.resultsviewcontroller" title="Results" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FQ1-cp-Uv5" customClass="ResultsViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RcC-nA-Xec"/>
+                        <viewControllerLayoutGuide type="bottom" id="MJg-Da-HAK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3iL-lR-TqY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k1-2x-YEM">
+                                <rect key="frame" x="138" y="448" width="98" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next Question"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sqm-dj-I5u">
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="kra-zp-ynZ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="myw-y1-I8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8268" y="1849.0254872563719"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="JEF-po-8TB">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.homeviewcontroller" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wi6-xA-fhK" customClass="HomeViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3NW-by-aJ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="dpC-79-6hU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rNd-b8-MjN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="waU-E6-Kya">
+                                <rect key="frame" x="0.0" y="217" width="375" height="401"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="sZu-Nk-Kd0">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="137"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Existing Public Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
+                                                    <rect key="frame" x="85" y="29" width="169" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ae-pi-8Ap">
+                                <rect key="frame" x="164" y="141" width="46" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oot-Vr-IDc">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="yci-AW-T9M"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lal-hT-Rao" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4160.8000000000002" y="136.28185907046478"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="z9g-Bk-gnJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cX4-A5-CR5" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wi6-xA-fhK" kind="relationship" relationship="rootViewController" id="oHP-nf-NsY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Um5-3b-HcA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3225" y="137"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IUI-Wv-InZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5bb-5X-bDg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dcG-GP-j2w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ekw-Vi-1cd" kind="relationship" relationship="rootViewController" id="xp1-wU-c5p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IfT-kQ-6Qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5254" y="985"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cff-DD-e6O">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RHu-CO-bv6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dFq-ex-OQM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i5F-5m-G0r" kind="relationship" relationship="rootViewController" id="jtR-iX-h7e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jxa-bA-cPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7330" y="985"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fRo-2K-exq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dzo-UG-g8U" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pu8-hs-FhN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Trc-Zx-aGL" kind="relationship" relationship="rootViewController" id="uf8-FH-Qte"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="smi-Yz-xzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9556" y="984.55772113943033"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zvi-dm-0bp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kGA-Pt-17m" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y5u-Gb-HDi" kind="relationship" relationship="rootViewController" id="I9K-ga-g8g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="50o-8D-1cB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3224.8000000000002" y="1848.1259370314845"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CFZ-cR-Ys6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mI7-Lz-9Wi" kind="relationship" relationship="rootViewController" id="FPV-VK-RWx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zfy-Tu-IEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5253.6000000000004" y="1848.1259370314845"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="a8n-wx-JVs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FQ1-cp-Uv5" kind="relationship" relationship="rootViewController" id="n3p-nC-KLp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CVz-ch-L5V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7328.8000000000002" y="1848.1259370314845"/>
+        </scene>
+        <!--Final Score-->
+        <scene sceneID="v3S-0A-jEc">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.finalscoreviewcontroller" title="Final Score" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h82-yC-6ck" customClass="FinalScoreViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Aug-YG-nHW"/>
+                        <viewControllerLayoutGuide type="bottom" id="yxm-Cg-48g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kbq-g0-WOO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q16-Gk-Kgk">
+                                <rect key="frame" x="67" y="108" width="240" height="311"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="M2N-97-Mh4">
+                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2N-97-Mh4" id="eCg-5g-4QS">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0p-AX-mQn">
+                                <rect key="frame" x="167" y="538" width="41" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Finish"/>
+                                <connections>
+                                    <segue destination="x7p-qk-2YF" kind="presentation" id="Wbq-Wi-rbA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tfC-0W-dod"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="14B-sG-Gru" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8268" y="2648.7256371814096"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TUN-93-OWB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xWC-Yo-6sB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h82-yC-6ck" kind="relationship" relationship="rootViewController" id="4Pi-3g-ZY6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FSq-3M-LV5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7329" y="2649"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="i4e-KK-Hzd"/>
+    </inferredMetricsTieBreakers>
 </document>
