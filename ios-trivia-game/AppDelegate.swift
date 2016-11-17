@@ -9,17 +9,36 @@
 import UIKit
 import Firebase
 import FacebookCore
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.userDidLogout), name: NSNotification.Name(rawValue: userDidLogoutNotification), object: nil)
+        
+        if User.currentUser != nil {
+            Logger.instance.log(message: "User is logged in")
+            
+            // push the view for tab bar
+            let mainTabViewController = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.maintabviewcontroller") as UIViewController
+            window?.rootViewController = mainTabViewController
+        }
+        
         return true
+    }
+    
+    func userDidLogout() {
+        let vc = storyboard.instantiateInitialViewController()! as UIViewController
+        window?.rootViewController = vc
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -35,12 +35,7 @@ class User: NSObject {
     }
     
     class func loginWithFb(fbAccessToken accessToken: String!, completion completionHandler: @escaping (FIRUser?, Error?) -> ()) {
-        var token = accessToken
-        if token == nil {
-            token = Constants.FACEBOOK_AUTH_TOKEN
-        }
-        
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: token!)
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken!)
         FIRAuth.auth()?.signIn(with: credential, completion: completionHandler)
     }
     
