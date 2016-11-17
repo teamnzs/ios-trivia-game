@@ -16,7 +16,7 @@ class Constants {
     static let ANSWER_TABLE_NAME = "answers"
     
     
-    // For testing purposes
-    static let FACEBOOK_AUTH_TOKEN  = "EAAKBoF2qHXoBANNL1ZB3dCvfcZCBnLfr0PFJVycUERJv01QvDNZCu4HSBOb9RPj83VByTZBmswQG2olXjg4jZAAjB2CWRZAtG7cPZAK8gnCVK4x2SHO68pZAWbV67gPYqFam6CjgOgsMuaH6vyNObF8aJ86Enat8ZAfbzQr9EJ4UZBRwZAuz4dEuqr8uWkifMZBNKtr8JQwMnvUCV6lSkEO2pKIRFF2wN287jAwZD"
+    // For segues
+    static let LOGIN_MODAL_SEGUE = "com.iostriviagame.loginSegue"
 }
 

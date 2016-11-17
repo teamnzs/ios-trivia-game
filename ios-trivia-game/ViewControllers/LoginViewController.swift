@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FacebookCore
 import FacebookLogin
+import MBProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -68,6 +69,14 @@ class LoginViewController: UIViewController {
     @objc func loginButtonClicked() {
         let loginManager = LoginManager()
         loginManager.logIn(_:  [ .publicProfile, .userFriends, .email ], viewController: self) { loginResult in
+            let animation = MBProgressHUD.showAdded(to: self.view, animated: true)
+            animation?.animationType = .zoomIn
+            animation?.activityIndicatorColor = UIColor.black
+            animation?.dimBackground = true
+            animation?.color = UIColor.white
+            animation?.labelText = "Prepare your thinking hats..."
+            animation?.labelColor = UIColor.black
+            
             switch loginResult {
             case .failed(let error):
                 print("Login failed!")
@@ -77,7 +86,19 @@ class LoginViewController: UIViewController {
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Logged in!")
                 // @Zhia : Feel free to grab this authToken for Firebase - Nari
-                print(accessToken.authenticationToken)
+                User.loginWithFb(fbAccessToken: accessToken.authenticationToken, completion: {(firUser, error) in
+                    if error != nil {
+                        Logger.instance.log(logLevel: .error, message: "Could not login to Firebase with the fb auth token \(error.debugDescription)")
+                        return
+                    }
+                    
+                    let user = User.convertFirUserToUser(firUser: firUser!)
+                    User.currentUser = user
+                    Logger.instance.log(logLevel: .debug, message: "Successfully logged in to Firebase and set the user")
+                    
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
+                })
             }
         }
     }
