@@ -22,7 +22,7 @@ class GameRoom: NSObject {
     var id: String!
     var name: String!
     var state: State
-    var current_question: String! // UUID of the current question
+    var current_question: Int! // UUID of the current question
     var max_num_of_questions: Int 
     var max_num_of_people: Int
     var is_public: Bool // Defaults to true
@@ -33,7 +33,7 @@ class GameRoom: NSObject {
         self.max_num_of_people = dictionary["max_num_of_people"] as? Int ?? MAX_NUMBER_OF_PEOPLE
         self.state = State(rawValue: dictionary["state"] as! Int)!
         self.is_public = dictionary["is_public"] as? Bool ?? true
-        self.current_question = dictionary["current_question"] as? String ?? "0"
+        self.current_question = dictionary["current_question"] as? Int ?? 0
         self.max_num_of_questions = dictionary["max_num_of_questions"] as? Int ?? MAX_NUMBER_OF_QUESTIONS
     }
     
