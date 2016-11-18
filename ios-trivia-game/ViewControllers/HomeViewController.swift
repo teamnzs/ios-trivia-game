@@ -10,36 +10,40 @@ import UIKit
 import FirebaseDatabase
 import MBProgressHUD
 
+/**
+ * Makes one GET request to fetch all rooms.
+ * Has two properties as rooms, one room contains the rooms to show to user.
+ * The other has all the rooms available.
+ *
+ * If we change the table structure, we need to 
+ * update loadAllGameRooms
+ */
+
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let refreshControl = UIRefreshControl()
+    let ROOMS_TO_SHOW = 20
     
     var gameRooms: [GameRoom]? = []
+    var roomsToShow : [GameRoom]? = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupTableview()
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        loadNewRooms()
+    }
+    
+    func setupTableview() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
-        
-        tableView.insertSubview(refreshControl, at: 0)
-        
-        //loadMoreGameRooms()
-        
-        let ref = FIRDatabase.database().reference()
-        ref.child("questions").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            
-            let value = snapshot.value as? NSArray
-            print(value)
-        }) { (error) in
-            Logger.instance.log(logLevel: .error, message: error.localizedDescription)
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,52 +56,44 @@ class HomeViewController: UIViewController {
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        loadNewRooms()
         refreshControl.endRefreshing()
     }
     
-    func loadMoreGameRooms() {
-        MBProgressHUD.showAdded(to: self.tableView, animated: true)
+    func loadNewRooms() {
+        loadGameRooms(refresh: true)
+    }
+    
+    func loadGameRooms(refresh:Bool = false) {
+        self.gameRooms = []
         let ref = FIRDatabase.database().reference()
         ref.child(Constants.GAME_ROOM_TABLE_NAME).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
             
             let value = snapshot.value as? NSArray
+            
             for room in value! {
                 let gameRoom = GameRoom(dictionary: room as! NSDictionary)
                 if gameRoom.state != GameRoom.State.end {
                     self.gameRooms?.append(gameRoom)
                 }
                 Logger.instance.log(logLevel: .info, message: "\(gameRoom.getJson())")
-
             }
             
-            self.tableView.reloadData()
-            MBProgressHUD.hide(for: self.tableView, animated: true)
+            self.getMoreRooms(refresh:refresh)
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: error.localizedDescription)
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.gameRooms!.count
+        return self.roomsToShow!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.iostriviagame.hometableviewcell", for: indexPath) as! HomeTableViewCell
-        cell.gameRoomInfo = self.gameRooms?[indexPath.row]
+        cell.gameRoomInfo = self.roomsToShow?[indexPath.row]
         return cell
         
     }
@@ -119,7 +115,29 @@ extension HomeViewController: UIScrollViewDelegate {
         if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
             
             // Code to load more results
-            //loadMoreGameRooms()
+            getMoreRooms()
         }
+    }
+    
+    func getMoreRooms(refresh:Bool = false) {
+        if (refresh) {
+            self.roomsToShow = []
+        }
+        
+        let roomsSoFar = self.roomsToShow?.count ?? 0
+        let allRooms = self.gameRooms?.count ?? 0
+        if (roomsSoFar >= allRooms) {
+            return
+        }
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        let roomsToGet = roomsSoFar + ROOMS_TO_SHOW
+        let end = roomsToGet < allRooms ? roomsToGet : allRooms - 1
+        let slice:[GameRoom] = Array(self.gameRooms![0...end])
+        self.roomsToShow = slice
+        
+        MBProgressHUD.hide(for: self.view, animated: true)
+        self.tableView.reloadData()
     }
 }

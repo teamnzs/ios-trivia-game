@@ -15,7 +15,10 @@ class HomeTableViewCell: UITableViewCell {
             self.gameTitle.text = gameRoomInfo.name
             let curQuestion = gameRoomInfo.current_question 
             let maxQuestions = gameRoomInfo.max_num_of_questions
-            self.questionsAsked.text = "\(curQuestion! - 1) / \(maxQuestions) questions asked"
+            let questionsAsked = max(0, curQuestion! - 1)
+            self.questionsAsked.text = "\(questionsAsked) / \(maxQuestions) questions asked"
+            
+            // Needs to be refactored to show the right number
             self.peopleInGame.text = "\(gameRoomInfo.max_num_of_people) people joined"
         }
     }
