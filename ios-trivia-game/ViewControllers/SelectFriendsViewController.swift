@@ -9,6 +9,9 @@
 import UIKit
 
 class SelectFriendsViewController: UIViewController {
+    
+    var numOfPlayers: Int?
+    var isPublic: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
