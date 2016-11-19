@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import FacebookCore
 
 class SelectFriendsViewController: UIViewController {
+    
+    
     
     var numOfPlayers: Int?
     var isPublic: Bool?
@@ -17,6 +20,8 @@ class SelectFriendsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +29,10 @@ class SelectFriendsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onBackClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation
