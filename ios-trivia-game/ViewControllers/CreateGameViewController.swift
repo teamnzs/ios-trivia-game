@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CreateGameViewController: UIViewController {
 
     @IBOutlet weak var numberOfPlayersPicker: UIPickerView!
     
@@ -46,22 +46,6 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         isPublic = self.isPublicSwitch.isOn
     }
     
-    // The number of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return numOfPlayersPickerData.count
-    }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        numOfPlayers = row + 1
-        return numOfPlayersPickerData[row]
-    }
-    
     @IBAction func selectFriendsClicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let selectFriendsViewController = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.selectfriendsviewcontroller") as! SelectFriendsViewController
@@ -81,3 +65,24 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     */
 
 }
+
+extension CreateGameViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    // The number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return numOfPlayersPickerData.count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        numOfPlayers = row + 1
+        return numOfPlayersPickerData[row]
+    }
+}
+
+
