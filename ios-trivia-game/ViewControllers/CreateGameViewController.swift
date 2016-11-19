@@ -16,6 +16,7 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     
     var numOfPlayersPickerData: [String] = [String]()
+    // Pass these data to SelectFriendsViewController
     var numOfPlayers: Int?
     var isPublic: Bool?
     
@@ -61,6 +62,13 @@ class CreateGameViewController: UIViewController, UIPickerViewDelegate, UIPicker
         return numOfPlayersPickerData[row]
     }
     
+    @IBAction func selectFriendsClicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let selectFriendsViewController = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.selectfriendsviewcontroller") as! SelectFriendsViewController
+        selectFriendsViewController.numOfPlayers = self.numOfPlayers
+        selectFriendsViewController.isPublic = self.isPublic
+        self.navigationController?.pushViewController(selectFriendsViewController, animated: true)
+    }
 
     /*
     // MARK: - Navigation

@@ -119,7 +119,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="zPH-hQ-QGO"/>
                         <barButtonItem key="rightBarButtonItem" title="Select Friends" id="IdT-Su-Ot1">
                             <connections>
-                                <segue destination="5bb-5X-bDg" kind="presentation" id="Rhg-fv-kwA"/>
+                                <action selector="selectFriendsClicked:" destination="jnB-a7-d1f" id="Oc9-D4-J9J"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
