@@ -14,6 +14,7 @@ class MainTabViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.isNavigationBarHidden = true
     }
 
     override func didReceiveMemoryWarning() {

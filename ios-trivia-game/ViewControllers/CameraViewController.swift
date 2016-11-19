@@ -10,6 +10,14 @@ import UIKit
 
 class CameraViewController: UIViewController {
 
+    @IBAction func onBack(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let destination = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.maintabviewcontroller") as! MainTabViewController
+        destination.selectedIndex = 2
+        destination.navigationController?.isNavigationBarHidden = true
+        self.present(destination, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
