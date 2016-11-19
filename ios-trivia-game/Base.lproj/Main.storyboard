@@ -83,19 +83,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select maximum number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R11-RS-eHZ">
-                                <rect key="frame" x="53" y="121" width="269" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select maximum number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R11-RS-eHZ">
+                                <rect key="frame" x="53" y="89" width="269" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="luo-XG-UzD">
-                                <rect key="frame" x="0.0" y="180" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luo-XG-UzD">
+                                <rect key="frame" x="0.0" y="142" width="375" height="216"/>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is public game?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kge-Pn-TYS">
+                                <rect key="frame" x="43" y="381" width="119" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huB-A3-iCO">
+                                <rect key="frame" x="284" y="376" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kge-Pn-TYS" firstAttribute="top" secondItem="luo-XG-UzD" secondAttribute="bottom" constant="23" id="8aA-RV-KDc"/>
+                            <constraint firstAttribute="trailing" secondItem="luo-XG-UzD" secondAttribute="trailing" id="XcH-Bz-pDb"/>
+                            <constraint firstItem="R11-RS-eHZ" firstAttribute="top" secondItem="qqb-LE-yCp" secondAttribute="bottom" constant="25" id="ZhE-GS-ZIe"/>
+                            <constraint firstItem="kge-Pn-TYS" firstAttribute="leading" secondItem="hiE-cI-Qil" secondAttribute="leading" constant="43" id="bZG-JL-a9y"/>
+                            <constraint firstItem="luo-XG-UzD" firstAttribute="leading" secondItem="hiE-cI-Qil" secondAttribute="leading" id="gTN-kZ-P4I"/>
+                            <constraint firstAttribute="trailing" secondItem="huB-A3-iCO" secondAttribute="trailing" constant="42" id="jt9-vQ-yX3"/>
+                            <constraint firstItem="luo-XG-UzD" firstAttribute="top" secondItem="R11-RS-eHZ" secondAttribute="bottom" constant="32" id="m0g-F6-z2j"/>
+                            <constraint firstItem="huB-A3-iCO" firstAttribute="centerY" secondItem="kge-Pn-TYS" secondAttribute="centerY" id="nX3-rh-coT"/>
+                            <constraint firstItem="R11-RS-eHZ" firstAttribute="centerX" secondItem="hiE-cI-Qil" secondAttribute="centerX" id="nvj-m3-HK5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pQH-3C-ivh">
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="zPH-hQ-QGO"/>
@@ -106,6 +124,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="isPublicSwitch" destination="huB-A3-iCO" id="5PJ-4c-ItR"/>
                         <outlet property="numberOfPlayersPicker" destination="luo-XG-UzD" id="edK-p2-3I1"/>
                     </connections>
                 </viewController>
