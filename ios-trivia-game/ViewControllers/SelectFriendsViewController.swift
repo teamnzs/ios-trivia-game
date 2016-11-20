@@ -8,6 +8,7 @@
 
 import UIKit
 import FacebookCore
+import FBSDKLoginKit
 
 class SelectFriendsViewController: UIViewController {
     
@@ -16,12 +17,40 @@ class SelectFriendsViewController: UIViewController {
     var numOfPlayers: Int?
     var isPublic: Bool?
 
+//    struct MyProfileRequest: GraphRequestProtocol {
+//        struct Response: GraphResponseProtocol {
+//            init(rawResponse: Any?) {
+//                // Decode JSON from rawResponse into other properties here.
+//            }
+//        }
+//        
+//        var graphPath = "/me/friends"
+//        var parameters: [String : Any]? = ["fields": "id, name"]
+//        var accessToken = AccessToken.current
+//        var httpMethod: GraphRequestHTTPMethod = .GET
+//        var apiVersion: GraphAPIVersion = .defaultVersion
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        print("access token : \(AccessToken.current)")
         
+        
+        let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
+        let request = FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: params)
+        request?.start(completionHandler: { (connection: FBSDKGraphRequestConnection?, result: Any?, error: Error?) in
+            if error != nil {
+                let errorMessage = error?.localizedDescription
+                print("error: \(errorMessage)")
+            }
+//            else if result.isKindOfClass(NSDictionary){
+//                /* Handle response */
+//            }
+            print("result : \(result)")
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,5 +72,4 @@ class SelectFriendsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
