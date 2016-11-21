@@ -12,11 +12,12 @@ import FirebaseDatabase
 class FirebaseClient {
     static let instance = FirebaseClient()
     
+    fileprivate let ref = FIRDatabase.database().reference()
+    
     private init() {}
     
     // gets a user from the user table given a userId
     func getUser(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
-        let ref = FIRDatabase.database().reference()
         let path = "\(Constants.USER_TABLE_NAME)/\(userId)"
         ref.child(path).observe(.value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
@@ -33,7 +34,6 @@ class FirebaseClient {
     // quits game of current user
     func quitGame(complete: (() -> ())?, onError: ((Error?) -> ())?) {
         let currentUserId = User.currentUser?.uid
-        let ref = FIRDatabase.database().reference()
         let path = "\(Constants.USER_IN_GAME_TABLE_NAME)/\(currentUserId!)"
         ref.child(path).removeValue { (error, ref) in
             if (error != nil) {
