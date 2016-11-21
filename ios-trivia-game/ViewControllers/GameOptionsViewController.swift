@@ -21,6 +21,10 @@ class GameOptionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onBackClicked(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation

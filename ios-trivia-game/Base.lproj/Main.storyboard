@@ -306,7 +306,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="U8R-8s-BFc">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="lWX-YV-zGc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="lWX-YV-zGc">
+                            <connections>
+                                <action selector="onBackClicked:" destination="i5F-5m-G0r" id="mc0-vI-JeP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Start Game" id="UPb-KT-vZq">
                             <connections>
                                 <segue destination="Dzo-UG-g8U" kind="presentation" id="uZo-eF-jm3"/>
