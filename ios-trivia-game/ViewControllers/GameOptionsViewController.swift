@@ -22,6 +22,15 @@ class GameOptionsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupPickerData()
+    }
+    
+    func setupPickerData() {
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
+        numOfQuestionsPicker.delegate = self
+        numOfQuestionsPicker.dataSource = self
+        self.numOfQuestionsPickerData = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     }
 
     override func didReceiveMemoryWarning() {
