@@ -83,7 +83,7 @@ class LoginViewController: UIViewController {
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success(_, _, let accessToken):
                 print("Logged in!")
                 // @Zhia : Feel free to grab this authToken for Firebase - Nari
                 User.loginWithFb(fbAccessToken: accessToken.authenticationToken, completion: {(firUser, error) in

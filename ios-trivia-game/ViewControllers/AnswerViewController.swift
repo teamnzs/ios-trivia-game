@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AnswerViewController: UIViewController {
 
@@ -21,6 +22,17 @@ class AnswerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onQuitFromAnswer(_ sender: UIBarButtonItem) {
+        // update user_in_game to remove player from user_in_game
+
+        FirebaseClient.instance.quitGame(complete: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destination = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.maintabviewcontroller") as! MainTabViewController
+            destination.selectedIndex = 0
+            destination.navigationController?.isNavigationBarHidden = true
+            self.present(destination, animated: true, completion: nil)
+        }, onError: { (error) in })
+    }
 
     /*
     // MARK: - Navigation
