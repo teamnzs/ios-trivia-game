@@ -10,6 +10,12 @@ import UIKit
 
 class GameOptionsViewController: UIViewController {
 
+    @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var numOfQuestionsPicker: UIPickerView!
+    
+    var categoryPickerData: [String] = [String]()
+    var numOfQuestionsPickerData: [String] = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
