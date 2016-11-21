@@ -14,13 +14,15 @@ class FirebaseClient {
     
     private init() {}
     
+    // gets a user from the user table given a userId
     func getUser(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let ref = FIRDatabase.database().reference()
-        ref.child("\(Constants.USER_TABLE_NAME)/\(userId)").observe(.value, with: { (snapshot) in
-            Logger.instance.log(logLevel: .info, message: "Table: \(Constants.USER_TABLE_NAME), Removing: \(User.currentUser?.uid)")
+        let path = "\(Constants.USER_TABLE_NAME)/\(userId)"
+        ref.child(path).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
             complete(snapshot)
         }) { (error) in
-            Logger.instance.log(logLevel: .error, message: "FirebaseClient, Table: \(Constants.USER_IN_GAME_TABLE_NAME), Failed to find: \(userId), Error: \(error.localizedDescription)")
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path), Error: \(error.localizedDescription)")
             
             if (onError != nil) {
                 onError!(error)
