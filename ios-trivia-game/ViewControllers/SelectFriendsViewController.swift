@@ -58,7 +58,7 @@ class SelectFriendsViewController: UIViewController {
             let dictionaries = data["data"] as! [NSDictionary]
             self.friends = Friend.FriendsWithArray(dictionaries: dictionaries)
             for friend in self.friends {
-                print("name : \(friend.name)")
+                print("url : \(friend.pictureUrl)")
             }
             self.tableView.reloadData()
         })

@@ -20,7 +20,12 @@ class Friend: NSObject {
         let picture = dictionary["picture"] as? NSDictionary
         
         if picture != nil {
-            pictureUrl = picture!["url"] as? String
+            let data = picture!["data"] as? NSDictionary
+            if data != nil {
+                pictureUrl = data!["url"] as? String
+            } else {
+                pictureUrl = ""
+            }
         } else {
             pictureUrl = ""
         }
