@@ -13,6 +13,7 @@ import FBSDKLoginKit
 class SelectFriendsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var seletedFriendsLabel: UILabel!
     
     var numOfPlayers: Int?
     var isPublic: Bool?
@@ -93,5 +94,16 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
     func selectFriendsTableViewCell(selectFriendsTableViewCell: SelectFriendsTableViewCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: selectFriendsTableViewCell)!
         self.friends[indexPath.row].isSelected = value
+        
+        updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.row].name!)
+    }
+    
+    func updateSelectedFriendsLabel(isSelected: Bool, name: String) {
+        
+        if isSelected {
+            self.seletedFriendsLabel.text = seletedFriendsLabel.text! + " \(name)"
+        }
+        
+        // TODO: Should handle the removing case.
     }
 }
