@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import FirebaseDatabase
 
 class UserInGame : NSObject {
     var roomId : String?
