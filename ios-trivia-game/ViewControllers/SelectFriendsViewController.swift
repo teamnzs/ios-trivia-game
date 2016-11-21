@@ -12,48 +12,16 @@ import FBSDKLoginKit
 
 class SelectFriendsViewController: UIViewController {
     
-    
-    
     var numOfPlayers: Int?
     var isPublic: Bool?
-
-//    struct MyProfileRequest: GraphRequestProtocol {
-//        struct Response: GraphResponseProtocol {
-//            init(rawResponse: Any?) {
-//                // Decode JSON from rawResponse into other properties here.
-//            }
-//        }
-//        
-//        var graphPath = "/me/friends"
-//        var parameters: [String : Any]? = ["fields": "id, name"]
-//        var accessToken = AccessToken.current
-//        var httpMethod: GraphRequestHTTPMethod = .GET
-//        var apiVersion: GraphAPIVersion = .defaultVersion
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        print("access token : \(AccessToken.current)")
+        loadFriendsList()
         
-        
-        let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
-        let request = FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: params)
-        request?.start(completionHandler: { (connection: FBSDKGraphRequestConnection?, result: Any?, error: Error?) in
-            if error != nil {
-                let errorMessage = error?.localizedDescription
-                print("error: \(errorMessage)")
-            }
-//            else if result.isKindOfClass(NSDictionary){
-//                /* Handle response */
-//            }
-            print("result : \(result)")
-            let dictionaries = result as! [NSDictionary]
-            
-            let frields = Friend.FriendsWithArray(dictionaries: dictionaries)
-        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,6 +32,24 @@ class SelectFriendsViewController: UIViewController {
     @IBAction func onBackClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    func loadFriendsList() {
+        let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
+        let request = FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: params)
+        request?.start(completionHandler: { (connection: FBSDKGraphRequestConnection?, result: Any?, error: Error?) in
+            if error != nil {
+                let errorMessage = error?.localizedDescription
+                print("error: \(errorMessage)")
+            }
+            print("result : \(result)")
+            let data = result as! NSDictionary
+            let dictionaries = data["data"] as! [NSDictionary]
+            let friends = Friend.FriendsWithArray(dictionaries: dictionaries)
+            for friend in friends {
+                print("name : \(friend.name)")
+            }
+        })
     }
 
     /*
