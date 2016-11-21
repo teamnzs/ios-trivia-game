@@ -16,6 +16,8 @@ class GameOptionsViewController: UIViewController {
     var categoryPickerData: [String] = [String]()
     var numOfQuestionsPickerData: [String] = [String]()
     
+    var numOfQuestions: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,4 +44,31 @@ class GameOptionsViewController: UIViewController {
     }
     */
 
+}
+
+extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    // The number of columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView.tag == 1 {
+            return categoryPickerData.count
+        } else {
+            return numOfQuestionsPickerData.count
+        }
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView.tag == 1 {
+            return categoryPickerData[row]
+        } else {
+            numOfQuestions = row + 1
+            return numOfQuestionsPickerData[row]
+        }
+    }
 }
