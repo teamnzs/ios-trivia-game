@@ -52,4 +52,68 @@ class FirebaseClient {
             }
         }
     }
+    
+    // gets question by id
+    func getQuestionBy(questionId: Int, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.QUESTION_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: questionId).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(questionId)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(questionId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
+    // gets questions by categoryId
+    // NOTE: I haven't tested that this works yet
+    func getQuestionsBy(categoryId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.QUESTION_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "category").queryEqual(toValue: Int(categoryId)!, childKey: "category/id").observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) category/id=\(categoryId)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(categoryId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
+    // gets answers by room id and question id
+    func getAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.ANSWER_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: "1234abc1").observe(.value, with: { (snapshot) in
+            let data = snapshot.value as! NSDictionary
+            let filteredData: NSMutableArray = []
+            
+            for key in data.allKeys {
+                let entryData = data[key as! String] as? NSDictionary
+                if ((entryData?["question_id"] as? Int) == questionId) {
+                    filteredData.add(entryData!)
+                }
+            }
+            
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) room_id=\(roomId), question_id=\(questionId)")
+            complete(filteredData as NSArray)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) room_id=\(roomId), question_id=\(questionId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
+    // posts an answer to the answer database table
+    func postAnswer(answer: Answer, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let path = "\(Constants.RESPONSES_TABLE_NAME)"
+        let newAnswer = ref.child(path).childByAutoId()
+        answer.timestamp = String(describing: NSDate())
+        newAnswer.setValue(answer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
+    }
 }

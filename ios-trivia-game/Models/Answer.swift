@@ -9,30 +9,34 @@
 import Foundation
 
 class Answer: NSObject {
-    var user_id: String!
-    var user_selected_answer_text: String!
-    var correct_answer_text: String!
-    var question_id: String!
-    var timestamp: Date!
-    var room_id: String!
+    var userId: String!
+    var answerText: String!
+    var questionId: Int!
+    var timestamp: String?
+    var roomId: String!
     
     init(dictionary: NSDictionary) {
-        self.user_id = dictionary["user_id"] as? String
-        self.user_selected_answer_text = dictionary["user_selected_answer_text"] as? String
-        self.correct_answer_text = dictionary["correct_answer_text"] as? String
-        self.question_id = dictionary["question_id"] as? String
-        self.timestamp = dictionary["timestamp"] as? Date
-        self.room_id = dictionary["room_id"] as? String
+        self.userId = dictionary["user_id"] as? String
+        self.answerText = dictionary["answer"] as? String
+        self.questionId = dictionary["question_id"] as? Int
+        self.timestamp = dictionary["timestamp"] as? String
+        self.roomId = dictionary["room_id"] as? String
+    }
+    
+    init(userId: String, answerText: String, questionId: Int, roomId: String) {
+        self.userId = userId
+        self.answerText = answerText
+        self.questionId = questionId
+        self.roomId = roomId
     }
     
     func getJson() -> [String: Any] {
         return [
-            "user_id": self.user_id as Any,
-            "user_selected_answer_text": self.user_selected_answer_text as Any,
-            "correct_answer_text": self.correct_answer_text as Any,
-            "question_id": self.question_id as Any,
+            "user_id": self.userId as Any,
+            "answer": self.answerText as Any,
+            "question_id": self.questionId as Any,
             "timestamp": self.timestamp as Any,
-            "room_id": self.room_id as Any
+            "room_id": self.roomId as Any
         ]
     }
 }
