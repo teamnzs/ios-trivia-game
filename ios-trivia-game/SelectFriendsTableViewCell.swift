@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol SelectFriendsTableViewCellDelegate {
-    @objc optional func selectFriendsTableViewCell(switchCell: SelectFriendsTableViewCell, didChangeValue value: Bool)
+    @objc optional func selectFriendsTableViewCell(selectFriendsTableViewCell: SelectFriendsTableViewCell, didChangeValue value: Bool)
 }
 
 class SelectFriendsTableViewCell: UITableViewCell {
@@ -43,6 +43,6 @@ class SelectFriendsTableViewCell: UITableViewCell {
     }
 
     @IBAction func onSwitchChanged(_ sender: Any) {
-        delegate?.selectFriendsTableViewCell?(switchCell: self, didChangeValue: onSwitch.isOn)
+        delegate?.selectFriendsTableViewCell?(selectFriendsTableViewCell: self, didChangeValue: onSwitch.isOn)
     }
 }

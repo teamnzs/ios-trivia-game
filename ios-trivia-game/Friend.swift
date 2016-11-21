@@ -12,6 +12,7 @@ class Friend: NSObject {
     var id: String?
     var name: String?
     var pictureUrl: String?
+    var isSelected: Bool?
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["id"] as? String
@@ -29,6 +30,8 @@ class Friend: NSObject {
         } else {
             pictureUrl = ""
         }
+        
+        isSelected = false
     }
     
     class func FriendsWithArray(dictionaries: [NSDictionary]) -> [Friend] {

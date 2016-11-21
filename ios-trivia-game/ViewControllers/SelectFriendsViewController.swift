@@ -17,6 +17,7 @@ class SelectFriendsViewController: UIViewController {
     var numOfPlayers: Int?
     var isPublic: Bool?
     var friends = [Friend]()
+    var selectedFriends = [Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,6 @@ class SelectFriendsViewController: UIViewController {
         // Do any additional setup after loading the view.
         setupTableView()
         loadFriendsList()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,7 +83,15 @@ extension SelectFriendsViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.iostriviagame.selecfriendstableviewcell", for: indexPath) as! SelectFriendsTableViewCell
         cell.friend = self.friends[indexPath.row]
+        cell.delegate = self
         return cell
-        
+    }
+}
+
+extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
+    
+    func selectFriendsTableViewCell(selectFriendsTableViewCell: SelectFriendsTableViewCell, didChangeValue value: Bool) {
+        let indexPath = tableView.indexPath(for: selectFriendsTableViewCell)!
+        self.friends[indexPath.row].isSelected = value
     }
 }
