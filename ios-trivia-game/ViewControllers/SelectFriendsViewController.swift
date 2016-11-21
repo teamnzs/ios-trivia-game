@@ -50,6 +50,9 @@ class SelectFriendsViewController: UIViewController {
 //                /* Handle response */
 //            }
             print("result : \(result)")
+            let dictionaries = result as! [NSDictionary]
+            
+            let frields = Friend.FriendsWithArray(dictionaries: dictionaries)
         })
     }
 
