@@ -10,6 +10,18 @@ import UIKit
 
 class SelectFriendsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    
+    var friend: Friend! {
+        didSet {
+            name.text = friend.name
+            if let imageUrl = friend.pictureUrl {
+                profilePicture.setImageWith(URL(string: imageUrl)!)
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

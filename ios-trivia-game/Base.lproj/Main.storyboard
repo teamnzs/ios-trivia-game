@@ -219,7 +219,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="9Sz-xb-sx7" customClass="SelectFriendsTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.selecfriendstableviewcell" rowHeight="64" id="9Sz-xb-sx7" customClass="SelectFriendsTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
@@ -243,6 +243,10 @@
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="YCF-2C-FYl" id="49X-Ea-bLj"/>
+                                            <outlet property="profilePicture" destination="n0g-xt-xvf" id="SFC-V3-SYd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -275,6 +279,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="4Iu-2V-KyZ" id="Sc4-xC-3Am"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71R-dY-Qol" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
