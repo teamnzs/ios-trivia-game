@@ -233,9 +233,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPg-bO-uLg">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KPg-bO-uLg">
                                                     <rect key="frame" x="318" y="7" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="onSwitchChanged:" destination="9Sz-xb-sx7" eventType="valueChanged" id="5MD-Ce-ETE"/>
+                                                    </connections>
                                                 </switch>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0g-xt-xvf">
                                                     <rect key="frame" x="8" y="7" width="45" height="45"/>
@@ -245,6 +248,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="YCF-2C-FYl" id="49X-Ea-bLj"/>
+                                            <outlet property="onSwitch" destination="KPg-bO-uLg" id="Dha-KB-83v"/>
                                             <outlet property="profilePicture" destination="n0g-xt-xvf" id="SFC-V3-SYd"/>
                                         </connections>
                                     </tableViewCell>

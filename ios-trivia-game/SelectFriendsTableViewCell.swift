@@ -8,10 +8,17 @@
 
 import UIKit
 
+@objc protocol SelectFriendsTableViewCellDelegate {
+    @objc optional func selectFriendsTableViewCell(switchCell: SelectFriendsTableViewCell, didChangeValue value: Bool)
+}
+
 class SelectFriendsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var onSwitch: UISwitch!
+    
+    weak var delegate: SelectFriendsTableViewCellDelegate?
     
     var friend: Friend! {
         didSet {
@@ -25,6 +32,8 @@ class SelectFriendsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        onSwitch.addTarget(self, action: #selector(SelectFriendsTableViewCell.onSwitchChanged), for: UIControlEvents.valueChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,4 +42,7 @@ class SelectFriendsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onSwitchChanged(_ sender: Any) {
+        delegate?.selectFriendsTableViewCell?(switchCell: self, didChangeValue: onSwitch.isOn)
+    }
 }
