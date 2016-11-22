@@ -87,7 +87,7 @@ class FirebaseClient {
     // gets answers by room id and question id
     func getAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.ANSWER_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: "1234abc1").observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
             let data = snapshot.value as! NSDictionary
             let filteredData: NSMutableArray = []
             
