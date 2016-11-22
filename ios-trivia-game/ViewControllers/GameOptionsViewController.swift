@@ -22,7 +22,31 @@ class GameOptionsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setupPickerData()
+        getCategories()
+    }
+    
+    func getCategories() {
+        JServiceClient.instance.categories(count: 10, offset: 10, success: {(result: Any?) in
+            //print("my result : \(result)")
+            let triviaCategories = self.convertWithArray(dictionaries: result as! [NSDictionary])
+            for category in triviaCategories {
+                self.categoryPickerData.append(category.title!)
+            }
+            self.setupPickerData()
+            }, failure: { (error: Error?) in
+                    print("Error: \(error?.localizedDescription)")
+            })
+    }
+    
+    func convertWithArray(dictionaries: [NSDictionary]) -> [TriviaCategory] {
+        var categories = [TriviaCategory]()
+        
+        for dictionary in dictionaries {
+            let category = TriviaCategory(dictionary: dictionary)
+            categories.append(category)
+        }
+        
+        return categories
     }
     
     func setupPickerData() {
