@@ -10,10 +10,25 @@ import UIKit
 
 class QuestionViewController: UIViewController {
 
+    var question: TriviaQuestion?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
+        let questionId = 1932
+        FirebaseClient.instance.getQuestionBy(questionId: questionId, complete: { (snapshot) in
+            let questions = snapshot.value as? NSArray
+            
+            if (questions != nil && (questions?.count)! > 0) {
+                self.question = TriviaQuestion(dictionary: questions?[0] as! NSDictionary)
+            }
+        }, onError: { (error) in
+            Logger.instance.log(logLevel: .error, message: "Could not find question id = \(questionId)")
+        })
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +36,20 @@ class QuestionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let nav = segue.destination as? UINavigationController
+        
+        if (nav?.topViewController is AnswerViewController) {
+            let destination = nav?.topViewController as! AnswerViewController
+            destination.question = question
+            
+            // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
+            destination.roomId = "1234abc1"
+        }
     }
-    */
 
+    @IBAction func onAnswerSubmit(_ sender: UIButton) {
+        // Temporary to demonstrate AnswerViewController
+        // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
+    }
 }
