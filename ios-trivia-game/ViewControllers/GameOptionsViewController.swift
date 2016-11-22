@@ -27,7 +27,6 @@ class GameOptionsViewController: UIViewController {
     
     func getCategories() {
         JServiceClient.instance.categories(count: 10, offset: 10, success: {(result: Any?) in
-            //print("my result : \(result)")
             let triviaCategories = self.convertWithArray(dictionaries: result as! [NSDictionary])
             for category in triviaCategories {
                 self.categoryPickerData.append(category.title!)

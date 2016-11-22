@@ -53,13 +53,9 @@ class SelectFriendsViewController: UIViewController {
                 let errorMessage = error?.localizedDescription
                 print("error: \(errorMessage)")
             }
-            //print("result : \(result)")
             let data = result as! NSDictionary
             let dictionaries = data["data"] as! [NSDictionary]
             self.friends = Friend.FriendsWithArray(dictionaries: dictionaries)
-//            for friend in self.friends {
-//                print("url : \(friend.pictureUrl)")
-//            }
             self.tableView.reloadData()
         })
     }
