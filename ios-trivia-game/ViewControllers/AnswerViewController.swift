@@ -56,14 +56,7 @@ class AnswerViewController: UIViewController {
     
     @IBAction func onQuitFromAnswer(_ sender: UIBarButtonItem) {
         // update user_in_game to remove player from user_in_game
-
-        FirebaseClient.instance.quitGame(complete: {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destination = storyboard.instantiateViewController(withIdentifier: Constants.MAIN_TAB_VIEW_CONTROLLER) as! MainTabViewController
-            destination.selectedIndex = 0
-            destination.navigationController?.isNavigationBarHidden = true
-            self.present(destination, animated: true, completion: nil)
-        }, onError: { (error) in })
+        Utilities.quitGame(controller: self)
     }
 
     @objc fileprivate func updateCounter() {
@@ -90,13 +83,15 @@ class AnswerViewController: UIViewController {
         
         if (nav?.topViewController is ResultsViewController) {
             var answer : Answer!
-            if (answerTableView.indexPathForSelectedRow == nil) {
-                answer = Answer(userId: (User.currentUser?.uid)!, answerText: "", questionId: (question?.id)!, roomId: roomId!)
-            }
-            else {
+            var answerText = ""
+            
+            if (answerTableView.indexPathForSelectedRow != nil) {
                 let selectedAnswer = answers?[(answerTableView.indexPathForSelectedRow?.row)!]
-                answer = Answer(userId: (User.currentUser?.uid)!, answerText: (selectedAnswer?.answerText)!, questionId: (question?.id)!, roomId: roomId!)
+                answerText = (selectedAnswer?.answerText)!
             }
+            
+            answer = Answer(userId: (User.currentUser?.uid)!, answerText: answerText, questionId: (question?.id)!, roomId: roomId!)
+            
             FirebaseClient.instance.postAnswer(answer: answer!, complete: {(error, ref) in
                 if (error != nil) {
                     Logger.instance.log(logLevel: .error, message: "Error posting Answer: \(answer)")
