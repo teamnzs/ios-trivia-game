@@ -48,7 +48,7 @@ class SelectFriendsViewController: UIViewController {
     func loadFriendsList() {
         let params = ["fields": "id, first_name, last_name, middle_name, name, email, picture"]
         let request = FBSDKGraphRequest(graphPath: "me/taggable_friends", parameters: params)
-        request?.start(completionHandler: { (connection: FBSDKGraphRequestConnection?, result: Any?, error: Error?) in
+        request?.start(completionHandler: { (_, result: Any?, error: Error?) in
             if error != nil {
                 let errorMessage = error?.localizedDescription
                 print("error: \(errorMessage)")
