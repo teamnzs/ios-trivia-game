@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -486,7 +487,7 @@
                         <viewControllerLayoutGuide type="top" id="IJS-yt-IZd"/>
                         <viewControllerLayoutGuide type="bottom" id="8Lb-g0-9Hu"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4af-9o-GRX" customClass="Question">
+                    <view key="view" contentMode="scaleToFill" id="4af-9o-GRX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -495,6 +496,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
+                                    <action selector="onAnswerSubmit:" destination="Y5u-Gb-HDi" eventType="touchUpInside" id="Aq8-CS-T1j"/>
                                     <segue destination="1wV-hE-H6O" kind="presentation" id="hGR-zp-MND"/>
                                 </connections>
                             </button>
@@ -521,24 +523,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78r-jN-B4w">
-                                <rect key="frame" x="163" y="411" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <segue destination="OYM-1H-SDT" kind="presentation" id="Bgt-E0-dNT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-d9-MHz">
-                                <rect key="frame" x="142" y="483" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Last Question"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-d9-MHz">
+                                <rect key="frame" x="96" y="637" width="183" height="30"/>
+                                <state key="normal" title="Last Question (Temporary)"/>
                                 <connections>
                                     <segue destination="xWC-Yo-6sB" kind="presentation" id="ViW-uz-VHm"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOd-pF-cfm">
+                                <rect key="frame" x="32" y="116.5" width="311" height="456.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.answertableviewcell" rowHeight="102" id="rUh-fW-Bmr" customClass="AnswerTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="311" height="102"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
+                                                    <rect key="frame" x="8" y="8" width="295" height="85.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NKo-Tc-GgM" firstAttribute="leading" secondItem="r3R-zq-vxP" secondAttribute="leading" constant="8" id="7kg-tP-lLc"/>
+                                                <constraint firstItem="NKo-Tc-GgM" firstAttribute="top" secondItem="r3R-zq-vxP" secondAttribute="top" constant="8" id="Y1u-Md-hyf"/>
+                                                <constraint firstAttribute="trailing" secondItem="NKo-Tc-GgM" secondAttribute="trailing" constant="8" id="Yab-jR-1Bp"/>
+                                                <constraint firstAttribute="bottom" secondItem="NKo-Tc-GgM" secondAttribute="bottom" constant="8" id="dPM-pn-OLS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="answerLabel" destination="NKo-Tc-GgM" id="V02-HH-0nY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ui3-9m-13g">
+                                <rect key="frame" x="16" y="80" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78r-jN-B4w">
+                                <rect key="frame" x="163" y="589" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="mI7-Lz-9Wi" eventType="touchUpInside" id="ShX-Ej-3k2"/>
+                                    <segue destination="OYM-1H-SDT" kind="presentation" identifier="com.iostriviagame.answertoresultssegue" modalTransitionStyle="flipHorizontal" id="Bgt-E0-dNT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xOd-pF-cfm" firstAttribute="top" secondItem="ui3-9m-13g" secondAttribute="bottom" constant="16" id="2Z0-5Z-wA9"/>
+                            <constraint firstItem="78r-jN-B4w" firstAttribute="centerX" secondItem="bUL-wt-CUr" secondAttribute="centerX" id="7vc-oT-C0N"/>
+                            <constraint firstItem="5TV-d9-MHz" firstAttribute="bottom" secondItem="78r-jN-B4w" secondAttribute="bottom" constant="48" id="CEo-Cp-rVA"/>
+                            <constraint firstItem="ui3-9m-13g" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leading" constant="16" id="D5b-tF-Osh"/>
+                            <constraint firstAttribute="trailing" secondItem="5TV-d9-MHz" secondAttribute="trailing" constant="96" id="FQ5-WK-lPn"/>
+                            <constraint firstItem="xOd-pF-cfm" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leadingMargin" constant="16" id="GtO-XZ-bSA"/>
+                            <constraint firstItem="cte-39-Kot" firstAttribute="top" secondItem="5TV-d9-MHz" secondAttribute="bottom" id="HIC-mu-f0q"/>
+                            <constraint firstItem="ui3-9m-13g" firstAttribute="top" secondItem="wfZ-Qu-Ekm" secondAttribute="bottom" constant="16" id="YjE-97-HFe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xOd-pF-cfm" secondAttribute="trailing" constant="16" id="c6V-J7-2Ih"/>
+                            <constraint firstItem="5TV-d9-MHz" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leading" constant="96" id="cNr-Tj-gNT"/>
+                            <constraint firstItem="78r-jN-B4w" firstAttribute="top" secondItem="xOd-pF-cfm" secondAttribute="bottom" constant="16" id="ewU-IX-G64"/>
+                            <constraint firstAttribute="trailing" secondItem="ui3-9m-13g" secondAttribute="trailing" constant="16" id="nkd-sL-D8I"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="u9y-eq-cDf">
                         <barButtonItem key="leftBarButtonItem" title="Quit" id="BmM-dM-Ryv">
@@ -546,7 +598,13 @@
                                 <action selector="onQuitFromAnswer:" destination="mI7-Lz-9Wi" id="jk6-jo-Tq8"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Timer" id="V83-n8-vR3"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="answerTableView" destination="xOd-pF-cfm" id="gp0-eO-463"/>
+                        <outlet property="questionLabel" destination="ui3-9m-13g" id="01Q-Kw-Fpb"/>
+                        <outlet property="timerButton" destination="V83-n8-vR3" id="Usw-2I-BQt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G35-ca-4xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -573,7 +631,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Sqm-dj-I5u">
-                        <barButtonItem key="leftBarButtonItem" title="Quit" id="kra-zp-ynZ"/>
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="kra-zp-ynZ">
+                            <connections>
+                                <action selector="onQuitFromResults:" destination="FQ1-cp-Uv5" id="Cfo-9D-laD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myw-y1-I8g" userLabel="First Responder" sceneMemberID="firstResponder"/>

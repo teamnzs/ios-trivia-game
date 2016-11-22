@@ -14,6 +14,7 @@ class ResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Logger.instance.log(logLevel: .debug, message: "Entered ResultsViewController")
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +33,8 @@ class ResultsViewController: UIViewController {
     }
     */
 
+    @IBAction func onQuitFromResults(_ sender: UIBarButtonItem) {
+        // update user_in_game to remove player from user_in_game
+        Utilities.quitGame(controller: self)
+    }
 }
