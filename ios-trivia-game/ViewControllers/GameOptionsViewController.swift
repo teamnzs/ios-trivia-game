@@ -18,6 +18,9 @@ class GameOptionsViewController: UIViewController {
     
     var numOfQuestions: Int?
     
+    let pickerTagForCategory = 1;
+    let pickerTagForNumOfQuestions = 2;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -87,9 +90,9 @@ extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 1 {
+        if pickerView.tag == pickerTagForCategory {
             return categoryPickerData.count
-        } else if pickerView.tag == 2 {
+        } else if pickerView.tag == pickerTagForNumOfQuestions {
             return numOfQuestionsPickerData.count
         } else {
             return 0
@@ -98,9 +101,9 @@ extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 1 {
+        if pickerView.tag == pickerTagForCategory {
             return categoryPickerData[row]
-        } else if pickerView.tag == 2 {
+        } else if pickerView.tag == pickerTagForNumOfQuestions {
             numOfQuestions = row + 1
             return numOfQuestionsPickerData[row]
         } else {
