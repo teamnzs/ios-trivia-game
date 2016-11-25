@@ -10,11 +10,37 @@ import UIKit
 
 class ResultsViewController: UIViewController {
 
+    @IBOutlet weak var timerButton: UIBarButtonItem!
+    @IBOutlet weak var resultsTitleLabel: UILabel!
+    @IBOutlet weak var resultsTableView: UITableView!
+    @IBOutlet weak var nextQuestionButton: UIButton!
+    
+    var roomId: String?
+    var question: TriviaQuestion?
+    var gameRoom: GameRoom?
+    var results: [Answer]?
+    
+    fileprivate var timerCount = 60
+    fileprivate var countdownTimer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         Logger.instance.log(logLevel: .debug, message: "Entered ResultsViewController")
+        
+        countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        timerButton.title = ""
+        
+        FirebaseClient.instance.getGameBy(roomId: roomId!, complete: { (snapshot) in
+            let data = snapshot.value as? NSDictionary
+            
+            if ((data?.count)! > 0) {
+                self.gameRoom = GameRoom(dictionary: data?[data?.allKeys.first as! String] as! NSDictionary)
+            }
+            
+        }) { (error) in
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +57,23 @@ class ResultsViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+     */
+    
+    @objc fileprivate func updateCounter() {
+        timerCount -=  1
+        
+        timerButton.title = ""
+        if (timerCount > 0) {
+            // update UI
+            timerButton.title = "\(timerCount)s"
+        }
+        else {
+            // time is up. execute submission code
+            countdownTimer.invalidate()
+            // performSegue(withIdentifier: Constants.ANSWER_TO_RESULTS_SEGUE, sender: nil)
+        }
+    }
+
 
     @IBAction func onQuitFromResults(_ sender: UIBarButtonItem) {
         // update user_in_game to remove player from user_in_game

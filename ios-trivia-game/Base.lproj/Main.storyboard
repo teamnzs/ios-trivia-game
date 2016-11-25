@@ -224,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
@@ -538,7 +538,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
@@ -622,13 +622,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k1-2x-YEM">
-                                <rect key="frame" x="138" y="448" width="98" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results: Round #/#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqO-Xz-cxw">
+                                <rect key="frame" x="79" y="80" width="217" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="159" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CXy-Vo-wxN">
+                                <rect key="frame" x="32" y="125" width="311" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="159" id="L7y-rf-jUI">
+                                        <rect key="frame" x="0.0" y="28" width="311" height="159"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7y-rf-jUI" id="tMU-0V-Ruk">
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="158.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k1-2x-YEM">
+                                <rect key="frame" x="138" y="621" width="98" height="30"/>
                                 <state key="normal" title="Next Question"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8k1-2x-YEM" firstAttribute="top" secondItem="CXy-Vo-wxN" secondAttribute="bottom" constant="16" id="3cF-zg-71h"/>
+                            <constraint firstItem="kqO-Xz-cxw" firstAttribute="top" secondItem="RcC-nA-Xec" secondAttribute="bottom" constant="16" id="CtR-2D-vzU"/>
+                            <constraint firstItem="CXy-Vo-wxN" firstAttribute="leading" secondItem="3iL-lR-TqY" secondAttribute="leading" constant="32" id="E2q-mm-sUl"/>
+                            <constraint firstItem="CXy-Vo-wxN" firstAttribute="top" secondItem="kqO-Xz-cxw" secondAttribute="bottom" constant="16" id="RfN-xo-YOH"/>
+                            <constraint firstItem="MJg-Da-HAK" firstAttribute="top" secondItem="8k1-2x-YEM" secondAttribute="bottom" constant="16" id="S32-ty-Fqx"/>
+                            <constraint firstAttribute="trailing" secondItem="CXy-Vo-wxN" secondAttribute="trailing" constant="32" id="aKX-yZ-2u2"/>
+                            <constraint firstItem="kqO-Xz-cxw" firstAttribute="centerX" secondItem="3iL-lR-TqY" secondAttribute="centerX" id="bV9-c0-Z3Q"/>
+                            <constraint firstItem="8k1-2x-YEM" firstAttribute="centerX" secondItem="3iL-lR-TqY" secondAttribute="centerX" id="v11-Ty-3rM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sqm-dj-I5u">
                         <barButtonItem key="leftBarButtonItem" title="Quit" id="kra-zp-ynZ">
@@ -636,7 +665,14 @@
                                 <action selector="onQuitFromResults:" destination="FQ1-cp-Uv5" id="Cfo-9D-laD"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Timer" id="pIa-zt-GLI"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nextQuestionButton" destination="8k1-2x-YEM" id="ow5-mm-ovU"/>
+                        <outlet property="resultsTableView" destination="CXy-Vo-wxN" id="Jb7-Ev-2Dj"/>
+                        <outlet property="resultsTitleLabel" destination="kqO-Xz-cxw" id="8t4-3I-Qqx"/>
+                        <outlet property="timerButton" destination="pIa-zt-GLI" id="R0c-vh-WQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myw-y1-I8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -662,7 +698,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
@@ -808,7 +844,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -844,7 +880,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -878,7 +914,7 @@
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2N-97-Mh4" id="eCg-5g-4QS">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -906,7 +942,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

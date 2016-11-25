@@ -82,6 +82,7 @@ class AnswerViewController: UIViewController {
         let nav = segue.destination as? UINavigationController
         
         if (nav?.topViewController is ResultsViewController) {
+            let resultsViewController = nav?.topViewController as! ResultsViewController
             var answer : Answer!
             var answerText = ""
             
@@ -100,6 +101,8 @@ class AnswerViewController: UIViewController {
                     Logger.instance.log(logLevel: .info, message: "Success posting Answer: \(answer)")
                 }
             })
+            
+            resultsViewController.roomId = self.roomId
         }
     }
 }

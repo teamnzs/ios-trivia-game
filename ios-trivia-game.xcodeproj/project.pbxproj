@@ -33,6 +33,7 @@
 		A8B6EA341DD9A7AA00CB8699 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B6EA301DD9A7AA00CB8699 /* User.swift */; };
 		A8E541571DD9A9EB002D6AA4 /* JServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1ED9E1DD5A03D00460AA5 /* JServiceClient.swift */; };
 		A8E541581DD9A9EB002D6AA4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A36860A1DD83CCC00CBEB41 /* Constants.swift */; };
+		B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */; };
 		B29417051DE29A1300153E36 /* UserInGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417041DE29A1300153E36 /* UserInGame.swift */; };
 		B29417071DE29E3A00153E36 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417061DE29E3A00153E36 /* FirebaseClient.swift */; };
 		B294170A1DE2AD8100153E36 /* SelectFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		A8B6EA2F1DD9A7AA00CB8699 /* GameRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameRoom.swift; path = Models/GameRoom.swift; sourceTree = "<group>"; };
 		A8B6EA301DD9A7AA00CB8699 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		A8E1ED9E1DD5A03D00460AA5 /* JServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JServiceClient.swift; path = API/JServiceClient.swift; sourceTree = "<group>"; };
+		B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoredAnswer.swift; path = Models/ScoredAnswer.swift; sourceTree = "<group>"; };
 		B29417041DE29A1300153E36 /* UserInGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInGame.swift; path = Models/UserInGame.swift; sourceTree = "<group>"; };
 		B29417061DE29E3A00153E36 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = API/FirebaseClient.swift; sourceTree = "<group>"; };
 		B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendsTableViewCell.swift; path = Views/SelectFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				1A805B681DD996F900A70691 /* TriviaQuestion.swift */,
 				4D9054051DE26D310029B97E /* Friend.swift */,
 				B29417041DE29A1300153E36 /* UserInGame.swift */,
+				B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				A8B32B901DDBE709003A0B1C /* LoginViewController.swift in Sources */,
 				4D9054061DE26D310029B97E /* Friend.swift in Sources */,
 				A8B32BB31DDC036B003A0B1C /* FinalScoreViewController.swift in Sources */,
+				B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */,
 				1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */,
 				A8B32BA21DDC00C1003A0B1C /* SelectFriendsViewController.swift in Sources */,
 				B29BE1FD1DD7BB6B000DD684 /* Logger.swift in Sources */,

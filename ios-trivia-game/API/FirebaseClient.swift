@@ -41,6 +41,18 @@ class FirebaseClient {
             complete!(value!)
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all rooms, Error: \(error.localizedDescription)")
+        }
+    }
+    
+    // get game by id
+    func getGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        // let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
+        let path = "game_room_"
+        ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(roomId)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(roomId), Error: \(error.localizedDescription)")
             
             if (onError != nil) {
                 onError!(error)
