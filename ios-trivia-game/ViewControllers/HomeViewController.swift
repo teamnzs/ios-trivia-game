@@ -63,26 +63,23 @@ class HomeViewController: UIViewController {
     func loadNewRooms() {
         loadGameRooms(refresh: true)
     }
-    
+  
     func loadGameRooms(refresh:Bool = false) {
         self.gameRooms = []
-        let ref = FIRDatabase.database().reference()
-        ref.child(Constants.GAME_ROOM_TABLE_NAME).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            let value = snapshot.value as? NSArray
-            
-            for room in value! {
-                let gameRoom = GameRoom(dictionary: room as! NSDictionary)
+        
+        FirebaseClient.instance.getGameRooms(complete: { (dictionary) in
+            for (roomId, roomInfo) in dictionary {
+                let gameRoom = GameRoom(dictionary: roomInfo as! NSDictionary)
                 if gameRoom.state != GameRoom.State.end {
                     self.gameRooms?.append(gameRoom)
                 }
-                Logger.instance.log(logLevel: .info, message: "\(gameRoom.getJson())")
+                Logger.instance.log(logLevel: .info, message: "RoomId: \(roomId) \(gameRoom.getJson())")
             }
             
             self.getMoreRooms(refresh:refresh)
-        }) { (error) in
-            Logger.instance.log(logLevel: .error, message: error.localizedDescription)
-        }
+        }, onError: { (error) in
+            Logger.instance.log(logLevel: .error, message: "Could not get rooms")
+        })
     }
 }
 

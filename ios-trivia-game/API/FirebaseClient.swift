@@ -31,6 +31,23 @@ class FirebaseClient {
         }
     }
     
+    // gets all game rooms
+    func getGameRooms(complete: ((NSDictionary) -> ())?, onError: ((Error?) -> ())?) {
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
+        ref.child(path).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all game rooms")
+            
+            let value = snapshot.value as? NSDictionary
+            complete!(value!)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all rooms, Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
     // quits game of current user
     func quitGame(complete: (() -> ())?, onError: ((Error?) -> ())?) {
         let currentUserId = User.currentUser?.uid
