@@ -93,7 +93,18 @@ class ResultsViewController: UIViewController {
         }
         else {
             countdownTimer.invalidate()
-            // performSegue(withIdentifier: Constants.ANSWER_TO_RESULTS_SEGUE, sender: nil)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationIdentifier: String
+            if (self.gameRoom?.current_question == self.gameRoom?.max_num_of_questions) {
+                destinationIdentifier = Constants.FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER
+            }
+            else {
+                destinationIdentifier = Constants.QUESTION_NAVIGATION_VIEW_CONTROLLER
+            }
+            
+            let destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
+            self.present(destination, animated: true, completion: nil)
         }
     }
     
