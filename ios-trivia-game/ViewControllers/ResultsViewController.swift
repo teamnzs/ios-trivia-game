@@ -40,7 +40,7 @@ class ResultsViewController: UIViewController {
         self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         self.timerButton.title = ""
         
-        self.maxScoreLabel.text = "Max Score: \(self.question!.value) pts"
+        self.maxScoreLabel.text = "Max Score: \(self.question!.value!) pts"
         
         // populating the gameRoom Object
         FirebaseClient.instance.getGameBy(roomId: roomId!, complete: { (snapshot) in
