@@ -18,6 +18,7 @@ class AnswerViewController: UIViewController {
     var roomId: String?
     
     fileprivate var answers: [Answer]? = []
+    fileprivate let MAX_COUNTDOWN = 60
     fileprivate var timerCount = 60
     fileprivate var countdownTimer = Timer()
 
@@ -54,11 +55,41 @@ class AnswerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nav = segue.destination as? UINavigationController
+        
+        if (nav?.topViewController is ResultsViewController) {
+            let resultsViewController = nav?.topViewController as! ResultsViewController
+            
+            let answerText = (answerTableView.indexPathForSelectedRow == nil) ? "" : answers?[(answerTableView.indexPathForSelectedRow?.row)!].answerText
+            let answer = Answer(userId: (User.currentUser?.uid)!, answerText: answerText!, questionId: (question?.id!)!, roomId: roomId!)
+            let score = calculateScore(answer: answer)
+            let scoredAnswer = ScoredAnswer(score: score, answer: answer)
+            
+            FirebaseClient.instance.postScoredAnswer(scoredAnswer: scoredAnswer, complete: {(error, ref) in
+                if (error == nil) {
+                    Logger.instance.log(logLevel: .info, message: "Success posting Scored Answer: \(scoredAnswer)")
+                }
+                else {
+                    Logger.instance.log(logLevel: .error, message: "Error posting Scored Answer: \(scoredAnswer)")
+                }
+            })
+            
+            resultsViewController.roomId = self.roomId
+            resultsViewController.question = self.question
+        }
+    }
+    
     @IBAction func onQuitFromAnswer(_ sender: UIBarButtonItem) {
         // update user_in_game to remove player from user_in_game
+        countdownTimer.invalidate()
         Utilities.quitGame(controller: self)
     }
-
+    
+    @IBAction func onSubmit(_ sender: UIButton) {
+        countdownTimer.invalidate()
+    }
+    
     @objc fileprivate func updateCounter() {
         timerCount -=  1
         
@@ -74,43 +105,16 @@ class AnswerViewController: UIViewController {
         }
     }
     
-    @IBAction func onSubmit(_ sender: UIButton) {
-        countdownTimer.invalidate()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nav = segue.destination as? UINavigationController
-        
-        if (nav?.topViewController is ResultsViewController) {
-            let resultsViewController = nav?.topViewController as! ResultsViewController
-            var answer : Answer!
-            var answerText = ""
-            
-            if (answerTableView.indexPathForSelectedRow != nil) {
-                let selectedAnswer = answers?[(answerTableView.indexPathForSelectedRow?.row)!]
-                answerText = (selectedAnswer?.answerText)!
-            }
-            
-            answer = Answer(userId: (User.currentUser?.uid)!, answerText: answerText, questionId: (question?.id)!, roomId: roomId!)
-            
-            FirebaseClient.instance.postAnswer(answer: answer!, complete: {(error, ref) in
-                if (error != nil) {
-                    Logger.instance.log(logLevel: .error, message: "Error posting Answer: \(answer)")
-                }
-                else {
-                    Logger.instance.log(logLevel: .info, message: "Success posting Answer: \(answer)")
-                }
-            })
-            
-            resultsViewController.roomId = self.roomId
+    fileprivate func calculateScore(answer: Answer) -> Int {
+        if (question?.answer == answer.answerText) {
+            return Int(Float(timerCount) / Float(MAX_COUNTDOWN) * Float((question?.value)!))
         }
+        
+        return 0
     }
 }
 
-extension AnswerViewController: UITableViewDelegate {
-}
-
-extension AnswerViewController: UITableViewDataSource {
+extension AnswerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.answers!.count
     }

@@ -9,25 +9,25 @@
 import Foundation
 
 class ScoredAnswer: Answer {
-    var uid: String!
     var score: Int!
     
     override init(dictionary: NSDictionary) {
-        self.uid = dictionary["id"] as? String
         self.score = dictionary["score"] as? Int
         super.init(dictionary: dictionary)
     }
     
-    init(uid: String, score: Int, answer: Answer) {
-        self.uid = uid
+    init(score: Int, userId: String, answerText: String, questionId: Int, roomId: String) {
+        self.score = score
+        super.init(userId: userId, answerText: answerText, questionId: questionId, roomId: roomId)
+    }
+    
+    init(score: Int, answer: Answer) {
         self.score = score
         super.init(userId: answer.userId, answerText: answer.answerText, questionId: answer.questionId, roomId: answer.roomId)
-        self.timestamp = answer.timestamp
     }
     
     override func getJson() -> [String: Any] {
         return [
-            "uid": self.uid as Any,
             "score": self.score as Any,
             "user_id": self.userId as Any,
             "answer": self.answerText as Any,
