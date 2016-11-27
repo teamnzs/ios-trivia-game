@@ -9,11 +9,19 @@
 import UIKit
 
 class FinalScoreViewController: UIViewController {
-
+    
+    @IBOutlet weak var timerButton: UIBarButtonItem!
+    @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var maxScoreLabel: UILabel!
+    @IBOutlet weak var finalScoreTable: UITableView!
+    
+    fileprivate var timerCount = 60
+    fileprivate var countdownTimer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +29,21 @@ class FinalScoreViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func onFinish(_ sender: UIButton) {
+        countdownTimer.invalidate()
+        Utilities.quitGame(controller: self)
     }
-    */
-
+    
+    @objc fileprivate func updateCounter() {
+        timerCount -=  1
+        timerButton.title = ""
+        
+        if (timerCount > 0) {
+            timerButton.title = "\(timerCount)s"
+        }
+        else {
+            countdownTimer.invalidate()
+            Utilities.quitGame(controller: self)
+        }
+    }
 }
