@@ -338,7 +338,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Start Game" id="UPb-KT-vZq">
                             <connections>
-                                <segue destination="Dzo-UG-g8U" kind="presentation" id="uZo-eF-jm3"/>
+                                <action selector="onStartGameClicked:" destination="i5F-5m-G0r" id="OZ1-l3-TMQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

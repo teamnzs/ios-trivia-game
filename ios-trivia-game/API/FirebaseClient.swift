@@ -133,4 +133,11 @@ class FirebaseClient {
         answer.timestamp = String(describing: NSDate())
         newAnswer.setValue(answer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
     }
+    
+    // Creates a game
+    func createGame(gameRoom: NSDictionary, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
+        let newGameRoom = ref.child(path).childByAutoId()
+        newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
+    }
 }
