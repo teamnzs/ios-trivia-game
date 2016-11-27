@@ -79,6 +79,7 @@ class GameOptionsViewController: UIViewController {
     @IBAction func onStartGameClicked(_ sender: Any) {
         print("game started clicked")
         var newGame = ["max_num_of_questions" : numOfQuestions ?? 0,
+                       "id" : FirebaseClient.instance.createGameRoomId().key,
                    "current_question" : 0,
                    "is_public" : isPublic ?? true,
                    "max_num_people" : numOfPlayers ?? 5,
