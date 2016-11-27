@@ -9,7 +9,7 @@
 import Foundation
 
 class Constants {
-    static let GAME_ROOM_TABLE_NAME = "game_room_"
+    static let GAME_ROOM_TABLE_NAME = "game_room"
     static let USER_TABLE_NAME = "users"
     static let USER_IN_GAME_TABLE_NAME = "user_in_game"
     static let QUESTION_TABLE_NAME = "questions"

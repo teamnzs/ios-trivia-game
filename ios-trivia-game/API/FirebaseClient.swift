@@ -46,8 +46,7 @@ class FirebaseClient {
     
     // get game by id
     func getGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
-        // let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
-        let path = "game_room_"
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
         ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(roomId)")
             complete(snapshot)
