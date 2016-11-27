@@ -41,6 +41,17 @@ class FirebaseClient {
             complete!(value!)
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all rooms, Error: \(error.localizedDescription)")
+        }
+    }
+    
+    // get game by id
+    func getGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(roomId)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(roomId), Error: \(error.localizedDescription)")
             
             if (onError != nil) {
                 onError!(error)
@@ -126,9 +137,34 @@ class FirebaseClient {
         }
     }
     
+    // gets answers by room id and question id
+    func getScoredAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+            let data = snapshot.value as! NSDictionary
+            let filteredData: NSMutableArray = []
+            
+            for key in data.allKeys {
+                let entryData = data[key as! String] as? NSDictionary
+                if ((entryData?["question_id"] as? Int) == questionId) {
+                    filteredData.add(entryData!)
+                }
+            }
+            
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) room_id=\(roomId), question_id=\(questionId)")
+            complete(filteredData as NSArray)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) room_id=\(roomId), question_id=\(questionId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
     // posts an answer to the answer database table
     func postAnswer(answer: Answer, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
-        let path = "\(Constants.RESPONSES_TABLE_NAME)"
+        let path = "\(Constants.ANSWER_TABLE_NAME)"
         let newAnswer = ref.child(path).childByAutoId()
         answer.timestamp = String(describing: NSDate())
         newAnswer.setValue(answer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
@@ -139,5 +175,13 @@ class FirebaseClient {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
         let newGameRoom = ref.child(path).childByAutoId()
         newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
+    }
+
+    // post a scored answer to the scored answer database table
+    func postScoredAnswer(scoredAnswer: ScoredAnswer, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
+        let newAnswer = ref.child(path).childByAutoId()
+        scoredAnswer.timestamp = String(describing: NSDate())
+        newAnswer.setValue(scoredAnswer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
     }
 }

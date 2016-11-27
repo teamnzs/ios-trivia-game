@@ -18,12 +18,19 @@ class QuestionViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
-        let questionId = 1932
+        let questionId = 1938
         FirebaseClient.instance.getQuestionBy(questionId: questionId, complete: { (snapshot) in
-            let questions = snapshot.value as? NSArray
-            
-            if (questions != nil && (questions?.count)! > 0) {
-                self.question = TriviaQuestion(dictionary: questions?[0] as! NSDictionary)
+            if let questionArray = snapshot.value as? NSArray {
+                for questionData in questionArray {
+                    if let questionDict = questionData as? NSDictionary {
+                        self.question = TriviaQuestion(dictionary: questionDict)
+                        break
+                    }
+                }
+            }
+            else if let questionDict = snapshot.value as? NSDictionary {
+                self.question = TriviaQuestion(dictionary: questionDict[questionDict.allKeys.first!] as! NSDictionary)
+
             }
         }, onError: { (error) in
             Logger.instance.log(logLevel: .error, message: "Could not find question id = \(questionId)")

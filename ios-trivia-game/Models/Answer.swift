@@ -28,6 +28,7 @@ class Answer: NSObject {
         self.answerText = answerText
         self.questionId = questionId
         self.roomId = roomId
+        self.timestamp = String(describing: NSDate())
     }
     
     func getJson() -> [String: Any] {
