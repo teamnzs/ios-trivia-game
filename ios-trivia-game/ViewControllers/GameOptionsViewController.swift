@@ -13,6 +13,12 @@ class GameOptionsViewController: UIViewController {
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var numOfQuestionsPicker: UIPickerView!
     
+    // API Data
+    var numOfPlayers: Int?
+    var isPublic: Bool?
+    var selectedFriends = Set<String>()
+    
+    // UI Data
     var categoryPickerData: [String] = [String]()
     var numOfQuestionsPickerData: [String] = [String]()
     

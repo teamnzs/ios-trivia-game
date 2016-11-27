@@ -20,6 +20,7 @@ class SelectFriendsViewController: UIViewController {
     var friends = [Friend]()
     var currentSelectedCount:Int = 1
     var isFromUserEvent:Bool = true
+    var selectedFriends = Set<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,14 @@ class SelectFriendsViewController: UIViewController {
         })
     }
 
+    @IBAction func onGameOptionsClicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameOptionsViewController = storyboard.instantiateViewController(withIdentifier: Constants.GAME_OPTIONS_VIEW_CONTROLLER) as! GameOptionsViewController
+        gameOptionsViewController.numOfPlayers = self.numOfPlayers
+        gameOptionsViewController.isPublic = self.isPublic
+        gameOptionsViewController.selectedFriends = self.selectedFriends
+        self.navigationController?.pushViewController(gameOptionsViewController, animated: true)
+    }
     /*
     // MARK: - Navigation
 
@@ -108,8 +117,10 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
                 self.friends[indexPath.row].isSelected = value
                 if value {
                     currentSelectedCount += 1
+                    selectedFriends.insert(selectFriendsTableViewCell.friend.id!)
                 } else {
                     currentSelectedCount -= 1
+                    selectedFriends.remove(selectFriendsTableViewCell.friend.id!)
                 }
         
                 updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.row].name!)
