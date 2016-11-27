@@ -48,7 +48,7 @@ class CreateGameViewController: UIViewController {
     
     @IBAction func selectFriendsClicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let selectFriendsViewController = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.selectfriendsviewcontroller") as! SelectFriendsViewController
+        let selectFriendsViewController = storyboard.instantiateViewController(withIdentifier: Constants.SELECT_FRIENDS_VIEW_CONTROLLER) as! SelectFriendsViewController
         selectFriendsViewController.numOfPlayers = self.numOfPlayers
         selectFriendsViewController.isPublic = self.isPublic
         self.navigationController?.pushViewController(selectFriendsViewController, animated: true)
