@@ -27,20 +27,15 @@ class LoginViewController: UIViewController {
             // This user is signed in
             
             Logger.instance.log(logLevel: .info, message: "The user is signed in!")
-            let ref = FIRDatabase.database().reference()
-            ref.child(Constants.GAME_ROOM_TABLE_NAME).observeSingleEvent(of: .value, with: { (snapshot) in
-                // Get user value
-                let value = snapshot.value as? NSDictionary
-                
+            
+            FirebaseClient.instance.getGameRooms(complete: { (gameDictionary) in
                 // gives all the rooms
-                for (roomId, roomInfo) in value! {
+                for (roomId, roomInfo) in gameDictionary {
                     let gameRoom = GameRoom(dictionary: roomInfo as! NSDictionary)
                     Logger.instance.log(logLevel: .info, message: "RoomId: \(roomId) \(gameRoom.getJson())")
                 }
             }) { (error) in
-                Logger.instance.log(logLevel: .error, message: error.localizedDescription)
             }
-            
         } else {
             Logger.instance.log(logLevel: .info, message: "The user is not signed in!")
         }
