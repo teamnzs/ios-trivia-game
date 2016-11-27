@@ -224,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
@@ -466,7 +466,7 @@
                     <tabBarItem key="tabBarItem" title="Create" id="3PX-mo-79e"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PfN-jp-rFR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PfN-jp-rFR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -538,7 +538,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
@@ -642,7 +642,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7y-rf-jUI" id="tMU-0V-Ruk">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-AY-R6c">
@@ -728,7 +728,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
@@ -802,7 +802,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFV-wb-q5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -892,7 +892,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -910,7 +910,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -944,7 +944,7 @@
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2N-97-Mh4" id="eCg-5g-4QS">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -972,7 +972,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -987,6 +987,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wbq-Wi-rbA"/>
+        <segue reference="i4e-KK-Hzd"/>
     </inferredMetricsTieBreakers>
 </document>

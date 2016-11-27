@@ -86,6 +86,11 @@ class GameOptionsViewController: UIViewController {
                    "state" : 0] as [String: Any]
         
         FirebaseClient.instance.createGame(gameRoom: newGame as NSDictionary, complete: {_,_ in })
+        
+        // Go to CountdownGameViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let countdownGameViewController = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_GAME_VIEW_CONTROLLER) as! CountdownGameViewController
+        self.navigationController?.pushViewController(countdownGameViewController, animated: true)
     }
     /*
     // MARK: - Navigation

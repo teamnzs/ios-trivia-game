@@ -28,6 +28,7 @@ class Constants {
     static let ANSWER_TABLE_VIEW_CELL = "com.iostriviagame.answertableviewcell"
     static let SELECT_FRIENDS_VIEW_CONTROLLER = "com.iostriviagame.selectfriendsviewcontroller"
     static let GAME_OPTIONS_VIEW_CONTROLLER = "com.iostriviagame.gameoptionsviewcontroller"
+    static let COUNTDOWN_GAME_VIEW_CONTROLLER = "com.iostriviagame.countdowngameviewcontroller"
     static let RESULT_TABLE_VIEW_CELL = "com.iostriviagame.resulttableviewcell"
 }
 
