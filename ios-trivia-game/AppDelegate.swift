@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Logger.instance.log(message: "User is logged in")
             
             // push the view for tab bar
-            let mainTabViewController = storyboard.instantiateViewController(withIdentifier: "com.iostriviagame.maintabviewcontroller") as UIViewController
+            let mainTabViewController = storyboard.instantiateViewController(withIdentifier: Constants.MAIN_TAB_VIEW_CONTROLLER) as UIViewController
             window?.rootViewController = mainTabViewController
         }
         

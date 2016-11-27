@@ -14,7 +14,7 @@ class Constants {
     static let USER_IN_GAME_TABLE_NAME = "user_in_game"
     static let QUESTION_TABLE_NAME = "questions"
     static let ANSWER_TABLE_NAME = "answers"
-    static let RESPONSES_TABLE_NAME = "responses"
+    static let SCORED_ANSWER_TABLE_NAME = "scored_answers"
     
     // For segues
     static let LOGIN_MODAL_SEGUE = "com.iostriviagame.loginSegue"
@@ -22,6 +22,9 @@ class Constants {
     
     // UI Identifiers
     static let MAIN_TAB_VIEW_CONTROLLER = "com.iostriviagame.maintabviewcontroller"
+    static let QUESTION_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.questionnavigationviewcontroller"
+    static let FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.finalscorenavigationviewcontroller"
     static let ANSWER_TABLE_VIEW_CELL = "com.iostriviagame.answertableviewcell"
+    static let RESULT_TABLE_VIEW_CELL = "com.iostriviagame.resulttableviewcell"
 }
 

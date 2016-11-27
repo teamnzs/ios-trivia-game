@@ -224,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
@@ -538,7 +538,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
@@ -622,13 +622,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8k1-2x-YEM">
-                                <rect key="frame" x="138" y="448" width="98" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next Question"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results: Round #/#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqO-Xz-cxw">
+                                <rect key="frame" x="79" y="80" width="217" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Score: ### pts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdR-lX-B6Z">
+                                <rect key="frame" x="105" y="117" width="166" height="22.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="61" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CXy-Vo-wxN">
+                                <rect key="frame" x="32" y="155.5" width="311" height="495.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.resulttableviewcell" rowHeight="61" id="L7y-rf-jUI" customClass="ResultTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="311" height="61"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7y-rf-jUI" id="tMU-0V-Ruk">
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-AY-R6c">
+                                                    <rect key="frame" x="8" y="8" width="209" height="44.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc6-Bh-gVO">
+                                                    <rect key="frame" x="245" y="8" width="58" height="44.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fA5-AY-R6c" secondAttribute="bottom" constant="8" id="A5Q-5h-ziH"/>
+                                                <constraint firstItem="fA5-AY-R6c" firstAttribute="top" secondItem="tMU-0V-Ruk" secondAttribute="top" constant="8" id="ALY-8h-QOf"/>
+                                                <constraint firstAttribute="bottom" secondItem="vc6-Bh-gVO" secondAttribute="bottom" constant="8" id="QUz-zF-ydR"/>
+                                                <constraint firstItem="vc6-Bh-gVO" firstAttribute="leading" secondItem="fA5-AY-R6c" secondAttribute="trailing" constant="28" id="V12-6O-XV1"/>
+                                                <constraint firstItem="fA5-AY-R6c" firstAttribute="leading" secondItem="tMU-0V-Ruk" secondAttribute="leading" constant="8" id="XLo-Ex-BX5"/>
+                                                <constraint firstAttribute="trailing" secondItem="vc6-Bh-gVO" secondAttribute="trailing" constant="8" id="nDc-2J-KIa"/>
+                                                <constraint firstItem="vc6-Bh-gVO" firstAttribute="top" secondItem="tMU-0V-Ruk" secondAttribute="top" constant="8" id="uiE-Kw-EbP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerLabel" destination="fA5-AY-R6c" id="xML-GA-8hC"/>
+                                            <outlet property="pointsLabel" destination="vc6-Bh-gVO" id="k5i-Lt-dbB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MJg-Da-HAK" firstAttribute="top" secondItem="CXy-Vo-wxN" secondAttribute="bottom" constant="16" id="8Di-I4-IPB"/>
+                            <constraint firstItem="QdR-lX-B6Z" firstAttribute="centerX" secondItem="3iL-lR-TqY" secondAttribute="centerX" id="9Nh-xb-rNg"/>
+                            <constraint firstItem="kqO-Xz-cxw" firstAttribute="top" secondItem="RcC-nA-Xec" secondAttribute="bottom" constant="16" id="CtR-2D-vzU"/>
+                            <constraint firstItem="CXy-Vo-wxN" firstAttribute="leading" secondItem="3iL-lR-TqY" secondAttribute="leading" constant="32" id="Cuv-on-1Ya"/>
+                            <constraint firstItem="QdR-lX-B6Z" firstAttribute="top" secondItem="kqO-Xz-cxw" secondAttribute="bottom" constant="8" id="Xwz-wO-qt9"/>
+                            <constraint firstAttribute="trailing" secondItem="CXy-Vo-wxN" secondAttribute="trailing" constant="32" id="aKX-yZ-2u2"/>
+                            <constraint firstItem="kqO-Xz-cxw" firstAttribute="centerX" secondItem="3iL-lR-TqY" secondAttribute="centerX" id="bV9-c0-Z3Q"/>
+                            <constraint firstItem="CXy-Vo-wxN" firstAttribute="centerX" secondItem="3iL-lR-TqY" secondAttribute="centerX" id="hM3-WP-mXI"/>
+                            <constraint firstItem="CXy-Vo-wxN" firstAttribute="top" secondItem="QdR-lX-B6Z" secondAttribute="bottom" constant="16" id="hUn-jH-4HP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Sqm-dj-I5u">
                         <barButtonItem key="leftBarButtonItem" title="Quit" id="kra-zp-ynZ">
@@ -636,7 +695,14 @@
                                 <action selector="onQuitFromResults:" destination="FQ1-cp-Uv5" id="Cfo-9D-laD"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Timer" id="pIa-zt-GLI"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="maxScoreLabel" destination="QdR-lX-B6Z" id="MUr-us-mGO"/>
+                        <outlet property="resultsTableView" destination="CXy-Vo-wxN" id="Jb7-Ev-2Dj"/>
+                        <outlet property="resultsTitleLabel" destination="kqO-Xz-cxw" id="8t4-3I-Qqx"/>
+                        <outlet property="timerButton" destination="pIa-zt-GLI" id="R0c-vh-WQa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="myw-y1-I8g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -662,7 +728,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
@@ -806,9 +872,9 @@
         <!--Navigation Controller-->
         <scene sceneID="zvi-dm-0bp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kGA-Pt-17m" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="com.iostriviagame.questionnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -844,7 +910,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -878,7 +944,7 @@
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2N-97-Mh4" id="eCg-5g-4QS">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -904,9 +970,9 @@
         <!--Navigation Controller-->
         <scene sceneID="TUN-93-OWB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xWC-Yo-6sB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -921,6 +987,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Mc-Ha-1gq"/>
+        <segue reference="Wbq-Wi-rbA"/>
     </inferredMetricsTieBreakers>
 </document>
