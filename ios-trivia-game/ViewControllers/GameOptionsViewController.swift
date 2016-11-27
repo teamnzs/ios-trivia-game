@@ -13,6 +13,12 @@ class GameOptionsViewController: UIViewController {
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var numOfQuestionsPicker: UIPickerView!
     
+    // API Data
+    var numOfPlayers: Int?
+    var isPublic: Bool?
+    var selectedFriends = Set<String>()
+    
+    // UI Data
     var categoryPickerData: [String] = [String]()
     var numOfQuestionsPickerData: [String] = [String]()
     
@@ -69,6 +75,18 @@ class GameOptionsViewController: UIViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
 
+    // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
+    @IBAction func onStartGameClicked(_ sender: Any) {
+        print("game started clicked")
+        var newGame = ["max_num_of_questions" : numOfQuestions ?? 0,
+                   "current_question" : 0,
+                   "is_public" : isPublic ?? true,
+                   "max_num_people" : numOfPlayers ?? 5,
+                   "name" : "test",
+                   "state" : 0] as [String: Any]
+        
+        FirebaseClient.instance.createGame(gameRoom: newGame as NSDictionary, complete: {_,_ in })
+    }
     /*
     // MARK: - Navigation
 

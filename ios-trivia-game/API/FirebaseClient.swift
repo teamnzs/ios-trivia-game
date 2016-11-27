@@ -170,6 +170,13 @@ class FirebaseClient {
         newAnswer.setValue(answer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
     }
     
+    // Creates a game
+    func createGame(gameRoom: NSDictionary, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
+        let newGameRoom = ref.child(path).childByAutoId()
+        newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
+    }
+
     // post a scored answer to the scored answer database table
     func postScoredAnswer(scoredAnswer: ScoredAnswer, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
