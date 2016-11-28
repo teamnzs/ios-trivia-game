@@ -262,4 +262,16 @@ class FirebaseClient {
         scoredAnswer.timestamp = String(describing: NSDate())
         newAnswer.setValue(scoredAnswer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
     }
+    
+    // gets invites for a user
+    func getInvitesFor(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.INVITE_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "guest_id").queryEqual(toValue: userId).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all invites for userId: \(userId)")
+
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all invites for userId: \(userId), Error: \(error.localizedDescription)")
+        }
+    }
 }
