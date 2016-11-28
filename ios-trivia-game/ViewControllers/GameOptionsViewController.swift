@@ -85,13 +85,16 @@ class GameOptionsViewController: UIViewController {
                    "max_num_people" : numOfPlayers ?? 5,
                    "name" : self.nameOfGameroom ?? "",
                    "state" : 0] as [String: Any]
-        
-        FirebaseClient.instance.createGame(gameRoom: newGame as NSDictionary, complete: {_,_ in })
-        
-        // Go to CountdownGameViewController
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let countdownGameViewController = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_GAME_VIEW_CONTROLLER) as! CountdownGameViewController
-        self.navigationController?.pushViewController(countdownGameViewController, animated: true)
+
+        FirebaseClient.instance.createGame(gameRoom: newGame as NSDictionary, complete: {_, ref in
+            let roomId = ref.key
+            
+            // Go to CountdownGameViewController
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let countdownGameViewController = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_GAME_VIEW_CONTROLLER) as! CountdownGameViewController
+            countdownGameViewController.roomId = roomId
+            self.navigationController?.pushViewController(countdownGameViewController, animated: true)
+        })
     }
     /*
     // MARK: - Navigation

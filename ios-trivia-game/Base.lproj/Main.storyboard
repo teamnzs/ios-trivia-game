@@ -195,7 +195,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pQH-3C-ivh">
-                        <barButtonItem key="leftBarButtonItem" title="Exit" id="zPH-hQ-QGO"/>
+                        <barButtonItem key="leftBarButtonItem" title="Exit" id="zPH-hQ-QGO">
+                            <connections>
+                                <segue destination="x7p-qk-2YF" kind="presentation" id="9qG-Ei-58r"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Select Friends" id="IdT-Su-Ot1">
                             <connections>
                                 <action selector="selectFriendsClicked:" destination="jnB-a7-d1f" id="Oc9-D4-J9J"/>
@@ -289,6 +293,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="7oK-RW-j68">
                             <connections>
                                 <action selector="onBackClicked:" destination="ekw-Vi-1cd" id="bRU-FY-WAj"/>
+                                <segue destination="X9v-Hd-GYg" kind="presentation" id="9L0-hO-pBe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Game Options" id="xxQ-Jt-ZgS">
@@ -347,6 +352,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="lWX-YV-zGc">
                             <connections>
                                 <action selector="onBackClicked:" destination="i5F-5m-G0r" id="mc0-vI-JeP"/>
+                                <segue destination="5bb-5X-bDg" kind="presentation" id="vfX-BH-Apx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Start Game" id="UPb-KT-vZq">
@@ -358,6 +364,7 @@
                     <connections>
                         <outlet property="categoryPicker" destination="4cf-a6-REE" id="07e-dF-li0"/>
                         <outlet property="numOfQuestionsPicker" destination="eTb-3A-T0B" id="K1z-wV-jLY"/>
+                        <segue destination="Dzo-UG-g8U" kind="presentation" identifier="com.iostriviagame.gameoptionstocountdownsegue" id="LZK-LT-UbL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5f-Zy-EFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -985,7 +992,7 @@
                                 <rect key="frame" x="32" y="155.5" width="311" height="449.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.resulttableviewcell" rowHeight="61" id="PHZ-fT-MIe" customClass="ResultTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.finalscoretableviewcell" rowHeight="61" id="PHZ-fT-MIe" customClass="FinalScoreTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHZ-fT-MIe" id="FtN-hM-u1W">
@@ -1016,8 +1023,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="playerLabel" destination="Utv-Cy-l1S" id="TFG-JK-BCi"/>
-                                            <outlet property="pointsLabel" destination="C8Z-WJ-YIf" id="zXi-1x-26I"/>
+                                            <outlet property="playerLabel" destination="Utv-Cy-l1S" id="g3x-ep-Qv3"/>
+                                            <outlet property="pointsLabel" destination="C8Z-WJ-YIf" id="gi2-XA-5Pt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1080,6 +1087,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="i4e-KK-Hzd"/>
+        <segue reference="9L0-hO-pBe"/>
+        <segue reference="9qG-Ei-58r"/>
     </inferredMetricsTieBreakers>
 </document>

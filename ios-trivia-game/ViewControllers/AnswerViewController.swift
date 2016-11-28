@@ -58,9 +58,7 @@ class AnswerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nav = segue.destination as? UINavigationController
         
-        if (nav?.topViewController is ResultsViewController) {
-            let resultsViewController = nav?.topViewController as! ResultsViewController
-            
+        if let resultsViewController = nav?.topViewController as? ResultsViewController {
             let answerText = (answerTableView.indexPathForSelectedRow == nil) ? "" : answers?[(answerTableView.indexPathForSelectedRow?.row)!].answerText
             let answer = Answer(userId: (User.currentUser?.uid)!, answerText: answerText!, questionId: (question?.id!)!, roomId: roomId!)
             let score = calculateScore(answer: answer)
@@ -77,6 +75,11 @@ class AnswerViewController: UIViewController {
             
             resultsViewController.roomId = self.roomId
             resultsViewController.question = self.question
+        }
+        else if let finalScoreViewController = nav?.topViewController as? FinalScoreViewController {
+            countdownTimer.invalidate()
+            
+            finalScoreViewController.roomId = self.roomId
         }
     }
     
