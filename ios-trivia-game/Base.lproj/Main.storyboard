@@ -364,9 +364,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-GZ-M09">
-                                <rect key="frame" x="166" y="442" width="43" height="30"/>
+                                <rect key="frame" x="146" y="442" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Ready"/>
+                                <state key="normal" title="Click to Join"/>
                                 <connections>
                                     <segue destination="kGA-Pt-17m" kind="presentation" id="4yp-7P-9DL"/>
                                 </connections>
@@ -379,10 +379,31 @@
                                     <segue destination="x7p-qk-2YF" kind="presentation" id="i4e-KK-Hzd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the game in.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnB-OJ-BcH">
+                                <rect key="frame" x="119" y="185" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l65-cP-Zxz">
+                                <rect key="frame" x="187.5" y="258" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KnB-OJ-BcH" firstAttribute="centerX" secondItem="ebO-m0-wfI" secondAttribute="centerX" id="Kou-3y-1No"/>
+                            <constraint firstItem="l65-cP-Zxz" firstAttribute="centerX" secondItem="ebO-m0-wfI" secondAttribute="centerX" id="TW3-7b-9zN"/>
+                            <constraint firstItem="KnB-OJ-BcH" firstAttribute="top" secondItem="EkE-fy-RE8" secondAttribute="bottom" constant="121" id="kDe-RG-uh4"/>
+                            <constraint firstItem="l65-cP-Zxz" firstAttribute="top" secondItem="KnB-OJ-BcH" secondAttribute="bottom" constant="52" id="soL-Qd-zlq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ke3-Ht-DAk"/>
+                    <connections>
+                        <outlet property="countdownLabel" destination="l65-cP-Zxz" id="PbO-uJ-a3s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NI-xe-B7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -466,7 +487,7 @@
                     <tabBarItem key="tabBarItem" title="Create" id="3PX-mo-79e"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PfN-jp-rFR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PfN-jp-rFR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -802,7 +823,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFV-wb-q5N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -892,7 +913,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -910,7 +931,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -972,7 +993,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
