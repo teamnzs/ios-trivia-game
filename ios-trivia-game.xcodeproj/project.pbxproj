@@ -39,6 +39,9 @@
 		B294170B1DE2AD8100153E36 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417091DE2AD8100153E36 /* HomeTableViewCell.swift */; };
 		B29417101DE2DF8A00153E36 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B294170F1DE2DF8A00153E36 /* AnswerTableViewCell.swift */; };
 		B29BE1FD1DD7BB6B000DD684 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29BE1FC1DD7BB6B000DD684 /* Logger.swift */; };
+		B2AFE4591DEC20CB00999BD1 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AFE4581DEC20CB00999BD1 /* InviteViewController.swift */; };
+		B2AFE45B1DEC292C00999BD1 /* Invite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AFE45A1DEC292C00999BD1 /* Invite.swift */; };
+		B2AFE45D1DEC2C1700999BD1 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AFE45C1DEC2C1700999BD1 /* InviteTableViewCell.swift */; };
 		B2DE69C31DEB6E050038B860 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C21DEB6E050038B860 /* ResultTableViewCell.swift */; };
 		B2DE69C51DEB6E120038B860 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C41DEB6E120038B860 /* Friend.swift */; };
 		B2DE69C71DEB79070038B860 /* FinalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C61DEB79070038B860 /* FinalScore.swift */; };
@@ -84,6 +87,9 @@
 		B29417091DE2AD8100153E36 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = Views/HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B294170F1DE2DF8A00153E36 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerTableViewCell.swift; path = Views/AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		B29BE1FC1DD7BB6B000DD684 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logger/Logger.swift; sourceTree = "<group>"; };
+		B2AFE4581DEC20CB00999BD1 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteViewController.swift; path = ViewControllers/InviteViewController.swift; sourceTree = "<group>"; };
+		B2AFE45A1DEC292C00999BD1 /* Invite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Invite.swift; path = Models/Invite.swift; sourceTree = "<group>"; };
+		B2AFE45C1DEC2C1700999BD1 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTableViewCell.swift; path = Views/InviteTableViewCell.swift; sourceTree = "<group>"; };
 		B2DE69C21DEB6E050038B860 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTableViewCell.swift; path = Views/ResultTableViewCell.swift; sourceTree = "<group>"; };
 		B2DE69C41DEB6E120038B860 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = Models/Friend.swift; sourceTree = "<group>"; };
 		B2DE69C61DEB79070038B860 /* FinalScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinalScore.swift; path = Models/FinalScore.swift; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 				B29417091DE2AD8100153E36 /* HomeTableViewCell.swift */,
 				B294170F1DE2DF8A00153E36 /* AnswerTableViewCell.swift */,
 				B2DE69C81DEB7E3E0038B860 /* FinalScoreTableViewCell.swift */,
+				B2AFE45C1DEC2C1700999BD1 /* InviteTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -177,6 +184,7 @@
 		A8B32B8E1DDBE6E7003A0B1C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				B2AFE4571DEC20B700999BD1 /* Invite */,
 				A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */,
 				A8B32BA71DDC0129003A0B1C /* Game */,
 				A8B32B9E1DDC006F003A0B1C /* CreateGame */,
@@ -246,6 +254,7 @@
 				B29417041DE29A1300153E36 /* UserInGame.swift */,
 				B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */,
 				B2DE69C61DEB79070038B860 /* FinalScore.swift */,
+				B2AFE45A1DEC292C00999BD1 /* Invite.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -256,6 +265,14 @@
 				B29BE1FC1DD7BB6B000DD684 /* Logger.swift */,
 			);
 			name = Logger;
+			sourceTree = "<group>";
+		};
+		B2AFE4571DEC20B700999BD1 /* Invite */ = {
+			isa = PBXGroup;
+			children = (
+				B2AFE4581DEC20CB00999BD1 /* InviteViewController.swift */,
+			);
+			name = Invite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +406,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8B32BA91DDC0163003A0B1C /* QuestionViewController.swift in Sources */,
+				B2AFE45B1DEC292C00999BD1 /* Invite.swift in Sources */,
+				B2AFE4591DEC20CB00999BD1 /* InviteViewController.swift in Sources */,
 				A8B32B901DDBE709003A0B1C /* LoginViewController.swift in Sources */,
 				A8B32BB31DDC036B003A0B1C /* FinalScoreViewController.swift in Sources */,
 				B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */,
@@ -420,6 +439,7 @@
 				A8E541581DD9A9EB002D6AA4 /* Constants.swift in Sources */,
 				A8B6EA341DD9A7AA00CB8699 /* User.swift in Sources */,
 				B2DE69C31DEB6E050038B860 /* ResultTableViewCell.swift in Sources */,
+				B2AFE45D1DEC2C1700999BD1 /* InviteTableViewCell.swift in Sources */,
 				A8B6EA321DD9A7AA00CB8699 /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
