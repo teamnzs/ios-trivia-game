@@ -13,12 +13,14 @@ class CreateGameViewController: UIViewController {
     @IBOutlet weak var numberOfPlayersPicker: UIPickerView!
     
     @IBOutlet weak var isPublicSwitch: UISwitch!
+    @IBOutlet weak var nameOfGameroomTextField: UITextField!
     
     
     var numOfPlayersPickerData: [String] = [String]()
     // Pass these data to SelectFriendsViewController
     var numOfPlayers: Int?
     var isPublic: Bool?
+    var nameOfGameroom: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +53,13 @@ class CreateGameViewController: UIViewController {
         let selectFriendsViewController = storyboard.instantiateViewController(withIdentifier: Constants.SELECT_FRIENDS_VIEW_CONTROLLER) as! SelectFriendsViewController
         selectFriendsViewController.numOfPlayers = self.numOfPlayers
         selectFriendsViewController.isPublic = self.isPublic
+        selectFriendsViewController.nameOfGameroom = self.nameOfGameroom
         self.navigationController?.pushViewController(selectFriendsViewController, animated: true)
     }
-
+    
+    @IBAction func onGameNameChanged(_ sender: Any) {
+        self.nameOfGameroom = nameOfGameroomTextField.text
+    }
     /*
     // MARK: - Navigation
 

@@ -168,10 +168,22 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huB-A3-iCO">
                                 <rect key="frame" x="284" y="376" width="51" height="31"/>
                             </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of the game room" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL6-jH-ZgT">
+                                <rect key="frame" x="16" y="447" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onGameNameChanged:" destination="jnB-a7-d1f" eventType="editingChanged" id="bOo-UR-RJ9"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fL6-jH-ZgT" secondAttribute="trailing" constant="16" id="3dq-2D-I0J"/>
                             <constraint firstItem="kge-Pn-TYS" firstAttribute="top" secondItem="luo-XG-UzD" secondAttribute="bottom" constant="23" id="8aA-RV-KDc"/>
+                            <constraint firstItem="fL6-jH-ZgT" firstAttribute="top" secondItem="huB-A3-iCO" secondAttribute="bottom" constant="40" id="GsD-lh-4Gn"/>
+                            <constraint firstItem="fL6-jH-ZgT" firstAttribute="leading" secondItem="hiE-cI-Qil" secondAttribute="leading" constant="16" id="TtA-Et-us0"/>
                             <constraint firstAttribute="trailing" secondItem="luo-XG-UzD" secondAttribute="trailing" id="XcH-Bz-pDb"/>
                             <constraint firstItem="R11-RS-eHZ" firstAttribute="top" secondItem="qqb-LE-yCp" secondAttribute="bottom" constant="25" id="ZhE-GS-ZIe"/>
                             <constraint firstItem="kge-Pn-TYS" firstAttribute="leading" secondItem="hiE-cI-Qil" secondAttribute="leading" constant="43" id="bZG-JL-a9y"/>
@@ -192,6 +204,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="isPublicSwitch" destination="huB-A3-iCO" id="5PJ-4c-ItR"/>
+                        <outlet property="nameOfGameroomTextField" destination="fL6-jH-ZgT" id="Wa1-gu-JeZ"/>
                         <outlet property="numberOfPlayersPicker" destination="luo-XG-UzD" id="edK-p2-3I1"/>
                     </connections>
                 </viewController>
@@ -224,7 +237,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
@@ -364,9 +377,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-GZ-M09">
-                                <rect key="frame" x="166" y="442" width="43" height="30"/>
+                                <rect key="frame" x="146" y="442" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Ready"/>
+                                <state key="normal" title="Click to Join"/>
                                 <connections>
                                     <segue destination="kGA-Pt-17m" kind="presentation" id="4yp-7P-9DL"/>
                                 </connections>
@@ -379,10 +392,31 @@
                                     <segue destination="x7p-qk-2YF" kind="presentation" id="i4e-KK-Hzd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the game in.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnB-OJ-BcH">
+                                <rect key="frame" x="119" y="185" width="136" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l65-cP-Zxz">
+                                <rect key="frame" x="187.5" y="258" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KnB-OJ-BcH" firstAttribute="centerX" secondItem="ebO-m0-wfI" secondAttribute="centerX" id="Kou-3y-1No"/>
+                            <constraint firstItem="l65-cP-Zxz" firstAttribute="centerX" secondItem="ebO-m0-wfI" secondAttribute="centerX" id="TW3-7b-9zN"/>
+                            <constraint firstItem="KnB-OJ-BcH" firstAttribute="top" secondItem="EkE-fy-RE8" secondAttribute="bottom" constant="121" id="kDe-RG-uh4"/>
+                            <constraint firstItem="l65-cP-Zxz" firstAttribute="top" secondItem="KnB-OJ-BcH" secondAttribute="bottom" constant="52" id="soL-Qd-zlq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ke3-Ht-DAk"/>
+                    <connections>
+                        <outlet property="countdownLabel" destination="l65-cP-Zxz" id="PbO-uJ-a3s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NI-xe-B7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -538,7 +572,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
@@ -642,7 +676,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7y-rf-jUI" id="tMU-0V-Ruk">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-AY-R6c">
@@ -728,7 +762,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
@@ -944,7 +978,7 @@
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M2N-97-Mh4" id="eCg-5g-4QS">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -987,6 +1021,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wbq-Wi-rbA"/>
+        <segue reference="i4e-KK-Hzd"/>
     </inferredMetricsTieBreakers>
 </document>
