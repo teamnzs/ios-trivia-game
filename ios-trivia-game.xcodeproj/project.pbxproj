@@ -10,7 +10,6 @@
 		1A3686111DD84B5800CBEB41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A3686101DD84B5800CBEB41 /* GoogleService-Info.plist */; };
 		1A805B6D1DD996F900A70691 /* TriviaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B671DD996F900A70691 /* TriviaCategory.swift */; };
 		1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B681DD996F900A70691 /* TriviaQuestion.swift */; };
-		4D9054061DE26D310029B97E /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9054051DE26D310029B97E /* Friend.swift */; };
 		A83ACC821DD2D14B00DAF701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */; };
 		A83ACC871DD2D14B00DAF701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC851DD2D14B00DAF701 /* Main.storyboard */; };
 		A83ACC891DD2D14B00DAF701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC881DD2D14B00DAF701 /* Assets.xcassets */; };
@@ -34,13 +33,16 @@
 		A8E541571DD9A9EB002D6AA4 /* JServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1ED9E1DD5A03D00460AA5 /* JServiceClient.swift */; };
 		A8E541581DD9A9EB002D6AA4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A36860A1DD83CCC00CBEB41 /* Constants.swift */; };
 		B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */; };
-		B28B1AB41DE83AAF0061FD31 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28B1AB31DE83AAF0061FD31 /* ResultTableViewCell.swift */; };
 		B29417051DE29A1300153E36 /* UserInGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417041DE29A1300153E36 /* UserInGame.swift */; };
 		B29417071DE29E3A00153E36 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417061DE29E3A00153E36 /* FirebaseClient.swift */; };
 		B294170A1DE2AD8100153E36 /* SelectFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */; };
 		B294170B1DE2AD8100153E36 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417091DE2AD8100153E36 /* HomeTableViewCell.swift */; };
 		B29417101DE2DF8A00153E36 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B294170F1DE2DF8A00153E36 /* AnswerTableViewCell.swift */; };
 		B29BE1FD1DD7BB6B000DD684 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29BE1FC1DD7BB6B000DD684 /* Logger.swift */; };
+		B2DE69C31DEB6E050038B860 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C21DEB6E050038B860 /* ResultTableViewCell.swift */; };
+		B2DE69C51DEB6E120038B860 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C41DEB6E120038B860 /* Friend.swift */; };
+		B2DE69C71DEB79070038B860 /* FinalScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C61DEB79070038B860 /* FinalScore.swift */; };
+		B2DE69C91DEB7E3E0038B860 /* FinalScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE69C81DEB7E3E0038B860 /* FinalScoreTableViewCell.swift */; };
 		B2E11B1A1DE3F83C0008F8E0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E11B191DE3F83C0008F8E0 /* Utilities.swift */; };
 		D4E4957C93A4DA727F72A578 /* Pods_ios_trivia_game.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46372423EA4DDD9D6F15AD0 /* Pods_ios_trivia_game.framework */; };
 /* End PBXBuildFile section */
@@ -52,7 +54,6 @@
 		1A805B671DD996F900A70691 /* TriviaCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriviaCategory.swift; path = Models/TriviaCategory.swift; sourceTree = "<group>"; };
 		1A805B681DD996F900A70691 /* TriviaQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriviaQuestion.swift; path = Models/TriviaQuestion.swift; sourceTree = "<group>"; };
 		381FCCC7CD6510BD05EB2001 /* Pods-ios-trivia-game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-trivia-game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-trivia-game/Pods-ios-trivia-game.debug.xcconfig"; sourceTree = "<group>"; };
-		4D9054051DE26D310029B97E /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A83ACC7E1DD2D14B00DAF701 /* ios-trivia-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-trivia-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A83ACC861DD2D14B00DAF701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,13 +78,16 @@
 		A8B6EA301DD9A7AA00CB8699 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		A8E1ED9E1DD5A03D00460AA5 /* JServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JServiceClient.swift; path = API/JServiceClient.swift; sourceTree = "<group>"; };
 		B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoredAnswer.swift; path = Models/ScoredAnswer.swift; sourceTree = "<group>"; };
-		B28B1AB31DE83AAF0061FD31 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		B29417041DE29A1300153E36 /* UserInGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInGame.swift; path = Models/UserInGame.swift; sourceTree = "<group>"; };
 		B29417061DE29E3A00153E36 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = API/FirebaseClient.swift; sourceTree = "<group>"; };
 		B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendsTableViewCell.swift; path = Views/SelectFriendsTableViewCell.swift; sourceTree = "<group>"; };
 		B29417091DE2AD8100153E36 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = Views/HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B294170F1DE2DF8A00153E36 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerTableViewCell.swift; path = Views/AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		B29BE1FC1DD7BB6B000DD684 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Logger/Logger.swift; sourceTree = "<group>"; };
+		B2DE69C21DEB6E050038B860 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultTableViewCell.swift; path = Views/ResultTableViewCell.swift; sourceTree = "<group>"; };
+		B2DE69C41DEB6E120038B860 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Friend.swift; path = Models/Friend.swift; sourceTree = "<group>"; };
+		B2DE69C61DEB79070038B860 /* FinalScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinalScore.swift; path = Models/FinalScore.swift; sourceTree = "<group>"; };
+		B2DE69C81DEB7E3E0038B860 /* FinalScoreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinalScoreTableViewCell.swift; path = Views/FinalScoreTableViewCell.swift; sourceTree = "<group>"; };
 		B2E11B191DE3F83C0008F8E0 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		BBAA460E62FF4EB21F502AA3 /* Pods-ios-trivia-game.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-trivia-game.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios-trivia-game/Pods-ios-trivia-game.release.xcconfig"; sourceTree = "<group>"; };
 		E46372423EA4DDD9D6F15AD0 /* Pods_ios_trivia_game.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_trivia_game.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,10 +117,11 @@
 		1A9553061DDE23D7007BCFCB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B2DE69C21DEB6E050038B860 /* ResultTableViewCell.swift */,
 				B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */,
 				B29417091DE2AD8100153E36 /* HomeTableViewCell.swift */,
 				B294170F1DE2DF8A00153E36 /* AnswerTableViewCell.swift */,
-				B28B1AB31DE83AAF0061FD31 /* ResultTableViewCell.swift */,
+				B2DE69C81DEB7E3E0038B860 /* FinalScoreTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -232,14 +237,15 @@
 		B29BE1F41DD7B7D8000DD684 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B2DE69C41DEB6E120038B860 /* Friend.swift */,
 				A8B6EA2E1DD9A7AA00CB8699 /* Answer.swift */,
 				A8B6EA2F1DD9A7AA00CB8699 /* GameRoom.swift */,
 				A8B6EA301DD9A7AA00CB8699 /* User.swift */,
 				1A805B671DD996F900A70691 /* TriviaCategory.swift */,
 				1A805B681DD996F900A70691 /* TriviaQuestion.swift */,
-				4D9054051DE26D310029B97E /* Friend.swift */,
 				B29417041DE29A1300153E36 /* UserInGame.swift */,
 				B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */,
+				B2DE69C61DEB79070038B860 /* FinalScore.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -384,9 +390,7 @@
 			files = (
 				A8B32BA91DDC0163003A0B1C /* QuestionViewController.swift in Sources */,
 				A8B32B901DDBE709003A0B1C /* LoginViewController.swift in Sources */,
-				4D9054061DE26D310029B97E /* Friend.swift in Sources */,
 				A8B32BB31DDC036B003A0B1C /* FinalScoreViewController.swift in Sources */,
-				B28B1AB41DE83AAF0061FD31 /* ResultTableViewCell.swift in Sources */,
 				B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */,
 				1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */,
 				A8B32BA21DDC00C1003A0B1C /* SelectFriendsViewController.swift in Sources */,
@@ -400,7 +404,9 @@
 				B2E11B1A1DE3F83C0008F8E0 /* Utilities.swift in Sources */,
 				A8B32B941DDBEA7E003A0B1C /* ProfileViewController.swift in Sources */,
 				B29417051DE29A1300153E36 /* UserInGame.swift in Sources */,
+				B2DE69C91DEB7E3E0038B860 /* FinalScoreTableViewCell.swift in Sources */,
 				B29417101DE2DF8A00153E36 /* AnswerTableViewCell.swift in Sources */,
+				B2DE69C71DEB79070038B860 /* FinalScore.swift in Sources */,
 				B294170B1DE2AD8100153E36 /* HomeTableViewCell.swift in Sources */,
 				A8B32BAB1DDC0181003A0B1C /* AnswerViewController.swift in Sources */,
 				A8B32BA01DDC00A6003A0B1C /* CreateGameViewController.swift in Sources */,
@@ -410,8 +416,10 @@
 				B29417071DE29E3A00153E36 /* FirebaseClient.swift in Sources */,
 				A8B32BA61DDC00F8003A0B1C /* CountdownGameViewController.swift in Sources */,
 				A8B32BAD1DDC019C003A0B1C /* ResultsViewController.swift in Sources */,
+				B2DE69C51DEB6E120038B860 /* Friend.swift in Sources */,
 				A8E541581DD9A9EB002D6AA4 /* Constants.swift in Sources */,
 				A8B6EA341DD9A7AA00CB8699 /* User.swift in Sources */,
+				B2DE69C31DEB6E050038B860 /* ResultTableViewCell.swift in Sources */,
 				A8B6EA321DD9A7AA00CB8699 /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

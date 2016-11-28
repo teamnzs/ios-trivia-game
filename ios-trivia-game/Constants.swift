@@ -20,7 +20,6 @@ class Constants {
     static let LOGIN_MODAL_SEGUE = "com.iostriviagame.loginSegue"
     static let ANSWER_TO_RESULTS_SEGUE = "com.iostriviagame.answertoresultssegue"
     
-    
     // UI Identifiers
     static let MAIN_TAB_VIEW_CONTROLLER = "com.iostriviagame.maintabviewcontroller"
     static let QUESTION_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.questionnavigationviewcontroller"
@@ -30,5 +29,6 @@ class Constants {
     static let GAME_OPTIONS_VIEW_CONTROLLER = "com.iostriviagame.gameoptionsviewcontroller"
     static let COUNTDOWN_GAME_VIEW_CONTROLLER = "com.iostriviagame.countdowngameviewcontroller"
     static let RESULT_TABLE_VIEW_CELL = "com.iostriviagame.resulttableviewcell"
+    static let FINAL_SCORE_TABLE_VIEW_CELL = "com.iostriviagame.finalscoretableviewcell"
 }
 

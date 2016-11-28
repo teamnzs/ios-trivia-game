@@ -20,6 +20,10 @@ class User: NSObject {
     var email: String?
     var photoUrl: String?
     var uid: String?
+    var score: Int?
+    var createdAt: String?
+    var isActive: Int?
+    var ranking: String?
     var dictionary: NSDictionary?
     
     class func convertFirUserToUser(firUser user: FIRUser) -> User {
@@ -27,8 +31,12 @@ class User: NSObject {
         let dictionary = [
             "name": user.displayName!,
             "email": user.email ?? "",
-            "photoUrl": url?.absoluteString ?? "",
-            "uid": user.uid
+            "photo_url": url?.absoluteString ?? "",
+            "id": user.uid,
+            "score": 0,
+            "created_at": String(describing: NSDate()),
+            "is_active": 0,
+            "ranking": "0"
         ] as NSDictionary
         
         return User(dictionary: dictionary)
@@ -43,8 +51,12 @@ class User: NSObject {
         if let dictionary = dictionary {
             self.name = dictionary["name"] as? String
             self.email = dictionary["email"] as? String
-            self.photoUrl = dictionary["photoUrl"] as? String
-            self.uid = dictionary["uid"] as? String
+            self.photoUrl = dictionary["photo_url"] as? String
+            self.uid = dictionary["id"] as? String
+            self.score = dictionary["score"] as? Int
+            self.createdAt = dictionary["created_at"] as? String
+            self.isActive = dictionary["is_active"] as? Int
+            self.ranking = dictionary["ranking"] as? String
             
             self.dictionary = dictionary
         }

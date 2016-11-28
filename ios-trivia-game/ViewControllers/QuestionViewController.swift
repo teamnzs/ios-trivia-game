@@ -10,6 +10,7 @@ import UIKit
 
 class QuestionViewController: UIViewController {
 
+    var roomId: String?
     var question: TriviaQuestion?
     
     override func viewDidLoad() {
@@ -18,7 +19,7 @@ class QuestionViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
-        let questionId = 1938
+        let questionId = 1944
         FirebaseClient.instance.getQuestionBy(questionId: questionId, complete: { (snapshot) in
             if let questionArray = snapshot.value as? NSArray {
                 for questionData in questionArray {
@@ -49,9 +50,7 @@ class QuestionViewController: UIViewController {
         if (nav?.topViewController is AnswerViewController) {
             let destination = nav?.topViewController as! AnswerViewController
             destination.question = question
-            
-            // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
-            destination.roomId = "1234abc1"
+            destination.roomId = roomId
         }
     }
 

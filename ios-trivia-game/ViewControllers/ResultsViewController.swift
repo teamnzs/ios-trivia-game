@@ -44,10 +44,8 @@ class ResultsViewController: UIViewController {
         
         // populating the gameRoom Object
         FirebaseClient.instance.getGameBy(roomId: roomId!, complete: { (snapshot) in
-            let data = snapshot.value as? NSDictionary
-            
-            if ((data?.count)! > 0) {
-                self.gameRoom = GameRoom(dictionary: data?[data?.allKeys.first as! String] as! NSDictionary)
+            if let data = snapshot.value as? NSDictionary {
+                self.gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
                 
                 self.resultsTitleLabel.text = "Results: Round \(self.gameRoom!.current_question!) of \(self.gameRoom!.max_num_of_questions)"
                 
@@ -55,7 +53,6 @@ class ResultsViewController: UIViewController {
                     self.nextQuestionButton.isHidden = true
                 }
             }
-            
         }) { (error) in
         }
         
@@ -96,14 +93,22 @@ class ResultsViewController: UIViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destinationIdentifier: String
+            let destination: UIViewController
             if (self.gameRoom?.current_question == self.gameRoom?.max_num_of_questions) {
                 destinationIdentifier = Constants.FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER
+                destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
+                let finalScoreNavigationController = destination as! UINavigationController
+                let finalScoreViewController = finalScoreNavigationController.topViewController as! FinalScoreViewController
+                finalScoreViewController.roomId = self.roomId
             }
             else {
                 destinationIdentifier = Constants.QUESTION_NAVIGATION_VIEW_CONTROLLER
+                destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
+                let questionNavigationController = destination as! UINavigationController
+                let questionViewController = questionNavigationController.topViewController as! QuestionViewController
+                questionViewController.roomId = self.roomId
             }
             
-            let destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
             self.present(destination, animated: true, completion: nil)
         }
     }

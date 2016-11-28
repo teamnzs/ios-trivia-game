@@ -31,6 +31,32 @@ class FirebaseClient {
         }
     }
     
+    // get users in a game
+    func getUsersInGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.USER_IN_GAME_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+
+    }
+    
+    // updates score value of user in user table
+    func updateScore(userId: String, addValue: Int, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.USER_TABLE_NAME)/\(userId)/score"
+        ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
+            let currentScore = data.value as! Int
+            data.value = currentScore + addValue
+            return FIRTransactionResult.success(withValue: data)
+        }
+    }
+    
     // gets all game rooms
     func getGameRooms(complete: ((NSDictionary) -> ())?, onError: ((Error?) -> ())?) {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
@@ -63,6 +89,27 @@ class FirebaseClient {
     func quitGame(complete: (() -> ())?, onError: ((Error?) -> ())?) {
         let currentUserId = User.currentUser?.uid
         let path = "\(Constants.USER_IN_GAME_TABLE_NAME)/\(currentUserId!)"
+        ref.child(path).removeValue { (error, ref) in
+            if (error != nil) {
+                Logger.instance.log(logLevel: .error, message: "FirebaseClient, Failed to remove: \(path), Error: \(error.debugDescription)")
+                
+                if (onError != nil) {
+                    onError!(error)
+                }
+            }
+            else {
+                Logger.instance.log(logLevel: .info, message: "FirebaseClient, Removing: \(path)")
+                
+                if (complete != nil) {
+                    complete!()
+                }
+            }
+        }
+    }
+    
+    // remove a game from the game_room table
+    func removeGame(roomId: String, complete: (() -> ())?, onError: ((Error?) -> ())?) {
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)"
         ref.child(path).removeValue { (error, ref) in
             if (error != nil) {
                 Logger.instance.log(logLevel: .error, message: "FirebaseClient, Failed to remove: \(path), Error: \(error.debugDescription)")
@@ -116,6 +163,32 @@ class FirebaseClient {
     func getAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.ANSWER_TABLE_NAME)"
         ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+            if let data = snapshot.value as? NSDictionary {
+                let filteredData: NSMutableArray = []
+                
+                for key in data.allKeys {
+                    let entryData = data[key as! String] as? NSDictionary
+                    if ((entryData?["question_id"] as? Int) == questionId) {
+                        filteredData.add(entryData!)
+                    }
+                }
+                
+                Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) room_id=\(roomId), question_id=\(questionId)")
+                complete(filteredData as NSArray)
+            }
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) room_id=\(roomId), question_id=\(questionId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
+    // gets scored answers by room id and question id
+    func getScoredAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
             let data = snapshot.value as! NSDictionary
             let filteredData: NSMutableArray = []
             
@@ -137,8 +210,8 @@ class FirebaseClient {
         }
     }
     
-    // gets answers by room id and question id
-    func getScoredAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
+    // gets scored answers by room id and user id
+    func getScoredAnswersBy(roomId: String, userId: String, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
         ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
             let data = snapshot.value as! NSDictionary
@@ -146,15 +219,15 @@ class FirebaseClient {
             
             for key in data.allKeys {
                 let entryData = data[key as! String] as? NSDictionary
-                if ((entryData?["question_id"] as? Int) == questionId) {
+                if ((entryData?["user_id"] as? String) == userId) {
                     filteredData.add(entryData!)
                 }
             }
             
-            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) room_id=\(roomId), question_id=\(questionId)")
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) room_id=\(roomId), user_id=\(userId)")
             complete(filteredData as NSArray)
         }) { (error) in
-            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) room_id=\(roomId), question_id=\(questionId), Error: \(error.localizedDescription)")
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) room_id=\(roomId), user_id=\(userId), Error: \(error.localizedDescription)")
             
             if (onError != nil) {
                 onError!(error)
