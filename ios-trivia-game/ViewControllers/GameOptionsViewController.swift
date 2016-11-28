@@ -91,9 +91,11 @@ class GameOptionsViewController: UIViewController {
             
             // Go to CountdownGameViewController
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let countdownGameViewController = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_GAME_VIEW_CONTROLLER) as! CountdownGameViewController
+            let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
+            let countdownNavigationController = destination as! UINavigationController
+            let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
             countdownGameViewController.roomId = roomId
-            self.navigationController?.pushViewController(countdownGameViewController, animated: true)
+            self.present(destination, animated: true, completion: nil)
         })
     }
     /*
