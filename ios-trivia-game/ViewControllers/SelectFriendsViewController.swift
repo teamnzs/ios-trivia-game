@@ -17,6 +17,8 @@ class SelectFriendsViewController: UIViewController {
     
     var numOfPlayers: Int?
     var isPublic: Bool?
+    var nameOfGameroom: String?
+    
     var friends = [Friend]()
     var currentSelectedCount:Int = 1
     var isFromUserEvent:Bool = true
@@ -67,6 +69,7 @@ class SelectFriendsViewController: UIViewController {
         let gameOptionsViewController = storyboard.instantiateViewController(withIdentifier: Constants.GAME_OPTIONS_VIEW_CONTROLLER) as! GameOptionsViewController
         gameOptionsViewController.numOfPlayers = self.numOfPlayers
         gameOptionsViewController.isPublic = self.isPublic
+        gameOptionsViewController.nameOfGameroom = self.nameOfGameroom
         gameOptionsViewController.selectedFriends = self.selectedFriends
         self.navigationController?.pushViewController(gameOptionsViewController, animated: true)
     }
