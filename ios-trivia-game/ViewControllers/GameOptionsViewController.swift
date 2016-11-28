@@ -22,6 +22,7 @@ class GameOptionsViewController: UIViewController {
     var categoryPickerData: [String] = [String]()
     var numOfQuestionsPickerData: [String] = [String]()
     
+    var selectedCategory: String?
     var numOfQuestions: Int?
     
     let PICKER_TAG_FOR_CATETORY = 1;
@@ -77,13 +78,12 @@ class GameOptionsViewController: UIViewController {
 
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
-        print("game started clicked")
         var newGame = ["max_num_of_questions" : numOfQuestions ?? 0,
                        "id" : FirebaseClient.instance.createGameRoomId().key,
                    "current_question" : 0,
                    "is_public" : isPublic ?? true,
                    "max_num_people" : numOfPlayers ?? 5,
-                   "name" : "test",
+                   "name" : self.selectedCategory ?? "",
                    "state" : 0] as [String: Any]
         
         FirebaseClient.instance.createGame(gameRoom: newGame as NSDictionary, complete: {_,_ in })
@@ -126,6 +126,7 @@ extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView.tag == PICKER_TAG_FOR_CATETORY {
+            selectedCategory = categoryPickerData[row]
             return categoryPickerData[row]
         } else if pickerView.tag == PICKER_TAG_FOR_NUM_OF_QUESTIONS {
             numOfQuestions = row + 1
