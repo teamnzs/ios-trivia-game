@@ -168,10 +168,22 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huB-A3-iCO">
                                 <rect key="frame" x="284" y="376" width="51" height="31"/>
                             </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of the game room" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL6-jH-ZgT">
+                                <rect key="frame" x="16" y="447" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onGameNameChanged:" destination="jnB-a7-d1f" eventType="editingChanged" id="bOo-UR-RJ9"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fL6-jH-ZgT" secondAttribute="trailing" constant="16" id="3dq-2D-I0J"/>
                             <constraint firstItem="kge-Pn-TYS" firstAttribute="top" secondItem="luo-XG-UzD" secondAttribute="bottom" constant="23" id="8aA-RV-KDc"/>
+                            <constraint firstItem="fL6-jH-ZgT" firstAttribute="top" secondItem="huB-A3-iCO" secondAttribute="bottom" constant="40" id="GsD-lh-4Gn"/>
+                            <constraint firstItem="fL6-jH-ZgT" firstAttribute="leading" secondItem="hiE-cI-Qil" secondAttribute="leading" constant="16" id="TtA-Et-us0"/>
                             <constraint firstAttribute="trailing" secondItem="luo-XG-UzD" secondAttribute="trailing" id="XcH-Bz-pDb"/>
                             <constraint firstItem="R11-RS-eHZ" firstAttribute="top" secondItem="qqb-LE-yCp" secondAttribute="bottom" constant="25" id="ZhE-GS-ZIe"/>
                             <constraint firstItem="kge-Pn-TYS" firstAttribute="leading" secondItem="hiE-cI-Qil" secondAttribute="leading" constant="43" id="bZG-JL-a9y"/>
@@ -192,6 +204,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="isPublicSwitch" destination="huB-A3-iCO" id="5PJ-4c-ItR"/>
+                        <outlet property="nameOfGameroomTextField" destination="fL6-jH-ZgT" id="Wa1-gu-JeZ"/>
                         <outlet property="numberOfPlayersPicker" destination="luo-XG-UzD" id="edK-p2-3I1"/>
                     </connections>
                 </viewController>
