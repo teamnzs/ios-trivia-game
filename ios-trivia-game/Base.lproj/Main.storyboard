@@ -364,7 +364,6 @@
                     <connections>
                         <outlet property="categoryPicker" destination="4cf-a6-REE" id="07e-dF-li0"/>
                         <outlet property="numOfQuestionsPicker" destination="eTb-3A-T0B" id="K1z-wV-jLY"/>
-                        <segue destination="Dzo-UG-g8U" kind="presentation" identifier="com.iostriviagame.gameoptionstocountdownsegue" id="LZK-LT-UbL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5f-Zy-EFe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -468,7 +467,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UpN-wj-CWf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xzj-M9-BFF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xzj-M9-BFF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -895,9 +894,9 @@
         <!--Navigation Controller-->
         <scene sceneID="fRo-2K-exq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dzo-UG-g8U" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="com.iostriviagame.countdownnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzo-UG-g8U" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pu8-hs-FhN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pu8-hs-FhN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -933,7 +932,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1072,7 +1071,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
