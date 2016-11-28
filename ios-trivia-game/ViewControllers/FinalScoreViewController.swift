@@ -99,7 +99,9 @@ class FinalScoreViewController: UIViewController {
         }
         
         // remove game
-        FirebaseClient.instance.removeGame(roomId: roomId, complete: { }, onError: { (error) in })
+        if self.roomId != nil {
+            FirebaseClient.instance.removeGame(roomId: roomId, complete: { }, onError: { (error) in })
+        }
         
         // quit game
         Utilities.quitGame(controller: self)
