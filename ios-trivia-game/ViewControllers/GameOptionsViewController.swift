@@ -78,7 +78,7 @@ class GameOptionsViewController: UIViewController {
 
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
-        var newGame = ["max_num_of_questions" : numOfQuestions ?? 0,
+        let newGame = ["max_num_of_questions" : numOfQuestions ?? 0,
                        "id" : FirebaseClient.instance.createGameRoomId().key,
                    "current_question" : 0,
                    "is_public" : isPublic ?? true,
