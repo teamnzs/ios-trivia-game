@@ -358,25 +358,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
-                                                    <rect key="frame" x="61" y="8" width="219" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
+                                                    <rect key="frame" x="64" y="21.5" width="246" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KPg-bO-uLg">
-                                                    <rect key="frame" x="318" y="7" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="KPg-bO-uLg">
+                                                    <rect key="frame" x="318" y="16.5" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="onSwitchChanged:" destination="9Sz-xb-sx7" eventType="valueChanged" id="5MD-Ce-ETE"/>
                                                     </connections>
                                                 </switch>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n0g-xt-xvf">
-                                                    <rect key="frame" x="8" y="7" width="45" height="45"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n0g-xt-xvf">
+                                                    <rect key="frame" x="8" y="8" width="48" height="47.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="48" id="8w4-Cz-aXr"/>
+                                                        <constraint firstAttribute="height" constant="48" id="jkN-OZ-1bX"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YCF-2C-FYl" firstAttribute="leading" secondItem="n0g-xt-xvf" secondAttribute="trailing" constant="8" id="1hZ-Xb-KZ5"/>
+                                                <constraint firstItem="KPg-bO-uLg" firstAttribute="centerY" secondItem="5e0-Q8-5WS" secondAttribute="centerY" id="2Pb-56-gpj"/>
+                                                <constraint firstItem="n0g-xt-xvf" firstAttribute="top" secondItem="5e0-Q8-5WS" secondAttribute="top" constant="8" id="5cm-ET-Lr7"/>
+                                                <constraint firstItem="KPg-bO-uLg" firstAttribute="leading" secondItem="YCF-2C-FYl" secondAttribute="trailing" constant="8" id="8P7-J8-wrC"/>
+                                                <constraint firstAttribute="bottom" secondItem="n0g-xt-xvf" secondAttribute="bottom" constant="8" id="AIm-E4-7Vh"/>
+                                                <constraint firstAttribute="trailing" secondItem="KPg-bO-uLg" secondAttribute="trailing" constant="8" id="Gik-uf-DaA"/>
+                                                <constraint firstItem="n0g-xt-xvf" firstAttribute="leading" secondItem="5e0-Q8-5WS" secondAttribute="leading" constant="8" id="Q7o-Yd-Zav"/>
+                                                <constraint firstItem="YCF-2C-FYl" firstAttribute="centerY" secondItem="5e0-Q8-5WS" secondAttribute="centerY" id="kEk-s5-Xrk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="YCF-2C-FYl" id="49X-Ea-bLj"/>
@@ -1201,7 +1212,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Oq7-r9-bUh"/>
+        <segue reference="9L0-hO-pBe"/>
         <segue reference="9qG-Ei-58r"/>
     </inferredMetricsTieBreakers>
 </document>
