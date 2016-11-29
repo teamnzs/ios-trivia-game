@@ -11,6 +11,7 @@ import AFNetworking
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var contentViewCenterY: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -22,17 +23,20 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // self.contentViewCenterY.constant += self.view.bounds.height
+        self.profileLabel.center.x += self.view.bounds.width
         self.contentView.center.x += self.contentView.frame.width
         self.contentView.layoutIfNeeded()
         self.profileImageView.alpha = 0.0
         
-        UIView.animate(withDuration: 0.6, animations: {
-            // self.contentViewCenterY.constant -= self.view.bounds.height
-            
+        UIView.animate(withDuration: 0.8, animations: {
             self.contentView.center.x -= self.contentView.frame.width
             self.profileImageView.alpha = 1
             self.contentView.layoutIfNeeded()
+        })
+        
+        UIView.animate(withDuration: 0.7, animations: {
+            self.profileLabel.center.x -= self.view.bounds.width
+            self.profileLabel.layoutIfNeeded()
         })
     }
     

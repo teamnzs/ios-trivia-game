@@ -37,7 +37,7 @@ class CreateGameViewController: UIViewController {
     func setupPickerData() {
         self.numberOfPlayersPicker.delegate = self
         self.numberOfPlayersPicker.dataSource = self
-        self.numOfPlayersPickerData = ["1", "2", "3", "4", "5"]
+        self.numOfPlayersPickerData = Array(1...MAX_NUMBER_OF_PEOPLE).flatMap { String(describing: $0) }
     }
     
     func setupSwitch() {

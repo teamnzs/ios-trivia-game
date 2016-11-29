@@ -10,9 +10,29 @@ import UIKit
 
 class InviteViewController: UIViewController {
 
+    @IBOutlet weak var invitesLabel: UILabel!
     @IBOutlet weak var inviteTableView: UITableView!
     
     fileprivate var invites: [Invite] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.invitesLabel.center.x += self.view.bounds.width
+        self.inviteTableView.center.x += self.view.bounds.width
+        self.inviteTableView.layoutIfNeeded()
+        self.inviteTableView.alpha = 0.0
+        
+        UIView.animate(withDuration: 0.8, animations: {
+            self.inviteTableView.center.x -= self.view.bounds.width
+            self.inviteTableView.alpha = 1
+            self.inviteTableView.layoutIfNeeded()
+        })
+        
+        UIView.animate(withDuration: 0.7, animations: {
+            self.invitesLabel.center.x -= self.view.bounds.width
+            self.invitesLabel.layoutIfNeeded()
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

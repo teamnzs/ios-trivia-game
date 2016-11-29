@@ -38,14 +38,14 @@ class CountdownGameViewController: UIViewController {
             countdownLabel.text = "\(timerCount)sec"
         }
         else {
-            countdownTimer.invalidate()
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destinationIdentifier = Constants.MAIN_TAB_VIEW_CONTROLLER
-            
-            let destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
-            self.present(destination, animated: true, completion: nil)
+            self.countdownTimer.invalidate()
+            Utilities.quitGame(controller: self)
         }
+    }
+    
+    @IBAction func onCancelJoin(_ sender: UIButton) {
+        self.countdownTimer.invalidate()
+        Utilities.quitGame(controller: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
