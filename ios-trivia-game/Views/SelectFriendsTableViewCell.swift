@@ -22,9 +22,11 @@ class SelectFriendsTableViewCell: UITableViewCell {
     
     var friend: Friend! {
         didSet {
-            name.text = friend.name
+            self.name.text = friend.name
             if let imageUrl = friend.pictureUrl {
-                profilePicture.setImageWith(URL(string: imageUrl)!)
+                self.profilePicture.clipsToBounds = true
+                self.profilePicture.setImageWith(URL(string: imageUrl)!)
+                self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
             }
         }
     }

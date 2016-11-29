@@ -25,7 +25,7 @@ class GameOptionsViewController: UIViewController {
     
     var numOfQuestions: Int?
     
-    let PICKER_TAG_FOR_CATETORY = 1;
+    let PICKER_TAG_FOR_CATEGORY = 1;
     let PICKER_TAG_FOR_NUM_OF_QUESTIONS = 2;
     
     override func viewDidLoad() {
@@ -63,7 +63,7 @@ class GameOptionsViewController: UIViewController {
         categoryPicker.dataSource = self
         numOfQuestionsPicker.delegate = self
         numOfQuestionsPicker.dataSource = self
-        self.numOfQuestionsPickerData = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        self.numOfQuestionsPickerData = Array(1...MAX_NUMBER_OF_QUESTIONS).flatMap { String(describing: $0) }
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,15 +78,9 @@ class GameOptionsViewController: UIViewController {
 
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
-        let newGame = ["max_num_of_questions" : numOfQuestions ?? 0,
-                       "id" : FirebaseClient.instance.createGameRoomId().key,
-                   "current_question" : 0,
-                   "is_public" : isPublic ?? true,
-                   "max_num_people" : numOfPlayers ?? 5,
-                   "name" : self.nameOfGameroom ?? "",
-                   "state" : 0] as [String: Any]
+        let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 1, maxNumPlayers: self.numOfPlayers, state: GameRoom.State.idle, isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions)
 
-        FirebaseClient.instance.createGame(gameRoom: newGame as NSDictionary, complete: {_, ref in
+        FirebaseClient.instance.createGame(gameRoom: newGame.getJson() as NSDictionary, complete: {_, ref in
             let roomId = ref.key
             
             // Go to CountdownGameViewController
@@ -119,7 +113,7 @@ extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == PICKER_TAG_FOR_CATETORY {
+        if pickerView.tag == PICKER_TAG_FOR_CATEGORY {
             return categoryPickerData.count
         } else if pickerView.tag == PICKER_TAG_FOR_NUM_OF_QUESTIONS {
             return numOfQuestionsPickerData.count
@@ -130,7 +124,7 @@ extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == PICKER_TAG_FOR_CATETORY {
+        if pickerView.tag == PICKER_TAG_FOR_CATEGORY {
             return categoryPickerData[row]
         } else if pickerView.tag == PICKER_TAG_FOR_NUM_OF_QUESTIONS {
             numOfQuestions = row + 1

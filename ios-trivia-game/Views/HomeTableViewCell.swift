@@ -18,8 +18,8 @@ class HomeTableViewCell: UITableViewCell {
             let questionsAsked = max(0, curQuestion! - 1)
             self.questionsAsked.text = "\(questionsAsked) / \(maxQuestions) questions asked"
             
-            // Needs to be refactored to show the right number
-            self.peopleInGame.text = "\(gameRoomInfo.max_num_of_people) people joined"
+            let currentNumPlayers = gameRoomInfo.current_num_players
+            self.peopleInGame.text = "\(currentNumPlayers) / \(gameRoomInfo.max_num_of_people) players joined"
         }
     }
 
