@@ -11,7 +11,6 @@
 		1A805B6D1DD996F900A70691 /* TriviaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B671DD996F900A70691 /* TriviaCategory.swift */; };
 		1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B681DD996F900A70691 /* TriviaQuestion.swift */; };
 		A83ACC821DD2D14B00DAF701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */; };
-		A83ACC871DD2D14B00DAF701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC851DD2D14B00DAF701 /* Main.storyboard */; };
 		A83ACC891DD2D14B00DAF701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC881DD2D14B00DAF701 /* Assets.xcassets */; };
 		A83ACC8C1DD2D14B00DAF701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC8A1DD2D14B00DAF701 /* LaunchScreen.storyboard */; };
 		A8B32B901DDBE709003A0B1C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B32B8F1DDBE709003A0B1C /* LoginViewController.swift */; };
@@ -33,6 +32,7 @@
 		A8E541571DD9A9EB002D6AA4 /* JServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E1ED9E1DD5A03D00460AA5 /* JServiceClient.swift */; };
 		A8E541581DD9A9EB002D6AA4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A36860A1DD83CCC00CBEB41 /* Constants.swift */; };
 		B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */; };
+		B236DB1B1DEEC65A0057D263 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B236DB191DEEC65A0057D263 /* Main.storyboard */; };
 		B29417051DE29A1300153E36 /* UserInGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417041DE29A1300153E36 /* UserInGame.swift */; };
 		B29417071DE29E3A00153E36 /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417061DE29E3A00153E36 /* FirebaseClient.swift */; };
 		B294170A1DE2AD8100153E36 /* SelectFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */; };
@@ -59,7 +59,6 @@
 		381FCCC7CD6510BD05EB2001 /* Pods-ios-trivia-game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-trivia-game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-trivia-game/Pods-ios-trivia-game.debug.xcconfig"; sourceTree = "<group>"; };
 		A83ACC7E1DD2D14B00DAF701 /* ios-trivia-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-trivia-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A83ACC861DD2D14B00DAF701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A83ACC881DD2D14B00DAF701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83ACC8B1DD2D14B00DAF701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A83ACC8D1DD2D14B00DAF701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		A8B6EA301DD9A7AA00CB8699 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		A8E1ED9E1DD5A03D00460AA5 /* JServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JServiceClient.swift; path = API/JServiceClient.swift; sourceTree = "<group>"; };
 		B2009CEC1DE5B70500CF0FB1 /* ScoredAnswer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScoredAnswer.swift; path = Models/ScoredAnswer.swift; sourceTree = "<group>"; };
+		B236DB1A1DEEC65A0057D263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B29417041DE29A1300153E36 /* UserInGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInGame.swift; path = Models/UserInGame.swift; sourceTree = "<group>"; };
 		B29417061DE29E3A00153E36 /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseClient.swift; path = API/FirebaseClient.swift; sourceTree = "<group>"; };
 		B29417081DE2AD8100153E36 /* SelectFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendsTableViewCell.swift; path = Views/SelectFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 				B29BE1F41DD7B7D8000DD684 /* Models */,
 				A8E1ED9D1DD5A01100460AA5 /* API */,
 				A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */,
-				A83ACC851DD2D14B00DAF701 /* Main.storyboard */,
+				B236DB191DEEC65A0057D263 /* Main.storyboard */,
 				A83ACC881DD2D14B00DAF701 /* Assets.xcassets */,
 				A83ACC8A1DD2D14B00DAF701 /* LaunchScreen.storyboard */,
 				1A3686101DD84B5800CBEB41 /* GoogleService-Info.plist */,
@@ -346,7 +346,7 @@
 				A83ACC8C1DD2D14B00DAF701 /* LaunchScreen.storyboard in Resources */,
 				1A3686111DD84B5800CBEB41 /* GoogleService-Info.plist in Resources */,
 				A83ACC891DD2D14B00DAF701 /* Assets.xcassets in Resources */,
-				A83ACC871DD2D14B00DAF701 /* Main.storyboard in Resources */,
+				B236DB1B1DEEC65A0057D263 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,20 +447,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A83ACC851DD2D14B00DAF701 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A83ACC861DD2D14B00DAF701 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A83ACC8A1DD2D14B00DAF701 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A83ACC8B1DD2D14B00DAF701 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B236DB191DEEC65A0057D263 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B236DB1A1DEEC65A0057D263 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -33,7 +33,7 @@ class TriviaQuestion: NSObject {
     var answer: String?
     var question: String?
     var value: Int?
-    var category: TriviaCategory?
+    // var category: TriviaCategory?
     var roomId: Int?
     
     init(dictionary: NSDictionary) {
@@ -41,7 +41,7 @@ class TriviaQuestion: NSObject {
         self.answer = (dictionary["answer"] as? String) ?? ""
         self.question = (dictionary["question"] as? String) ?? ""
         self.value = (dictionary["value"] as? Int) ?? 0
-        self.category = TriviaCategory(dictionary: (dictionary["category"] as? NSDictionary)!)
+        // self.category = TriviaCategory(dictionary: (dictionary["category"] as? NSDictionary)!)
         self.roomId = 0
     }
     
@@ -51,7 +51,7 @@ class TriviaQuestion: NSObject {
             "room_id": self.roomId as Any,
             "question_text": self.question as Any,
             "answer_text": self.answer as Any,
-            "category": self.category?.getJson() as Any,
+            // "category": self.category?.getJson() as Any,
             "value": self.value as Any
         ]
     }

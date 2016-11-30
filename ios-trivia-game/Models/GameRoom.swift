@@ -27,16 +27,18 @@ class GameRoom: NSObject {
     var current_num_players: Int
     var max_num_of_people: Int
     var is_public: Bool // Defaults to true
+    var created_time: Date
     
     init(dictionary: NSDictionary) {
         self.id = dictionary["id"] as? String ?? "0"
         self.name = dictionary["name"] as? String ?? "-- Unnamed Room --"
         self.current_num_players = dictionary["current_num_players"] as? Int ?? 0
-        self.max_num_of_people = dictionary["max_num_people"] as? Int ?? MAX_NUMBER_OF_PEOPLE
+        self.max_num_of_people = dictionary["max_num_of_people"] as? Int ?? MAX_NUMBER_OF_PEOPLE
         self.state = State(rawValue: dictionary["state"] as! Int)!
         self.is_public = dictionary["is_public"] as? Bool ?? true
         self.current_question = dictionary["current_question"] as? Int ?? 0
         self.max_num_of_questions = dictionary["max_num_of_questions"] as? Int ?? MAX_NUMBER_OF_QUESTIONS
+        self.created_time = dictionary["created_time"] is String ? GameRoom.convertToDate(dateString: dictionary["created_time"] as! String) : Date()
     }
     
     init(id: String, name: String?, currentNumPlayers: Int?, maxNumPlayers: Int?, state: State?, isPublic: Bool?, currentQuestion: Int?, maxNumQuestions: Int?) {
@@ -48,6 +50,14 @@ class GameRoom: NSObject {
         self.is_public = isPublic ?? true
         self.current_question = currentQuestion ?? 0
         self.max_num_of_questions = maxNumQuestions ?? MAX_NUMBER_OF_QUESTIONS
+        self.created_time = Date()
+    }
+    
+    static func convertToDate(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZZ"
+        let date = dateFormatter.date(from: dateString)
+        return date!
     }
     
     func getJson() -> [String: Any] {
@@ -59,7 +69,8 @@ class GameRoom: NSObject {
             "state": self.state.rawValue as Any,
             "is_public": self.is_public as Any,
             "current_question": self.current_question as Any,
-            "max_num_of_questions": self.max_num_of_questions as Any
+            "max_num_of_questions": self.max_num_of_questions as Any,
+            "created_time": String(describing: self.created_time) as Any
         ]
     }
 }

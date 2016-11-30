@@ -67,27 +67,27 @@
                                         <rect key="frame" x="16" y="16" width="343" height="522"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.invitetableviewcell" rowHeight="96" id="Yn7-Rh-Idb" customClass="InviteTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.iostriviagame.invitetableviewcell" rowHeight="96" id="Yn7-Rh-Idb" customClass="InviteTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="343" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yn7-Rh-Idb" id="pDa-cC-pmp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="95.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="95.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTB-Zd-09i">
-                                                            <rect key="frame" x="8" y="37" width="327" height="21.5"/>
+                                                            <rect key="frame" x="8" y="37" width="294" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Player Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8R-kQ-WPa">
-                                                            <rect key="frame" x="8" y="66.5" width="327" height="21"/>
+                                                            <rect key="frame" x="8" y="66.5" width="294" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Game Room Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="28n-9a-mTk">
-                                                            <rect key="frame" x="8" y="8" width="327" height="21"/>
+                                                            <rect key="frame" x="8" y="8" width="294" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -106,6 +106,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="oTB-Zd-09i" secondAttribute="trailing" constant="8" id="xyl-4q-5eZ"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <gestureRecognizers/>
                                                 <connections>
                                                     <outlet property="gameRoomLabel" destination="28n-9a-mTk" id="pKl-6W-3r3"/>
                                                     <outlet property="hostNameLabel" destination="oTB-Zd-09i" id="UXw-gO-3ZT"/>
@@ -113,6 +114,9 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Ke4-5H-Bxe" appends="YES" id="kss-VF-H57"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -144,6 +148,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhA-sk-qAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ke4-5H-Bxe">
+                    <connections>
+                        <action selector="onTapInviteTableViewCell:" destination="ElG-Tp-5Tu" id="n0i-qe-7JR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3224.8000000000002" y="-1483.8080959520241"/>
         </scene>
