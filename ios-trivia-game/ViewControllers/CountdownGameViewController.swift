@@ -25,6 +25,13 @@ class CountdownGameViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         
+        FirebaseClient.instance.joinGame(roomId: self.roomId!, complete: {(remainingCountdown) in
+            print("Successfully joined the game")
+            self.timerCount = remainingCountdown
+        }, fail: {(error) in
+            
+        })
+        
         FirebaseClient.instance.updatePlayerCount(roomId: roomId!, change: 1)
         
         clickToJoin.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
@@ -45,9 +52,27 @@ class CountdownGameViewController: UIViewController {
             countdownLabel.text = "\(timerCount!)sec"
         }
         else {
-            self.countdownTimer.invalidate()
-            Utilities.quitGame(controller: self)
+            if (self.clickToJoin.isEnabled) {
+                self.countdownTimer.invalidate()
+                Utilities.quitGame(controller: self)
+            } else {
+                // means has already clicked JOIN
+                performSegue(withIdentifier: Constants.COUNTDOWN_TO_QUESTION_SEGUE, sender: nil)
+            }
+            
         }
+    }
+    
+    @IBAction func joinButtonTapped(_ sender: UIButton) {
+        sender.isEnabled = false
+        self.cancelButton.isEnabled = false
+        self.clickToJoin.setTitle("Ready", for: .normal)
+        
+        FirebaseClient.instance.updateUserInGameState(state: 1, roomId: self.roomId!, complete: {(error, ref) in
+            if (error == nil) {
+                print("Successfully updated user in game state to active")
+            }
+        })
     }
     
     @IBAction func onCancelJoin(_ sender: UIButton) {
@@ -59,7 +84,7 @@ class CountdownGameViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nav = segue.destination as? UINavigationController
-        
+        print ("My room ID in countdown: \(self.roomId)")
         if let questionViewController = nav?.topViewController as? QuestionViewController {
             questionViewController.roomId = self.roomId
         }

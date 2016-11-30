@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -71,7 +71,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="343" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yn7-Rh-Idb" id="pDa-cC-pmp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="95"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="96"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTB-Zd-09i">
@@ -177,7 +177,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iv5-fc-19D">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kgp-wu-ZpO">
                                         <rect key="frame" x="123" y="25" width="128" height="128"/>
@@ -267,25 +267,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select maximum number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R11-RS-eHZ">
-                                <rect key="frame" x="53" y="89" width="269" height="21"/>
+                                <rect key="frame" x="53" y="45" width="269" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luo-XG-UzD">
-                                <rect key="frame" x="0.0" y="142" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="98" width="375" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is public game?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kge-Pn-TYS">
-                                <rect key="frame" x="43" y="381" width="119" height="21"/>
+                                <rect key="frame" x="43" y="337" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huB-A3-iCO">
-                                <rect key="frame" x="284" y="376" width="51" height="31"/>
+                                <rect key="frame" x="284" y="332" width="51" height="31"/>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of the game room" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL6-jH-ZgT">
-                                <rect key="frame" x="16" y="447" width="343" height="30"/>
+                                <rect key="frame" x="16" y="403" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -357,7 +357,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
@@ -508,14 +508,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-GZ-M09">
-                                <rect key="frame" x="114" y="356" width="147" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-GZ-M09">
+                                <rect key="frame" x="112.5" y="356" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="47k-fb-puc"/>
                                 </constraints>
                                 <state key="normal" title="Click to Join"/>
                                 <connections>
-                                    <segue destination="kGA-Pt-17m" kind="presentation" id="4yp-7P-9DL"/>
+                                    <action selector="joinButtonTapped:" destination="Trc-Zx-aGL" eventType="touchUpInside" id="vWe-sP-1iP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Join the game in.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KnB-OJ-BcH">
@@ -531,7 +531,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f28-yV-MOF">
-                                <rect key="frame" x="163" y="416" width="48" height="30"/>
+                                <rect key="frame" x="163.5" y="416" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="onCancelJoin:" destination="Trc-Zx-aGL" eventType="touchUpInside" id="5QQ-7E-XdS"/>
@@ -555,6 +555,7 @@
                         <outlet property="cancelButton" destination="f28-yV-MOF" id="I9u-7W-xEr"/>
                         <outlet property="clickToJoin" destination="p1T-GZ-M09" id="EHY-82-2lV"/>
                         <outlet property="countdownLabel" destination="l65-cP-Zxz" id="PbO-uJ-a3s"/>
+                        <segue destination="kGA-Pt-17m" kind="presentation" identifier="com.iostriviagame.countdowntoquestionsegue" id="sao-Br-E2c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1NI-xe-B7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -600,7 +601,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UpN-wj-CWf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xzj-M9-BFF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xzj-M9-BFF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -640,7 +641,7 @@
                     <tabBarItem key="tabBarItem" title="Create" id="3PX-mo-79e"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PfN-jp-rFR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PfN-jp-rFR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -665,29 +666,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71X-rq-Y2s">
-                                <rect key="frame" x="163" y="318" width="49" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question 1/10" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2m-OT-dav">
+                                <rect key="frame" x="135" y="72" width="105" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hup-6q-j30">
+                                <rect key="frame" x="8" y="101" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvb-pM-KTb">
+                                <rect key="frame" x="8" y="130" width="359" height="4"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="ucK-qz-ITm"/>
+                                    <constraint firstAttribute="height" constant="4" id="2YX-4G-cWc"/>
                                 </constraints>
-                                <state key="normal" title="Submit"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Lk-pj-hyl">
+                                <rect key="frame" x="62" y="568" width="251" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="eiQ-FW-e2O"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71X-rq-Y2s">
+                                <rect key="frame" x="150.5" y="606" width="75" height="30"/>
+                                <color key="backgroundColor" red="0.075979598445595875" green="0.075979598445595875" blue="0.075979598445595875" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="49S-ZL-fkj"/>
+                                    <constraint firstAttribute="width" constant="75" id="Zpr-Hx-hnu"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="onAnswerSubmit:" destination="Y5u-Gb-HDi" eventType="touchUpInside" id="Aq8-CS-T1j"/>
-                                    <segue destination="1wV-hE-H6O" kind="presentation" id="hGR-zp-MND"/>
+                                    <action selector="onAnswerSubmit:" destination="Y5u-Gb-HDi" eventType="touchUpInside" id="YE1-AY-ura"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="71X-rq-Y2s" firstAttribute="centerY" secondItem="4af-9o-GRX" secondAttribute="centerY" id="ODu-SX-rpN"/>
-                            <constraint firstItem="71X-rq-Y2s" firstAttribute="centerX" secondItem="4af-9o-GRX" secondAttribute="centerX" id="fQy-qD-fh0"/>
+                            <constraint firstItem="71X-rq-Y2s" firstAttribute="top" secondItem="7Lk-pj-hyl" secondAttribute="bottom" constant="8" symbolic="YES" id="1TH-YM-m9Y"/>
+                            <constraint firstItem="gvb-pM-KTb" firstAttribute="leading" secondItem="4af-9o-GRX" secondAttribute="leading" constant="8" id="5LY-aF-KYb"/>
+                            <constraint firstAttribute="bottom" secondItem="7Lk-pj-hyl" secondAttribute="bottom" constant="69" id="E62-Ce-ers"/>
+                            <constraint firstAttribute="trailing" secondItem="gvb-pM-KTb" secondAttribute="trailing" constant="8" id="SYe-M0-fO9"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hup-6q-j30" secondAttribute="trailing" constant="8" id="YbB-mi-mUF"/>
+                            <constraint firstItem="gvb-pM-KTb" firstAttribute="top" secondItem="hup-6q-j30" secondAttribute="bottom" constant="8" id="Zc8-dJ-DwI"/>
+                            <constraint firstAttribute="trailing" secondItem="7Lk-pj-hyl" secondAttribute="trailing" constant="62" id="aYj-x8-Jw2"/>
+                            <constraint firstItem="hup-6q-j30" firstAttribute="top" secondItem="Y2m-OT-dav" secondAttribute="bottom" constant="8" id="gPR-3q-Vh6"/>
+                            <constraint firstItem="hup-6q-j30" firstAttribute="leading" secondItem="4af-9o-GRX" secondAttribute="leading" constant="8" id="hXx-3L-tPf"/>
+                            <constraint firstItem="7Lk-pj-hyl" firstAttribute="centerX" secondItem="71X-rq-Y2s" secondAttribute="centerX" id="hfR-fQ-INc"/>
+                            <constraint firstItem="Y2m-OT-dav" firstAttribute="top" secondItem="IJS-yt-IZd" secondAttribute="bottom" constant="8" id="jQe-Zo-Ilk"/>
+                            <constraint firstItem="Y2m-OT-dav" firstAttribute="centerX" secondItem="4af-9o-GRX" secondAttribute="centerX" id="nht-ni-iYe"/>
+                            <constraint firstItem="7Lk-pj-hyl" firstAttribute="leading" secondItem="4af-9o-GRX" secondAttribute="leading" constant="62" id="xJU-dl-CDf"/>
+                            <constraint firstItem="71X-rq-Y2s" firstAttribute="top" secondItem="7Lk-pj-hyl" secondAttribute="bottom" constant="8" id="yLj-wW-mkd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Fzj-KQ-vri">
+                    <navigationItem key="navigationItem" title="Question" id="Fzj-KQ-vri">
                         <barButtonItem key="leftBarButtonItem" title="Quit" id="R67-JY-3bU"/>
+                        <barButtonItem key="rightBarButtonItem" title="Timer" id="Gk5-Vk-rwh"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="submitButton" destination="71X-rq-Y2s" id="bcX-un-spp"/>
+                        <outlet property="answerField" destination="7Lk-pj-hyl" id="Psh-8U-Oc2"/>
+                        <outlet property="questionNumber" destination="Y2m-OT-dav" id="tZJ-DX-dIx"/>
+                        <outlet property="questionTitle" destination="hup-6q-j30" id="jfr-HW-eES"/>
+                        <outlet property="submitButton" destination="71X-rq-Y2s" id="gdz-F3-P8h"/>
+                        <outlet property="timer" destination="Gk5-Vk-rwh" id="XZo-GN-h0T"/>
+                        <segue destination="1wV-hE-H6O" kind="presentation" identifier="com.iostriviagame.questiontoanswersegue" id="J9L-NE-XlO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ddY-xj-uSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -706,26 +759,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-d9-MHz">
-                                <rect key="frame" x="96" y="637" width="183" height="30"/>
-                                <state key="normal" title="Last Question (Temporary)"/>
-                                <connections>
-                                    <segue destination="xWC-Yo-6sB" kind="presentation" id="ViW-uz-VHm"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOd-pF-cfm">
-                                <rect key="frame" x="32" y="116.5" width="311" height="456.5"/>
+                                <rect key="frame" x="32" y="117" width="311" height="456"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.answertableviewcell" rowHeight="102" id="rUh-fW-Bmr" customClass="AnswerTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="311" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
-                                                    <rect key="frame" x="8" y="8" width="295" height="85.5"/>
+                                                    <rect key="frame" x="8" y="8" width="295" height="85"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -745,7 +791,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ui3-9m-13g">
-                                <rect key="frame" x="16" y="80" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="80" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -755,7 +801,16 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="onSubmit:" destination="mI7-Lz-9Wi" eventType="touchUpInside" id="ShX-Ej-3k2"/>
-                                    <segue destination="OYM-1H-SDT" kind="presentation" identifier="com.iostriviagame.answertoresultssegue" modalTransitionStyle="flipHorizontal" id="Bgt-E0-dNT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-d9-MHz">
+                                <rect key="frame" x="96" y="627" width="183" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="183" id="3Ee-3c-Hho"/>
+                                </constraints>
+                                <state key="normal" title="Last Question (Temporary)"/>
+                                <connections>
+                                    <segue destination="xWC-Yo-6sB" kind="presentation" id="ViW-uz-VHm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -772,6 +827,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="xOd-pF-cfm" secondAttribute="trailing" constant="16" id="c6V-J7-2Ih"/>
                             <constraint firstItem="5TV-d9-MHz" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leading" constant="96" id="cNr-Tj-gNT"/>
                             <constraint firstItem="78r-jN-B4w" firstAttribute="top" secondItem="xOd-pF-cfm" secondAttribute="bottom" constant="16" id="ewU-IX-G64"/>
+                            <constraint firstItem="5TV-d9-MHz" firstAttribute="top" secondItem="78r-jN-B4w" secondAttribute="bottom" constant="8" id="fp6-yr-FEh"/>
+                            <constraint firstItem="5TV-d9-MHz" firstAttribute="centerX" secondItem="78r-jN-B4w" secondAttribute="centerX" id="l56-wU-rae"/>
                             <constraint firstAttribute="trailing" secondItem="ui3-9m-13g" secondAttribute="trailing" constant="16" id="nkd-sL-D8I"/>
                         </constraints>
                     </view>
@@ -789,6 +846,7 @@
                         <outlet property="questionLabel" destination="ui3-9m-13g" id="01Q-Kw-Fpb"/>
                         <outlet property="submitButton" destination="78r-jN-B4w" id="zUs-Y9-deb"/>
                         <outlet property="timerButton" destination="V83-n8-vR3" id="Usw-2I-BQt"/>
+                        <segue destination="OYM-1H-SDT" kind="presentation" identifier="com.iostriviagame.answertoresultssegue" id="yF7-b7-CYE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G35-ca-4xW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -827,7 +885,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7y-rf-jUI" id="tMU-0V-Ruk">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-AY-R6c">
@@ -913,7 +971,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="137"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME TITLE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
@@ -987,7 +1045,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFV-wb-q5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1005,7 +1063,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.selectfriendsnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5bb-5X-bDg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dcG-GP-j2w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcG-GP-j2w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1023,7 +1081,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.gameoptionsnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RHu-CO-bv6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dFq-ex-OQM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dFq-ex-OQM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1041,7 +1099,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.countdownnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzo-UG-g8U" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pu8-hs-FhN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pu8-hs-FhN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1059,7 +1117,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.questionnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1077,7 +1135,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1095,7 +1153,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1140,7 +1198,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHZ-fT-MIe" id="FtN-hM-u1W">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utv-Cy-l1S">
@@ -1216,7 +1274,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1231,6 +1289,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9qG-Ei-58r"/>
+        <segue reference="1Mc-Ha-1gq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,15 +16,50 @@ class Utilities {
             let destination = storyboard.instantiateViewController(withIdentifier: Constants.MAIN_TAB_VIEW_CONTROLLER) as! MainTabViewController
             destination.selectedIndex = 0
             destination.navigationController?.isNavigationBarHidden = true
+            print("Presenting the main tab view controller")
             controller.present(destination, animated: true, completion: nil)
         }, onError: { (error) in })
     }
- 
+
     static func convertToDate(dateString: String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZZ"
         let date = dateFormatter.date(from: dateString)
         return date!
+    }
+    
+    /**
+     * Gets an alert controller containing the alert message.
+     * Use it like:
+     **/
+    static func getAlertControllerWith(alertMessage: String, title: String = "OK", completionHandler: @escaping (UIAlertAction) -> ())-> UIAlertController {
+        let alertController = UIAlertController(title: "Error", message: alertMessage, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: title, style: .cancel, handler: completionHandler)
+        alertController.addAction(cancelAction)
+        return alertController
+    }
+    
+    static func generateRandomQuestionNumbers(numOfQuestions: Int, listOfSampleNumbers: [Int]) -> [Int] {
+        let max = listOfSampleNumbers.count
+        if (max < numOfQuestions) {
+            // Invalid input
+            return [0]
+        }
+        
+        let totalCount: Int = numOfQuestions //Any number you asssign
+        var randomNumArray: [Int] = []
+        var i = 0
+        while randomNumArray.count < totalCount {
+            i += 1
+            let rand = Int(arc4random_uniform(UInt32(max)))
+            for _ in 0..<totalCount {
+                if !randomNumArray.contains(rand){
+                    randomNumArray.append(rand)
+                }
+            }
+        }
+        
+        return randomNumArray
     }
 }
 
