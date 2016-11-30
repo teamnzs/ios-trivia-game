@@ -274,11 +274,11 @@ class FirebaseClient {
             if let data = snapshot.value as? NSDictionary {
                 if data.count > 0 {
                     let gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
-
-                    Logger.instance.log(message: "SAVIO: \(gameRoom.getJson())")
+                    
                     // check if we can add a player and whether the countdown isn't done yet
                     let remainingCountdownTime = Date().timeIntervalSince(gameRoom.created_time)
-                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime > 0) {
+                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime < Double(Constants.GAME_START_COUNTDOWN)) {
+                        
                         // update the user in game table
                         let currentUserId = User.currentUser?.uid!
                         let userInGame = UserInGame(roomId: roomId, userState: 0, userId: currentUserId!)
@@ -286,16 +286,6 @@ class FirebaseClient {
                         self.ref.child(userInGamePath).setValue(userInGame.getJson(), withCompletionBlock: { (error, setRef) in
                             complete?(Int(remainingCountdownTime))
                         })
-                        
-                        // update the number of current players in the game
-//                        let gamePath = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)/current_num_players"
-//                        self.ref.child(gamePath).setValue(gameRoom.current_num_players + 1, withCompletionBlock: { (error, setRef) in })
-//                        self.ref.child(gamePath).runTransactionBlock { (data) -> FIRTransactionResult in
-//                            let currentNumPlayers = data.value as! Int
-//                            data.value = currentNumPlayers + 1
-//                            return FIRTransactionResult.success(withValue: data)
-//                        }
-                        
                     }
                     else {
                         fail?()
