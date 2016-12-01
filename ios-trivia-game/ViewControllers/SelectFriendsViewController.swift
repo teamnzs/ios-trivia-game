@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 class SelectFriendsViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var seletedFriendsLabel: UILabel!
     
@@ -20,6 +21,7 @@ class SelectFriendsViewController: UIViewController {
     var nameOfGameroom: String?
     
     var friends = [Friend]()
+    var filteredFriendsList = [Friend]()
     var currentSelectedCount:Int = 1
     var isFromUserEvent:Bool = true
     var selectedFriends = Set<String>()
@@ -28,6 +30,7 @@ class SelectFriendsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSearchBar()
         setupTableView()
         loadFriendsList()
     }
@@ -40,6 +43,11 @@ class SelectFriendsViewController: UIViewController {
     @IBAction func onBackClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.sizeToFit()
     }
     
     func setupTableView() {
@@ -73,27 +81,68 @@ class SelectFriendsViewController: UIViewController {
         gameOptionsViewController.selectedFriends = self.selectedFriends
         self.navigationController?.pushViewController(gameOptionsViewController, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func updateListWithKeyword(keyword: String) {
+        filteredFriendsList.removeAll()
+        for friend in friends {
+            if (friend.name?.lowercased().range(of: keyword.lowercased())) != nil {
+                filteredFriendsList.append(friend)
+            }
+        }
+        tableView.reloadData()
     }
-    */
+}
+
+extension SelectFriendsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text != nil) {
+            updateListWithKeyword(keyword: searchBar.text!)
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false;
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text != nil {
+            updateListWithKeyword(keyword: searchBar.text!)
+        }
+        searchBar.endEditing(true)
+    }
 }
 
 extension SelectFriendsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.friends.count
+        if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+            return self.filteredFriendsList.count
+        } else {
+            return self.friends.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.iostriviagame.selecfriendstableviewcell", for: indexPath) as! SelectFriendsTableViewCell
-        cell.friend = self.friends[indexPath.row]
-        cell.onSwitch.isOn = self.friends[indexPath.row].isSelected ?? false
+        if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+            cell.friend = self.filteredFriendsList[indexPath.row]
+            cell.onSwitch.isOn = self.filteredFriendsList[indexPath.row].isSelected ?? false
+        } else {
+            cell.friend = self.friends[indexPath.row]
+            cell.onSwitch.isOn = self.friends[indexPath.row].isSelected ?? false
+        }
         cell.delegate = self
         return cell
     }
@@ -117,7 +166,11 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
         } else {
         
             if isFromUserEvent {
-                self.friends[indexPath.row].isSelected = value
+                if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+                    self.filteredFriendsList[indexPath.row].isSelected = value
+                } else {
+                    self.friends[indexPath.row].isSelected = value
+                }
                 if value {
                     currentSelectedCount += 1
                     selectedFriends.insert(selectFriendsTableViewCell.friend.id!)
@@ -126,7 +179,11 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
                     selectedFriends.remove(selectFriendsTableViewCell.friend.id!)
                 }
         
-                updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.row].name!)
+                if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+                    updateSelectedFriendsLabel(isSelected: value, name: filteredFriendsList[indexPath.row].name!)
+                } else {
+                    updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.row].name!)
+                }
             } else {
                 isFromUserEvent = true
             }
