@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 class SelectFriendsViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var seletedFriendsLabel: UILabel!
     
@@ -20,14 +21,17 @@ class SelectFriendsViewController: UIViewController {
     var nameOfGameroom: String?
     
     var friends = [Friend]()
+    var filteredFriendsList = [Friend]()
     var currentSelectedCount:Int = 1
     var isFromUserEvent:Bool = true
     var selectedFriends = Set<String>()
+    var searchKeyword: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupSearchBar()
         setupTableView()
         loadFriendsList()
     }
@@ -40,6 +44,11 @@ class SelectFriendsViewController: UIViewController {
     @IBAction func onBackClicked(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    func setupSearchBar() {
+        searchBar.delegate = self
+        searchBar.sizeToFit()
     }
     
     func setupTableView() {
@@ -73,15 +82,49 @@ class SelectFriendsViewController: UIViewController {
         gameOptionsViewController.selectedFriends = self.selectedFriends
         self.navigationController?.pushViewController(gameOptionsViewController, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func updateListWithKeyword(keyword: String) {
+        filteredFriendsList.removeAll()
+        for friend in friends {
+            if (friend.name?.lowercased().range(of: keyword.lowercased())) != nil {
+                filteredFriendsList.append(friend)
+                print("name : \(friend.name)")
+            }
+        }
+        
     }
-    */
+}
+
+extension SelectFriendsViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchBar.text != nil) {
+            self.searchKeyword = searchBar.text!
+            updateListWithKeyword(keyword: searchBar.text!)
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false;
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if (searchBar.text != nil) {
+            self.searchKeyword = searchBar.text!
+            updateListWithKeyword(keyword: searchBar.text!)
+        }
+        searchBar.endEditing(true)
+    }
 }
 
 extension SelectFriendsViewController: UITableViewDataSource, UITableViewDelegate {
