@@ -48,11 +48,21 @@ class FirebaseClient {
     }
     
     // updates score value of user in user table
-    func updateScore(userId: String, addValue: Int, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+    func updateScore(userId: String, addValue: Int) {
         let path = "\(Constants.USER_TABLE_NAME)/\(userId)/score"
         ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
             let currentScore = data.value as! Int
             data.value = currentScore + addValue
+            return FIRTransactionResult.success(withValue: data)
+        }
+    }
+    
+    // updates current player count of game
+    func updatePlayerCount(roomId: String, change: Int) {
+        let gamePath = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)/current_num_players"
+        self.ref.child(gamePath).runTransactionBlock { (data) -> FIRTransactionResult in
+            let currentNumPlayers = data.value as! Int
+            data.value = currentNumPlayers + change
             return FIRTransactionResult.success(withValue: data)
         }
     }
@@ -250,11 +260,41 @@ class FirebaseClient {
         newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
     }
     
+    // Creates AutoId for GameRoom
     func createGameRoomId() -> FIRDatabaseReference {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
         return ref.child(path).childByAutoId()
     }
 
+    // Joins current user to game
+    func joinGame(roomId: String, complete: ((_ remainingCountdownTime: Int) -> ())?, fail: (() -> ())?) {
+        
+        // get room
+        FirebaseClient.instance.getGameBy(roomId: roomId, complete: { (snapshot) in
+            if let data = snapshot.value as? NSDictionary {
+                if data.count > 0 {
+                    let gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
+                    
+                    // check if we can add a player and whether the countdown isn't done yet
+                    let remainingCountdownTime = Date().timeIntervalSince(gameRoom.created_time)
+                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime < Double(Constants.GAME_START_COUNTDOWN)) {
+                        
+                        // update the user in game table
+                        let currentUserId = User.currentUser?.uid!
+                        let userInGame = UserInGame(roomId: roomId, userState: 0, userId: currentUserId!)
+                        let userInGamePath = "\(Constants.USER_IN_GAME_TABLE_NAME)/\(currentUserId!)"
+                        self.ref.child(userInGamePath).setValue(userInGame.getJson(), withCompletionBlock: { (error, setRef) in
+                            complete?(Int(remainingCountdownTime))
+                        })
+                    }
+                    else {
+                        fail?()
+                    }
+                }
+            }
+        }) { (error) in }
+    }
+    
     // post a scored answer to the scored answer database table
     func postScoredAnswer(scoredAnswer: ScoredAnswer, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"

@@ -10,24 +10,24 @@ import Foundation
 
 class Invite: NSObject {
     var roomId: String?
-    var userId: String?
+    var guestId: String?
     var hostId: String?
     
     init(dictionary: NSDictionary) {
-        self.userId = dictionary["user_id"] as? String
+        self.guestId = dictionary["guest_id"] as? String
         self.hostId = dictionary["host_id"] as? String
         self.roomId = dictionary["room_id"] as? String
     }
     
-    init(roomId: String, userId: String, hostId: String) {
+    init(roomId: String, guestId: String, hostId: String) {
         self.roomId = roomId
         self.hostId = hostId
-        self.userId = userId
+        self.guestId = guestId
     }
     
     func getJson() -> [String: Any] {
         return [
-            "user_id": self.userId as Any,
+            "guest_id": self.guestId as Any,
             "host_id": self.hostId as Any,
             "room_id": self.roomId as Any
         ]
