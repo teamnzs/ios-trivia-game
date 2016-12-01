@@ -19,6 +19,12 @@ class UserInGame : NSObject {
         self.userId = (dictionary["user_id"] as? String) ?? ""
     }
     
+    init(roomId: String?, userState: Int?, userId: String?) {
+        self.roomId = roomId ?? ""
+        self.userState = userState ?? -1
+        self.userId = userId ?? ""
+    }
+    
     func getJson() -> [String: Any] {
         return [
             "room_id": self.roomId as Any,

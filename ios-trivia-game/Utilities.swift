@@ -19,4 +19,11 @@ class Utilities {
             controller.present(destination, animated: true, completion: nil)
         }, onError: { (error) in })
     }
+ 
+    static func convertToDate(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZZ"
+        let date = dateFormatter.date(from: dateString)
+        return date!
+    }
 }

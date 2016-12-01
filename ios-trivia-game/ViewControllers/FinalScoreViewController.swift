@@ -95,7 +95,7 @@ class FinalScoreViewController: UIViewController {
         
         // update current user with added score value
         if self.currentUserFinalScore != nil {
-            FirebaseClient.instance.updateScore(userId: (User.currentUser?.uid)!, addValue: self.currentUserFinalScore!.score!, complete: { _ in }, onError: { (error) in })
+            FirebaseClient.instance.updateScore(userId: (User.currentUser?.uid)!, addValue: self.currentUserFinalScore!.score!)
         }
         
         // remove game

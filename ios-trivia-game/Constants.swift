@@ -34,5 +34,7 @@ class Constants {
     static let RESULT_TABLE_VIEW_CELL = "com.iostriviagame.resulttableviewcell"
     static let FINAL_SCORE_TABLE_VIEW_CELL = "com.iostriviagame.finalscoretableviewcell"
     static let INVITE_TABLE_VIEW_CELL = "com.iostriviagame.invitetableviewcell"
+    
+    static let GAME_START_COUNTDOWN = 30
 }
 
