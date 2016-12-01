@@ -38,7 +38,7 @@ class GameRoom: NSObject {
         self.is_public = dictionary["is_public"] as? Bool ?? true
         self.current_question = dictionary["current_question"] as? Int ?? 0
         self.max_num_of_questions = dictionary["max_num_of_questions"] as? Int ?? MAX_NUMBER_OF_QUESTIONS
-        self.created_time = dictionary["created_time"] is String ? GameRoom.convertToDate(dateString: dictionary["created_time"] as! String) : Date()
+        self.created_time = dictionary["created_time"] is String ? Utilities.convertToDate(dateString: dictionary["created_time"] as! String) : Date()
     }
     
     init(id: String, name: String?, currentNumPlayers: Int?, maxNumPlayers: Int?, state: State?, isPublic: Bool?, currentQuestion: Int?, maxNumQuestions: Int?) {
@@ -51,13 +51,6 @@ class GameRoom: NSObject {
         self.current_question = currentQuestion ?? 0
         self.max_num_of_questions = maxNumQuestions ?? MAX_NUMBER_OF_QUESTIONS
         self.created_time = Date()
-    }
-    
-    static func convertToDate(dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZZ"
-        let date = dateFormatter.date(from: dateString)
-        return date!
     }
     
     func getJson() -> [String: Any] {
