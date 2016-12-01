@@ -87,7 +87,6 @@ class SelectFriendsViewController: UIViewController {
         for friend in friends {
             if (friend.name?.lowercased().range(of: keyword.lowercased())) != nil {
                 filteredFriendsList.append(friend)
-                print("name : \(friend.name)")
             }
         }
         tableView.reloadData()
@@ -167,7 +166,11 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
         } else {
         
             if isFromUserEvent {
-                self.friends[indexPath.row].isSelected = value
+                if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+                    self.filteredFriendsList[indexPath.row].isSelected = value
+                } else {
+                    self.friends[indexPath.row].isSelected = value
+                }
                 if value {
                     currentSelectedCount += 1
                     selectedFriends.insert(selectFriendsTableViewCell.friend.id!)
@@ -176,7 +179,11 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
                     selectedFriends.remove(selectFriendsTableViewCell.friend.id!)
                 }
         
-                updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.row].name!)
+                if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+                    updateSelectedFriendsLabel(isSelected: value, name: filteredFriendsList[indexPath.row].name!)
+                } else {
+                    updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.row].name!)
+                }
             } else {
                 isFromUserEvent = true
             }
