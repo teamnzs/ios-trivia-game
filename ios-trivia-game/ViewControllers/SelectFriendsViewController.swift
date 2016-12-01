@@ -25,7 +25,6 @@ class SelectFriendsViewController: UIViewController {
     var currentSelectedCount:Int = 1
     var isFromUserEvent:Bool = true
     var selectedFriends = Set<String>()
-    var searchKeyword: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +90,7 @@ class SelectFriendsViewController: UIViewController {
                 print("name : \(friend.name)")
             }
         }
-        
+        tableView.reloadData()
     }
 }
 
@@ -99,7 +98,6 @@ extension SelectFriendsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if (searchBar.text != nil) {
-            self.searchKeyword = searchBar.text!
             updateListWithKeyword(keyword: searchBar.text!)
         }
     }
@@ -112,6 +110,7 @@ extension SelectFriendsViewController: UISearchBarDelegate {
         searchBar.showsCancelButton = false;
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        tableView.reloadData()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -119,8 +118,7 @@ extension SelectFriendsViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if (searchBar.text != nil) {
-            self.searchKeyword = searchBar.text!
+        if searchBar.text != nil {
             updateListWithKeyword(keyword: searchBar.text!)
         }
         searchBar.endEditing(true)
@@ -130,13 +128,22 @@ extension SelectFriendsViewController: UISearchBarDelegate {
 extension SelectFriendsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.friends.count
+        if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+            return self.filteredFriendsList.count
+        } else {
+            return self.friends.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "com.iostriviagame.selecfriendstableviewcell", for: indexPath) as! SelectFriendsTableViewCell
-        cell.friend = self.friends[indexPath.row]
-        cell.onSwitch.isOn = self.friends[indexPath.row].isSelected ?? false
+        if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
+            cell.friend = self.filteredFriendsList[indexPath.row]
+            cell.onSwitch.isOn = self.filteredFriendsList[indexPath.row].isSelected ?? false
+        } else {
+            cell.friend = self.friends[indexPath.row]
+            cell.onSwitch.isOn = self.friends[indexPath.row].isSelected ?? false
+        }
         cell.delegate = self
         return cell
     }
