@@ -186,8 +186,8 @@
 		A8B32B8E1DDBE6E7003A0B1C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2AFE4571DEC20B700999BD1 /* Invite */,
 				A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */,
+				B2AFE4571DEC20B700999BD1 /* Invite */,
 				A8B32BA71DDC0129003A0B1C /* Game */,
 				A8B32B9E1DDC006F003A0B1C /* CreateGame */,
 				A8B32B9D1DDC0058003A0B1C /* Profile */,
