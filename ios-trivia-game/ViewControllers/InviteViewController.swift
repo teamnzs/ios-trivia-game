@@ -69,10 +69,10 @@ class InviteViewController: UIViewController {
                     let invite = Invite(dictionary: value as! NSDictionary)
                     self.invites.append(invite)
                 }
-                
-                self.inviteTableView.reloadData()
-                self.refreshControl.endRefreshing()
             }
+            
+            self.inviteTableView.reloadData()
+            self.refreshControl.endRefreshing()
         }, onError: { (error) in })
     }
 }

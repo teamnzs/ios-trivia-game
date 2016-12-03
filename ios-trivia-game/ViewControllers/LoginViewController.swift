@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-import FacebookCore
 import FacebookLogin
 import MBProgressHUD
 
@@ -65,34 +64,72 @@ class LoginViewController: UIViewController {
         let loginManager = LoginManager()
         loginManager.logIn(_:  [ .publicProfile, .userFriends, .email ], viewController: self) { loginResult in
             let animation = MBProgressHUD.showAdded(to: self.view, animated: true)
-            animation?.animationType = .zoomIn
-            animation?.activityIndicatorColor = UIColor.black
-            animation?.dimBackground = true
-            animation?.color = UIColor.white
-            animation?.labelText = "Prepare your thinking hats..."
-            animation?.labelColor = UIColor.black
             
             switch loginResult {
             case .failed(let error):
                 print("Login failed!")
                 print(error)
+                MBProgressHUD.hide(for: self.view, animated: true)
             case .cancelled:
                 print("User cancelled login.")
+                MBProgressHUD.hide(for: self.view, animated: true)
             case .success(_, _, let accessToken):
                 print("Logged in!")
+                animation?.animationType = .zoomIn
+                animation?.activityIndicatorColor = UIColor.black
+                animation?.dimBackground = true
+                animation?.color = UIColor.white
+                animation?.labelText = "Prepare your thinking hats..."
+                animation?.labelColor = UIColor.black
+                
                 // @Zhia : Feel free to grab this authToken for Firebase - Nari
                 User.loginWithFb(fbAccessToken: accessToken.authenticationToken, completion: {(firUser, error) in
                     if error != nil {
-                        Logger.instance.log(logLevel: .error, message: "Could not login to Firebase with the fb auth token \(error.debugDescription)")
+                        Logger.instance.log(logLevel: .debug, message: "Could not login to Firebase with the fb auth token \(error.debugDescription)")
+                        
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         return
                     }
                     
-                    let user = User.convertFirUserToUser(firUser: firUser!)
-                    User.currentUser = user
                     Logger.instance.log(logLevel: .debug, message: "Successfully logged in to Firebase and set the user")
+                    let user = User.convertFirUserToUser(firUser: firUser!)
                     
-                    MBProgressHUD.hide(for: self.view, animated: true)
-                    self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
+                    // supplement FIRUser with actual facebook data to create the user
+                    _ = FacebookClient.instance.getCurrentUserData(parameters: ["id"], complete: { (_, result: Any?, error: Error?) in
+                        if error != nil {
+                            Logger.instance.log(logLevel: .error, message: (error?.localizedDescription)!)
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            return
+                        }
+                        
+                        let data = result as! NSDictionary
+                        user.facebookId = data["id"] as? String
+                        user.uid = user.facebookId
+                        
+                        // check Firebase User table for this user.
+                        FirebaseClient.instance.getUser(userId: user.uid!, complete: { (snapshot) in
+                            // If they do not exist, create a new one.
+                            let value = snapshot.value as? NSDictionary
+                            if (value == nil) {
+                                FirebaseClient.instance.createUser(user: user, complete: { (_, _) in
+                                    MBProgressHUD.hide(for: self.view, animated: true)
+                                    self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
+                                })
+                            }
+                            else {
+                                // If they do exist update the existing user with the values we received from Facebook
+                                FirebaseClient.instance.updateUser(user: user, fromFacebook: true)
+                                MBProgressHUD.hide(for: self.view, animated: true)
+                                self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
+                            }
+                        }, onError: { (_) in
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                            self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
+                        })
+                        
+                        User.currentUser = user
+                        Logger.instance.log(logLevel: .debug, message: "Successfully logged in to Firebase and set the user")
+                    })
                 })
             }
         }

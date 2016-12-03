@@ -27,13 +27,17 @@ class Constants {
     static let QUESTION_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.questionnavigationviewcontroller"
     static let FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.finalscorenavigationviewcontroller"
     static let ANSWER_TABLE_VIEW_CELL = "com.iostriviagame.answertableviewcell"
+    static let SELECT_FRIENDS_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.selectfriendsnavigationviewcontroller"
     static let SELECT_FRIENDS_VIEW_CONTROLLER = "com.iostriviagame.selectfriendsviewcontroller"
+    static let GAME_OPTIONS_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.gameoptionsnavigationviewcontroller"
     static let GAME_OPTIONS_VIEW_CONTROLLER = "com.iostriviagame.gameoptionsviewcontroller"
     static let COUNTDOWN_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.countdownnavigationviewcontroller"
     static let COUNTDOWN_GAME_VIEW_CONTROLLER = "com.iostriviagame.countdowngameviewcontroller"
     static let RESULT_TABLE_VIEW_CELL = "com.iostriviagame.resulttableviewcell"
     static let FINAL_SCORE_TABLE_VIEW_CELL = "com.iostriviagame.finalscoretableviewcell"
     static let INVITE_TABLE_VIEW_CELL = "com.iostriviagame.invitetableviewcell"
+    static let SELECT_FRIENDS_TABLE_VIEW_CELL = "com.iostriviagame.selectfriendstableviewcell"
+    static let CREATE_GAME_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.creategamenavigationviewcontroller"
     
     static let GAME_START_COUNTDOWN = 30
 }

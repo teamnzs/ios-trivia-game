@@ -54,7 +54,7 @@ class FinalScoreViewController: UIViewController {
                                 
                                 let finalScore = FinalScore(roomId: self.roomId, user: user, score: playerGameScore)
                                 
-                                if (finalScore.user.uid == User.currentUser?.uid) {
+                                if (finalScore.user.uid! == User.currentUser?.uid!) {
                                     self.currentUserFinalScore = finalScore
                                 }
                                 

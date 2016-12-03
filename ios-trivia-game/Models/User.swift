@@ -16,10 +16,13 @@ let userDidLoginNotification = "userDidLoginNotification"
 let userDidLogoutNotification = "userDidLogoutNotification"
 
 class User: NSObject {
+    var nickname: String?
     var name: String?
     var email: String?
     var photoUrl: String?
     var uid: String?
+    var facebookId: String?
+    var firebaseId: String?
     var score: Int?
     var createdAt: String?
     var isActive: Int?
@@ -29,10 +32,12 @@ class User: NSObject {
     class func convertFirUserToUser(firUser user: FIRUser) -> User {
         let url = user.photoURL
         let dictionary = [
+            "nickname": "",
             "name": user.displayName!,
             "email": user.email ?? "",
             "photo_url": url?.absoluteString ?? "",
-            "id": user.uid,
+            "facebook_id": "",
+            "firebase_id": user.uid,
             "score": 0,
             "created_at": String(describing: NSDate()),
             "is_active": 0,
@@ -42,24 +47,37 @@ class User: NSObject {
         return User(dictionary: dictionary)
     }
     
-    class func loginWithFb(fbAccessToken accessToken: String!, completion completionHandler: @escaping (FIRUser?, Error?) -> ()) {
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken!)
-        FIRAuth.auth()?.signIn(with: credential, completion: completionHandler)
-    }
-    
     init(dictionary: NSDictionary?) {
         if let dictionary = dictionary {
-            self.name = dictionary["name"] as? String
-            self.email = dictionary["email"] as? String
-            self.photoUrl = dictionary["photo_url"] as? String
-            self.uid = dictionary["id"] as? String
-            self.score = dictionary["score"] as? Int
-            self.createdAt = dictionary["created_at"] as? String
-            self.isActive = dictionary["is_active"] as? Int
-            self.ranking = dictionary["ranking"] as? String
-            
+            self.nickname = dictionary["nickname"] as? String ?? ""
+            self.name = dictionary["name"] as? String ?? ""
+            self.email = dictionary["email"] as? String ?? ""
+            self.photoUrl = dictionary["photo_url"] as? String ?? ""
+            self.facebookId = dictionary["facebook_id"] as? String ?? ""
+            self.firebaseId = dictionary["firebase_id"] as? String ?? ""
+            self.uid =  self.facebookId //User.getSanitizedEmailForId(email: self.email!)
+            self.score = dictionary["score"] as? Int ?? 0
+            self.createdAt = dictionary["created_at"] as? String ?? String(describing: NSDate())
+            self.isActive = dictionary["is_active"] as? Int ?? 0
+            self.ranking = dictionary["ranking"] as? String ?? "0"
             self.dictionary = dictionary
         }
+    }
+    
+    func getJson() -> [String: AnyObject] {
+        return [
+            "nickname": self.nickname as AnyObject,
+            "name": self.name as AnyObject,
+            "email": self.email as AnyObject,
+            "photoUrl": self.photoUrl as AnyObject,
+            "facebook_id": self.facebookId as AnyObject,
+            "firebase_id": self.firebaseId as AnyObject,
+            "score": self.score as AnyObject,
+            "created_at": self.createdAt as AnyObject,
+            "is_active": self.isActive as AnyObject,
+            "ranking": self.ranking as AnyObject,
+            "uid": self.uid as AnyObject
+        ]
     }
     
     func logout() {
@@ -72,8 +90,13 @@ class User: NSObject {
         }
     }
     
-    func getJson() -> [String: AnyObject] {
-        return ["name": self.name as AnyObject, "email": self.email as AnyObject, "photoUrl": self.photoUrl as AnyObject, "uid": self.uid as AnyObject]
+    class func loginWithFb(fbAccessToken accessToken: String!, completion completionHandler: @escaping (FIRUser?, Error?) -> ()) {
+        let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken!)
+        FIRAuth.auth()?.signIn(with: credential, completion: completionHandler)
+    }
+    
+    static fileprivate func getSanitizedEmailForId(email: String) -> String {
+        return email.replacingOccurrences(of: ".", with: "_")
     }
     
     class var currentUser: User? {
