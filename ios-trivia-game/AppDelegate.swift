@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import FacebookCore
-import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

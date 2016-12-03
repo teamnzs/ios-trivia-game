@@ -16,6 +16,17 @@ class FirebaseClient {
     
     private init() {}
     
+    // creates a user in the user table
+    func createUser(user: User, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let path = "\(Constants.USER_TABLE_NAME)/\(user.uid!)"
+        let newUser = ref.child(path)
+        newUser.setValue(user.getJson(), withCompletionBlock: { (error, ref) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: createUser \(path)")
+            Logger.instance.log(message: user.getJson())
+            complete(error, ref)
+        })
+    }
+    
     // gets a user from the user table given a userId
     func getUser(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.USER_TABLE_NAME)/\(userId)"
@@ -29,6 +40,59 @@ class FirebaseClient {
                 onError!(error)
             }
         }
+    }
+    
+    // updates a user
+    func updateUser(user: User, fromFacebook: Bool) {
+        let path = "\(Constants.USER_TABLE_NAME)/\(user.uid)"
+        ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
+            let value = data.value as? NSDictionary
+            
+            if (value == nil) {
+                return FIRTransactionResult.abort()
+            }
+            
+            let userDb = User(dictionary: value)
+            
+            if (userDb.name != user.name) {
+                userDb.name = user.name
+            }
+            
+            if (userDb.photoUrl != user.photoUrl) {
+                userDb.photoUrl = user.photoUrl
+            }
+            
+            if (userDb.facebookId != user.facebookId) {
+                userDb.facebookId = user.facebookId
+            }
+            
+            if (userDb.email != user.email) {
+                userDb.email = user.email
+            }
+            
+            // Note: all other fields are from our game system so it doesn't require an update from
+            if (!fromFacebook) {
+                if (userDb.isActive != user.isActive) {
+                    userDb.isActive = user.isActive
+                }
+                
+                if (userDb.nickname != user.nickname) {
+                    userDb.nickname = user.nickname
+                }
+                
+                if (userDb.ranking != user.ranking) {
+                    userDb.ranking = user.ranking
+                }
+                
+                if (userDb.score != user.score) {
+                    userDb.score = user.score
+                }
+            }
+            
+            data.value = userDb.getJson()
+            return FIRTransactionResult.success(withValue: data)
+        }
+
     }
     
     // get users in a game
@@ -313,5 +377,12 @@ class FirebaseClient {
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all invites for userId: \(userId), Error: \(error.localizedDescription)")
         }
+    }
+    
+    // creates invite
+    func createInviteFor(invite: Invite, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let path = "\(Constants.INVITE_TABLE_NAME)"
+        let newInvite = ref.child(path).childByAutoId()
+        newInvite.setValue(invite.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
     }
 }

@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
         self.profileImageView.setImageWith(URL(string: self.user.photoUrl!)!)
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
         
-        self.nicknameLabel.text = "somenickname"
+        self.nicknameLabel.text = self.user.nickname!
         self.nameLabel.text = self.user.name!
         self.emailLabel.text = self.user.email!
     }

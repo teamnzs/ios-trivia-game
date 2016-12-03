@@ -96,9 +96,28 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // prepare for segue
-        print ("Selected \(indexPath.row)")
-        print ("Segue should happen here, perhaps ask the user if he really wants to join?")
+        let selectedGameRoom = self.roomsToShow![indexPath.row]
+        
+        // Access the image or the cell at this index path
+        FirebaseClient.instance.joinGame(roomId: selectedGameRoom.id, complete: { (remainingCountdownTime) in
+            
+            // transition to countdown
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
+            let countdownNavigationController = destination as! UINavigationController
+            let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
+            
+            countdownGameViewController.timerCount = remainingCountdownTime
+            countdownGameViewController.roomId = selectedGameRoom.id!
+            
+            self.present(destination, animated: true, completion: nil)
+        }, fail: {
+            // do not transition, throw up a popup
+            let alertController = UIAlertController(title: "Warning", message:
+                "Unable to join this game. Please try another.", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        })
     }
 }
 

@@ -28,6 +28,8 @@ class GameOptionsViewController: UIViewController {
     let PICKER_TAG_FOR_CATEGORY = 1;
     let PICKER_TAG_FOR_NUM_OF_QUESTIONS = 2;
     
+    internal let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -72,8 +74,11 @@ class GameOptionsViewController: UIViewController {
     }
     
     @IBAction func onBackClicked(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        _ = self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController!.popViewController(animated: true)
+        let selectFriendsViewController = self.navigationController!.topViewController as! SelectFriendsViewController
+        selectFriendsViewController.numOfPlayers = self.numOfPlayers
+        selectFriendsViewController.isPublic = self.isPublic
+        selectFriendsViewController.nameOfGameroom = self.nameOfGameroom
     }
 
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
@@ -84,24 +89,27 @@ class GameOptionsViewController: UIViewController {
             let roomId = ref.key
             
             // Go to CountdownGameViewController
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
+            let destination = self.mainStoryboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
             let countdownNavigationController = destination as! UINavigationController
             let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
             countdownGameViewController.roomId = roomId
             self.present(destination, animated: true, completion: nil)
         })
+        
+        // create invites in the invite table
+        let hostId = (User.currentUser?.uid)!
+        for friendId in self.selectedFriends {
+            if Float(friendId) != nil {
+                // numeric friend ids mean that the user is registered. Create an invite
+                let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
+                FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
+                    Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
+                })
+            }
+            
+            // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
+        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
