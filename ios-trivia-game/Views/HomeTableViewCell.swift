@@ -12,7 +12,7 @@ class HomeTableViewCell: UITableViewCell {
     
     var gameRoomInfo: GameRoom! {
         didSet {
-            self.gameTitle.text = gameRoomInfo.name
+            self.gameTitle.text = gameRoomInfo.name.uppercased()
             let curQuestion = gameRoomInfo.current_question 
             let maxQuestions = gameRoomInfo.max_num_of_questions
             let questionsAsked = max(0, curQuestion! - 1)
