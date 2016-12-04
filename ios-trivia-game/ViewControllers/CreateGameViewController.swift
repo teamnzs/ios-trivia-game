@@ -26,6 +26,7 @@ class CreateGameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        isPublicSwitch.onTintColor = UIColor(hexString: Constants.TRIVIA_BLUE)
         setupPickerData()
     }
 

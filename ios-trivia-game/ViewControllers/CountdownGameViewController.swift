@@ -27,7 +27,8 @@ class CountdownGameViewController: UIViewController {
         
         FirebaseClient.instance.updatePlayerCount(roomId: roomId!, change: 1)
         
-        clickToJoin.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
+        clickToJoin.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
+        clickToJoin.tintColor = UIColor.white
         cancelButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
     }
 

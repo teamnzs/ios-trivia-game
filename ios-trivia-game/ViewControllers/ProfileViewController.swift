@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var editPhotoButton: UIButton!
     
     fileprivate var user: User!
     
@@ -52,6 +53,7 @@ class ProfileViewController: UIViewController {
         self.nicknameLabel.text = self.user.nickname!
         self.nameLabel.text = self.user.name!
         self.emailLabel.text = self.user.email!
+        editPhotoButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
     }
 
     override func didReceiveMemoryWarning() {
