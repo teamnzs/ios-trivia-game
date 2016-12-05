@@ -90,7 +90,7 @@ class AnswerViewController: UIViewController {
     @IBAction func onQuitFromAnswer(_ sender: UIBarButtonItem) {
         // update user_in_game to remove player from user_in_game
         countdownTimer.invalidate()
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId!)
     }
     
     @IBAction func onSubmit(_ sender: UIButton) {

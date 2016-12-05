@@ -105,7 +105,7 @@ class FinalScoreViewController: UIViewController {
         }
         
         // quit game
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId)
     }
 }
 

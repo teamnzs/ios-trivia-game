@@ -10,7 +10,28 @@ import Foundation
 import UIKit
 
 class Utilities {
-    static func quitGame(controller: UIViewController) {
+    static func quitGame(controller: UIViewController, roomId: String?, hasJoined: Bool = true) {
+        
+        if (roomId != nil && hasJoined) {
+            
+            FirebaseClient.instance.getGameBy(roomId: roomId!, complete: { (snapshot) in
+                if let data = snapshot.value as? NSDictionary {
+                    if data.count > 0 {
+                        let gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
+                        
+                        // decrement player count
+                        if (gameRoom.current_num_players > 0) {
+                            FirebaseClient.instance.updatePlayerCount(roomId: roomId!, change: -1)
+                        }
+                        else {
+                            // remove game if no one is in game
+                            FirebaseClient.instance.removeGame(roomId: roomId!, complete: { }, onError: { (error) in })
+                        }
+                    }
+                }
+            }, onError: { (_) in })
+        }
+        
         FirebaseClient.instance.quitGame(complete: {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destination = storyboard.instantiateViewController(withIdentifier: Constants.MAIN_TAB_VIEW_CONTROLLER) as! MainTabViewController

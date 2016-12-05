@@ -88,6 +88,23 @@ class GameOptionsViewController: UIViewController {
         FirebaseClient.instance.createGame(gameRoom: newGame.getJson() as NSDictionary, complete: {_, ref in
             let roomId = ref.key
             
+            // join the game
+            FirebaseClient.instance.joinGame(roomId: roomId, complete: { (_) in }, fail: { })
+            
+            // create invites in the invite table
+            let hostId = (User.currentUser?.uid)!
+            for friendId in self.selectedFriends {
+                if Float(friendId) != nil {
+                    // numeric friend ids mean that the user is registered. Create an invite
+                    let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
+                    FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
+                        Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
+                    })
+                }
+                
+                // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
+            }
+            
             // Go to CountdownGameViewController
             let destination = self.mainStoryboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
             let countdownNavigationController = destination as! UINavigationController
@@ -95,20 +112,6 @@ class GameOptionsViewController: UIViewController {
             countdownGameViewController.roomId = roomId
             self.present(destination, animated: true, completion: nil)
         })
-        
-        // create invites in the invite table
-        let hostId = (User.currentUser?.uid)!
-        for friendId in self.selectedFriends {
-            if Float(friendId) != nil {
-                // numeric friend ids mean that the user is registered. Create an invite
-                let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
-                FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
-                    Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
-                })
-            }
-            
-            // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
-        }
     }
 }
 

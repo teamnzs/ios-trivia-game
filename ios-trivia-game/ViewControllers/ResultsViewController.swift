@@ -78,7 +78,7 @@ class ResultsViewController: UIViewController {
     // update user_in_game to remove player from user_in_game
     @IBAction func onQuitFromResults(_ sender: UIBarButtonItem) {
         countdownTimer.invalidate()
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId!)
     }
     
     @objc fileprivate func updateCounter() {

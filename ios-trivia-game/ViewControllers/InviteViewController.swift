@@ -65,13 +65,32 @@ class InviteViewController: UIViewController {
         FirebaseClient.instance.getInvitesFor(userId: (User.currentUser?.uid)!, complete: { (snapshot) in
             if let data = snapshot.value as? NSDictionary {
                 
-                for (_, value) in data {
-                    let invite = Invite(dictionary: value as! NSDictionary)
-                    self.invites.append(invite)
+                for (key, value) in data {
+                    let invite = Invite(id: key as! String, dictionary: value as! NSDictionary)
+                    
+                    FirebaseClient.instance.getGameBy(roomId: invite.roomId!, complete: { (snapshot) in
+                        if let data = snapshot.value as? NSDictionary {
+                            if data.count > 0 {
+                                let gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
+                                
+                                // only display invites that are not expired
+                                let timeIntervalSinceGameCreation = Date().timeIntervalSince(gameRoom.created_time)
+                                if (timeIntervalSinceGameCreation > 0 && timeIntervalSinceGameCreation <= Double(Constants.GAME_START_COUNTDOWN)) {
+                                    self.invites.append(invite)
+                                    
+                                    self.inviteTableView.reloadData()
+                                }
+                                else {
+                                    // delete the invite since it's expired
+                                    FirebaseClient.instance.removeInvite(inviteId: invite.roomId!, complete: {
+                                    }, onError: { (_) in })
+                                }
+                            }
+                        }
+                    }, onError: { (_) in })
                 }
             }
             
-            self.inviteTableView.reloadData()
             self.refreshControl.endRefreshing()
         }, onError: { (error) in })
     }
@@ -93,6 +112,8 @@ extension InviteViewController : UITableViewDelegate, UITableViewDataSource {
         
         // Access the image or the cell at this index path
         FirebaseClient.instance.joinGame(roomId: selectedInvite.roomId!, complete: { (remainingCountdownTime) in
+            
+            FirebaseClient.instance.removeInvite(inviteId: selectedInvite.id!, complete: { }, onError: { (_) in })
             
             // transition to countdown
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

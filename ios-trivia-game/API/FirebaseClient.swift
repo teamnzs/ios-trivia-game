@@ -315,13 +315,15 @@ class FirebaseClient {
         let newAnswer = ref.child(path).childByAutoId()
         answer.timestamp = String(describing: NSDate())
         newAnswer.setValue(answer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
+        Logger.instance.log(logLevel: .info, message: "FirebaseClient: Creating \(path)/\(newAnswer.key)")
     }
     
     // Creates a game
     func createGame(gameRoom: NSDictionary, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
-        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
-        let newGameRoom = ref.child(path).childByAutoId()
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(gameRoom["id"]!)"
+        let newGameRoom = ref.child(path)
         newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
+         Logger.instance.log(logLevel: .info, message: "FirebaseClient: Creating \(path)")
     }
     
     // Creates AutoId for GameRoom
@@ -341,7 +343,7 @@ class FirebaseClient {
                     
                     // check if we can add a player and whether the countdown isn't done yet
                     let remainingCountdownTime = Date().timeIntervalSince(gameRoom.created_time)
-                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime < Double(Constants.GAME_START_COUNTDOWN)) {
+                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime <= Double(Constants.GAME_START_COUNTDOWN)) {
                         
                         // update the user in game table
                         let currentUserId = User.currentUser?.uid!
@@ -383,6 +385,29 @@ class FirebaseClient {
     func createInviteFor(invite: Invite, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let path = "\(Constants.INVITE_TABLE_NAME)"
         let newInvite = ref.child(path).childByAutoId()
+        invite.id = newInvite.key
         newInvite.setValue(invite.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
+    }
+    
+    // removes invite
+    func removeInvite(inviteId: String, complete: (() -> ())?, onError: ((Error?) -> ())?) {
+        let path = "\(Constants.INVITE_TABLE_NAME)/\(inviteId)"
+        ref.child(path).removeValue { (error, ref) in
+            if (error != nil) {
+                Logger.instance.log(logLevel: .error, message: "FirebaseClient, Failed to remove: \(path), Error: \(error.debugDescription)")
+                
+                if (onError != nil) {
+                    onError!(error)
+                }
+            }
+            else {
+                Logger.instance.log(logLevel: .info, message: "FirebaseClient, Removing: \(path)")
+                
+                if (complete != nil) {
+                    complete!()
+                }
+            }
+        }
+
     }
 }

@@ -38,8 +38,10 @@ class Constants {
     static let INVITE_TABLE_VIEW_CELL = "com.iostriviagame.invitetableviewcell"
     static let SELECT_FRIENDS_TABLE_VIEW_CELL = "com.iostriviagame.selectfriendstableviewcell"
     static let CREATE_GAME_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.creategamenavigationviewcontroller"
+    static let HOME_TABLE_VIEW_CELL = "com.iostriviagame.hometableviewcell"
     
     static let GAME_START_COUNTDOWN = 30
+    static let REFRESH_GAME_ROOM_INTERVAL = 86400
     
     // Color Themes
     static let TRIVIA_RED = "#fffc4349"

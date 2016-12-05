@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
         FirebaseClient.instance.getGameRooms(complete: { (dictionary) in
             for (roomId, roomInfo) in dictionary {
                 let gameRoom = GameRoom(dictionary: roomInfo as! NSDictionary)
-                if gameRoom.state != GameRoom.State.end {
+                if gameRoom.state != GameRoom.State.end && Date().timeIntervalSince(gameRoom.created_time) <= Double(Constants.REFRESH_GAME_ROOM_INTERVAL){
                     self.gameRooms?.append(gameRoom)
                 }
                 Logger.instance.log(logLevel: .info, message: "RoomId: \(roomId) \(gameRoom.getJson())")
@@ -89,7 +89,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "com.iostriviagame.hometableviewcell", for: indexPath) as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.HOME_TABLE_VIEW_CELL, for: indexPath) as! HomeTableViewCell
         cell.gameRoomInfo = self.roomsToShow?[indexPath.row]
         return cell
         
@@ -98,8 +98,21 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedGameRoom = self.roomsToShow![indexPath.row]
         
-        // Access the image or the cell at this index path
         FirebaseClient.instance.joinGame(roomId: selectedGameRoom.id, complete: { (remainingCountdownTime) in
+            
+            // remove any invite that was assigned to this room
+            FirebaseClient.instance.getInvitesFor(userId: (User.currentUser?.uid!)!, complete: { (snapshot) in
+                if let data = snapshot.value as? NSDictionary {
+                    
+                    for (key, value) in data {
+                        let invite = Invite(id: key as! String, dictionary: value as! NSDictionary)
+                        
+                        if (invite.roomId == selectedGameRoom.id) {
+                            FirebaseClient.instance.removeInvite(inviteId: invite.roomId!, complete: { }, onError: { (_) in })
+                        }
+                    }
+                }
+            }, onError: { (_) in })
             
             // transition to countdown
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

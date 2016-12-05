@@ -46,21 +46,21 @@ class CountdownGameViewController: UIViewController {
         }
         else {
             self.countdownTimer.invalidate()
-            Utilities.quitGame(controller: self)
+            Utilities.quitGame(controller: self, roomId: roomId!, hasJoined: false)
         }
     }
     
     @IBAction func onCancelJoin(_ sender: UIButton) {
         self.countdownTimer.invalidate()
         
-        FirebaseClient.instance.updatePlayerCount(roomId: roomId!, change: -1)
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId!, hasJoined: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nav = segue.destination as? UINavigationController
         
         if let questionViewController = nav?.topViewController as? QuestionViewController {
+            self.countdownTimer.invalidate()
             questionViewController.roomId = self.roomId
         }
     }
