@@ -31,7 +31,7 @@ class ResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print ("Results VC room ID: \(roomId)")
         self.resultsTableView.delegate = self
         self.resultsTableView.dataSource = self
         self.resultsTableView.estimatedRowHeight = 100
@@ -45,12 +45,15 @@ class ResultsViewController: UIViewController {
         // populating the gameRoom Object
         FirebaseClient.instance.getGameBy(roomId: roomId!, complete: { (snapshot) in
             if let data = snapshot.value as? NSDictionary {
-                self.gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
+                self.gameRoom = GameRoom(dictionary: data)
                 
                 self.resultsTitleLabel.text = "Results: Round \(self.gameRoom!.current_question!) of \(self.gameRoom!.max_num_of_questions)"
                 
-                if (self.gameRoom?.current_question == self.gameRoom?.max_num_of_questions) {
-                    self.nextQuestionButton.isHidden = true
+                let curQues = self.gameRoom?.current_question
+                let maxQuestions = self.gameRoom?.max_num_of_questions
+                if (curQues! >= maxQuestions!) {
+                    // needs to be completed
+                    //self.nextQuestionButton.isHidden = true
                 }
             }
         }) { (error) in
@@ -94,11 +97,14 @@ class ResultsViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let destinationIdentifier: String
             let destination: UIViewController
-            if (self.gameRoom?.current_question == self.gameRoom?.max_num_of_questions) {
+            let curQuestion = self.gameRoom?.current_question
+            let maxQuestions = self.gameRoom?.max_num_of_questions
+            if ( curQuestion! >= maxQuestions!) {
                 destinationIdentifier = Constants.FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER
                 destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
                 let finalScoreNavigationController = destination as! UINavigationController
                 let finalScoreViewController = finalScoreNavigationController.topViewController as! FinalScoreViewController
+                print("Moving to final score with room ID \(self.roomId)")
                 finalScoreViewController.roomId = self.roomId
             }
             else {

@@ -15,6 +15,7 @@ class GameOptionsViewController: UIViewController {
     
     // API Data
     var numOfPlayers: Int?
+    var category: Int?
     var isPublic: Bool?
     var selectedFriends = Set<String>()
     var nameOfGameroom: String?
@@ -22,6 +23,7 @@ class GameOptionsViewController: UIViewController {
     // UI Data
     var categoryPickerData: [String] = [String]()
     var numOfQuestionsPickerData: [String] = [String]()
+    var categoryPickerNum: [Int] = [Int]()
     
     var numOfQuestions: Int?
     
@@ -38,15 +40,19 @@ class GameOptionsViewController: UIViewController {
     }
     
     func getCategories() {
-        JServiceClient.instance.categories(count: 10, offset: 10, success: {(result: Any?) in
-            let triviaCategories = self.convertWithArray(dictionaries: result as! [NSDictionary])
-            for category in triviaCategories {
-                self.categoryPickerData.append(category.title!)
+        FirebaseClient.instance.getCategories(complete: {(snapshot) in
+            let value = snapshot.value
+            if let categories = value as? NSDictionary {
+                let triviaCategories = self.convertWithArray(dictionaries: categories.allValues as! [NSDictionary])
+                for category in triviaCategories {
+                    print("Category: \(category.getJson())")
+                    self.categoryPickerData.append(category.title!)
+                    self.categoryPickerNum.append(category.id!)
+                }
+                self.setupPickerData()
             }
-            self.setupPickerData()
-            }, failure: { (error: Error?) in
-                    print("Error: \(error?.localizedDescription)")
-            })
+        }, onError: {(error) in
+        })
     }
     
     func convertWithArray(dictionaries: [NSDictionary]) -> [TriviaCategory] {
@@ -83,32 +89,39 @@ class GameOptionsViewController: UIViewController {
 
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
-        let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 0, maxNumPlayers: self.numOfPlayers, state: GameRoom.State.idle, isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions)
-
-        FirebaseClient.instance.createGame(gameRoom: newGame.getJson() as NSDictionary, complete: {_, ref in
-            let roomId = ref.key
+        FirebaseClient.instance.getRandomQuestions(categoryId: category!, maxNumOfQuestions: numOfQuestions!, complete: {(questionList) in
+            let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 1, maxNumPlayers: self.numOfPlayers, state: GameRoom.State(rawValue: 0), isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions, questions: questionList, category: self.category)
             
-            // Go to CountdownGameViewController
-            let destination = self.mainStoryboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
-            let countdownNavigationController = destination as! UINavigationController
-            let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
-            countdownGameViewController.roomId = roomId
-            self.present(destination, animated: true, completion: nil)
+            FirebaseClient.instance.createGame(gameRoom: newGame.getJson() as NSDictionary, complete: {_, ref in
+                let roomId = ref.key
+                
+                print("Created game room with roomID: \(roomId)")
+                // Go to CountdownGameViewController
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
+                let countdownNavigationController = destination as! UINavigationController
+                let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
+                countdownGameViewController.roomId = roomId
+                
+                // create invites in the invite table
+                let hostId = (User.currentUser?.uid)!
+                for friendId in self.selectedFriends {
+                    if Float(friendId) != nil {
+                        // numeric friend ids mean that the user is registered. Create an invite
+                        let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
+                        FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
+                            Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
+                        })
+                    }
+                    
+                    // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
+                }
+                
+                self.present(destination, animated: true, completion: nil)
+            })
+        }, onError: {(error) in
+            Logger.instance.log(logLevel: .error, message: "Found an error while trying to start game \(error?.localizedDescription)")
         })
-        
-        // create invites in the invite table
-        let hostId = (User.currentUser?.uid)!
-        for friendId in self.selectedFriends {
-            if Float(friendId) != nil {
-                // numeric friend ids mean that the user is registered. Create an invite
-                let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
-                FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
-                    Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
-                })
-            }
-            
-            // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
-        }
     }
 }
 
@@ -127,6 +140,16 @@ extension GameOptionsViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             return numOfQuestionsPickerData.count
         } else {
             return 0
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == PICKER_TAG_FOR_CATEGORY {
+            print ("Category picker \(categoryPickerNum)")
+            print ("Row \(row)")
+            category = self.categoryPickerNum[row]
+        } else if pickerView.tag == PICKER_TAG_FOR_NUM_OF_QUESTIONS {
+            numOfQuestions = row + 1
         }
     }
     
