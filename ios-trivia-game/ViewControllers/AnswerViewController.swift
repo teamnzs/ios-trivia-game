@@ -13,6 +13,8 @@ class AnswerViewController: UIViewController {
     @IBOutlet weak var timerButton: UIBarButtonItem!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTableView: UITableView!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var lastQuestionButton: UIButton!
     
     var question: TriviaQuestion?
     var roomId: String?
@@ -25,6 +27,8 @@ class AnswerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        submitButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
+        lastQuestionButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
         questionLabel.text = question?.question
         
         answerTableView.delegate = self

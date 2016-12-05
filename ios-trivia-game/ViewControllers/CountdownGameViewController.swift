@@ -11,6 +11,8 @@ import UIKit
 class CountdownGameViewController: UIViewController {
 
     @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var clickToJoin: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     var roomId: String?
     var timerCount: Int? = Constants.GAME_START_COUNTDOWN
@@ -24,6 +26,10 @@ class CountdownGameViewController: UIViewController {
         self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         
         FirebaseClient.instance.updatePlayerCount(roomId: roomId!, change: 1)
+        
+        clickToJoin.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
+        clickToJoin.tintColor = UIColor.white
+        cancelButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
     }
 
     override func didReceiveMemoryWarning() {

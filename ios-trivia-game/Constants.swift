@@ -40,5 +40,11 @@ class Constants {
     static let CREATE_GAME_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.creategamenavigationviewcontroller"
     
     static let GAME_START_COUNTDOWN = 30
+    
+    // Color Themes
+    static let TRIVIA_RED = "#fffc4349"
+    static let TRIVIA_NAVY = "#ff2c3e50"
+    static let TRIVIA_GRAY = "#ffd7dadb"
+    static let TRIVIA_BLUE = "#ff6dbcdb"
 }
 

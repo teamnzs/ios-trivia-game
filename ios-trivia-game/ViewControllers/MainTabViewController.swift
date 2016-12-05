@@ -15,6 +15,9 @@ class MainTabViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:.normal)
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.blue], for:.selected)
     }
 
     override func didReceiveMemoryWarning() {

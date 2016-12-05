@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         
+        UINavigationBar.appearance().barTintColor = UIColor(hexString: Constants.TRIVIA_NAVY)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.userDidLogout), name: NSNotification.Name(rawValue: userDidLogoutNotification), object: nil)
         
         if User.currentUser != nil {

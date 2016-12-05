@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
     
     func initFBLogin() {
         let myLoginButton = UIButton(type: .custom)
-        myLoginButton.backgroundColor = UIColor.darkGray
+        myLoginButton.backgroundColor = UIColor(hexString: Constants.TRIVIA_BLUE)
         myLoginButton.frame = CGRect(x: 0, y: 0, width: 180, height: 40);
         myLoginButton.center = view.center;
         myLoginButton.setTitle("My Login Button", for: .normal)
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
             case .success(_, _, let accessToken):
                 print("Logged in!")
                 animation?.animationType = .zoomIn
-                animation?.activityIndicatorColor = UIColor.black
+                animation?.activityIndicatorColor = UIColor(hexString: Constants.TRIVIA_NAVY)
                 animation?.dimBackground = true
                 animation?.color = UIColor.white
                 animation?.labelText = "Prepare your thinking hats..."

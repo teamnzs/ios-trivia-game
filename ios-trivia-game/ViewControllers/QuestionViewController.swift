@@ -13,10 +13,14 @@ class QuestionViewController: UIViewController {
     var roomId: String?
     var question: TriviaQuestion?
     
+    @IBOutlet weak var submitButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        submitButton.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
+        submitButton.tintColor = UIColor.white
         
         // @Nari or @Zhia: Feel free to remove the hardcoded values when you get to this
         let questionId = 1944

@@ -35,6 +35,7 @@ class SelectFriendsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        onSwitch.onTintColor = UIColor(hexString: Constants.TRIVIA_BLUE)
         onSwitch.addTarget(self, action: #selector(SelectFriendsTableViewCell.onSwitchChanged), for: UIControlEvents.valueChanged)
     }
 
