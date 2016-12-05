@@ -343,7 +343,8 @@ class FirebaseClient {
                     
                     // check if we can add a player and whether the countdown isn't done yet
                     let remainingCountdownTime = Date().timeIntervalSince(gameRoom.created_time)
-                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime <= Double(Constants.GAME_START_COUNTDOWN)) {
+                    if (gameRoom.current_num_players < gameRoom.max_num_of_people &&
+                        remainingCountdownTime > 0 && remainingCountdownTime <= Double(Constants.GAME_START_COUNTDOWN)) {
                         
                         // update the user in game table
                         let currentUserId = User.currentUser?.uid!
