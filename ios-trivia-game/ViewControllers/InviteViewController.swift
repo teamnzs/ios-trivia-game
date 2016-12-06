@@ -39,6 +39,8 @@ class InviteViewController: UIViewController {
             self.invitesLabel.center.x -= self.view.bounds.width
             self.invitesLabel.layoutIfNeeded()
         })
+        
+        refreshInvites()
     }
     
     override func viewDidLoad() {
@@ -48,8 +50,6 @@ class InviteViewController: UIViewController {
         self.inviteTableView.dataSource = self
         self.inviteTableView.estimatedRowHeight = 100
         self.inviteTableView.rowHeight = UITableViewAutomaticDimension
-        
-        refreshInvites()
         
         self.inviteTableView.addSubview(self.refreshControl)
     }
