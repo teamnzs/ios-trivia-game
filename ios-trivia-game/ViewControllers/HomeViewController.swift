@@ -35,8 +35,10 @@ class HomeViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
-        
-        loadNewRooms()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadGameRooms(refresh: true)
     }
     
     func setupTableview() {
@@ -56,12 +58,8 @@ class HomeViewController: UIViewController {
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        loadNewRooms()
-        refreshControl.endRefreshing()
-    }
-    
-    func loadNewRooms() {
         loadGameRooms(refresh: true)
+        refreshControl.endRefreshing()
     }
   
     func loadGameRooms(refresh:Bool = false) {
