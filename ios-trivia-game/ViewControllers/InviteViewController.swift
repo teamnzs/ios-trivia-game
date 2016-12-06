@@ -71,7 +71,7 @@ class InviteViewController: UIViewController {
                     FirebaseClient.instance.getGameBy(roomId: invite.roomId!, complete: { (snapshot) in
                         if let data = snapshot.value as? NSDictionary {
                             if data.count > 0 {
-                                let gameRoom = GameRoom(dictionary: data as! NSDictionary)
+                                let gameRoom = GameRoom(dictionary: data)
                                 
                                 // only display invites that are not expired
                                 let timeIntervalSinceGameCreation = Date().timeIntervalSince(gameRoom.created_time)
