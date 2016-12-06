@@ -98,7 +98,7 @@ class FirebaseClient {
     // get users in a game
     func getUsersInGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.USER_IN_GAME_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
             complete(snapshot)
         }) { (error) in
