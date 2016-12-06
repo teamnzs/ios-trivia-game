@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="456-WN-gao">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -31,6 +31,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1079.2" y="137.18140929535232"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="JgF-uq-2jY">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.splashviewcontroller" id="456-WN-gao" customClass="SplashViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2rx-H9-CgU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fv2-zx-dAg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dbI-9K-579">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImage" translatesAutoresizingMaskIntoConstraints="NO" id="KOy-CV-PiC">
+                                <rect key="frame" x="112" y="258" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="J35-pX-23F"/>
+                                    <constraint firstAttribute="height" constant="150" id="VpD-Lq-fiA"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KOy-CV-PiC" firstAttribute="centerX" secondItem="dbI-9K-579" secondAttribute="centerX" id="AyJ-rj-iEP"/>
+                            <constraint firstItem="KOy-CV-PiC" firstAttribute="centerY" secondItem="dbI-9K-579" secondAttribute="centerY" id="L1W-jm-cVa"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsw-Tf-j1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="134.48275862068968"/>
         </scene>
         <!--Invites-->
         <scene sceneID="w6z-rM-C1D">
@@ -71,7 +102,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="343" height="96"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yn7-Rh-Idb" id="pDa-cC-pmp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="96"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="310" height="95"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTB-Zd-09i">
@@ -177,7 +208,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iv5-fc-19D">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kgp-wu-ZpO">
                                         <rect key="frame" x="123" y="25" width="128" height="128"/>
@@ -267,25 +298,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select maximum number of players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R11-RS-eHZ">
-                                <rect key="frame" x="53" y="45" width="269" height="21"/>
+                                <rect key="frame" x="53" y="89" width="269" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luo-XG-UzD">
-                                <rect key="frame" x="0.0" y="98" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="142" width="375" height="216"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Is public game?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kge-Pn-TYS">
-                                <rect key="frame" x="43" y="337" width="119" height="21"/>
+                                <rect key="frame" x="43" y="381" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="huB-A3-iCO">
-                                <rect key="frame" x="284" y="332" width="51" height="31"/>
+                                <rect key="frame" x="284" y="376" width="51" height="31"/>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of the game room" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL6-jH-ZgT">
-                                <rect key="frame" x="16" y="403" width="343" height="30"/>
+                                <rect key="frame" x="16" y="447" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -357,7 +388,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Sz-xb-sx7" id="5e0-Q8-5WS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCF-2C-FYl">
@@ -601,7 +632,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UpN-wj-CWf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xzj-M9-BFF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xzj-M9-BFF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -641,7 +672,7 @@
                     <tabBarItem key="tabBarItem" title="Create" id="3PX-mo-79e"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PfN-jp-rFR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="PfN-jp-rFR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -767,7 +798,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUh-fW-Bmr" id="r3R-zq-vxP">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="102"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-Tc-GgM">
@@ -885,7 +916,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7y-rf-jUI" id="tMU-0V-Ruk">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-AY-R6c">
@@ -971,7 +1002,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZu-Nk-Kd0" id="3wO-7d-PgA">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="137"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="136"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME TITLE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n96-rY-Pc3">
@@ -1045,7 +1076,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFV-wb-q5N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1063,7 +1094,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.selectfriendsnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5bb-5X-bDg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcG-GP-j2w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dcG-GP-j2w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1081,7 +1112,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.gameoptionsnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RHu-CO-bv6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dFq-ex-OQM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dFq-ex-OQM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1099,7 +1130,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.countdownnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzo-UG-g8U" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pu8-hs-FhN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pu8-hs-FhN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1117,7 +1148,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.questionnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1135,7 +1166,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1153,7 +1184,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1198,7 +1229,7 @@
                                         <rect key="frame" x="0.0" y="28" width="311" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PHZ-fT-MIe" id="FtN-hM-u1W">
-                                            <rect key="frame" x="0.0" y="0.0" width="311" height="61"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="player" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utv-Cy-l1S">
@@ -1274,7 +1305,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1288,6 +1319,9 @@
             <point key="canvasLocation" x="7329" y="2649"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SplashImage" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1Mc-Ha-1gq"/>
     </inferredMetricsTieBreakers>
