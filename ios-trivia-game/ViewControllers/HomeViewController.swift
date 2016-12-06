@@ -35,6 +35,7 @@ class HomeViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+        loadGameRooms(refresh: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

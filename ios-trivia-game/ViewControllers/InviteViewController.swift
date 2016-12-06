@@ -52,6 +52,7 @@ class InviteViewController: UIViewController {
         self.inviteTableView.rowHeight = UITableViewAutomaticDimension
         
         self.inviteTableView.addSubview(self.refreshControl)
+        refreshInvites()
     }
 
     override func didReceiveMemoryWarning() {

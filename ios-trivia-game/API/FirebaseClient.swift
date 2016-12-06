@@ -117,7 +117,6 @@ class FirebaseClient {
         ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
             if let currentScore = data.value as? Int {
                 data.value = currentScore + addValue
-                return FIRTransactionResult.success(withValue: data)
             }
             return FIRTransactionResult.success(withValue: data)
         }
@@ -129,7 +128,6 @@ class FirebaseClient {
         self.ref.child(gamePath).runTransactionBlock { (data: FIRMutableData) -> FIRTransactionResult in
             if let currentNumPlayers = data.value as? Int {
                 data.value = currentNumPlayers + change
-                return FIRTransactionResult.success(withValue: data)
             }
             return FIRTransactionResult.success(withValue: data)
         }
@@ -140,7 +138,6 @@ class FirebaseClient {
         ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
             if let curVal = data.value as? Int {
                 data.value = curVal + 1
-                return FIRTransactionResult.success(withValue: data)
             }
             return FIRTransactionResult.success(withValue: data)
         }
@@ -371,7 +368,7 @@ class FirebaseClient {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(gameRoom["id"]!)"
         let newGameRoom = ref.child(path)
         newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
-         Logger.instance.log(logLevel: .info, message: "FirebaseClient: Creating \(path)")
+        Logger.instance.log(logLevel: .info, message: "FirebaseClient: Creating \(path)")
     }
     
     // Creates AutoId for GameRoom
@@ -460,7 +457,7 @@ class FirebaseClient {
     // gets invites for a user
     func getInvitesFor(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.INVITE_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "guest_id").queryEqual(toValue: userId).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "guest_id").queryEqual(toValue: userId).observe(.value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all invites for userId: \(userId)")
 
             complete(snapshot)
