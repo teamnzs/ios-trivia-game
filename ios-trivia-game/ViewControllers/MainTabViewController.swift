@@ -9,7 +9,8 @@
 import UIKit
 
 class MainTabViewController: UITabBarController {
-
+    var notificationLabel: UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +19,15 @@ class MainTabViewController: UITabBarController {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:.normal)
         
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.blue], for:.selected)
+        
+        
+        notificationLabel = UILabel(frame: CGRect(x: 0, y: 30, width: self.view.bounds.width, height: 30))
+        notificationLabel.backgroundColor = UIColor(hexString: Constants.TRIVIA_BLUE)
+        notificationLabel.text = "You've been invited to a new game!"
+        notificationLabel.textColor = UIColor.white
+        notificationLabel.textAlignment = .center
+        notificationLabel.alpha = 0.0
+        self.view.addSubview(notificationLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,4 +46,19 @@ class MainTabViewController: UITabBarController {
     }
     */
 
+}
+
+extension MainTabViewController {
+    override func viewDidAppear(_ animated: Bool) {
+        FirebaseClient.instance.getInvitesFor(userId: (User.currentUser?.uid)!, complete: { (snapshot) in
+            if let _ = snapshot.value as? NSDictionary {
+                UIView.animate(withDuration: 1.0, animations: {() in
+                    self.notificationLabel.alpha = 1.0
+                })
+                UIView.animate(withDuration: 0.5, delay: 5.0, options: .curveEaseIn, animations: {() in
+                    self.notificationLabel.alpha = 0.0
+                }, completion: nil)
+            }
+        }, onError: { (error) in })
+    }
 }
