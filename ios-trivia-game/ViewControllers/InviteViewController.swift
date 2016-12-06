@@ -120,9 +120,9 @@ extension InviteViewController : UITableViewDelegate, UITableViewDataSource {
             let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
             let countdownNavigationController = destination as! UINavigationController
             let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
-            
-            countdownGameViewController.timerCount = remainingCountdownTime
+
             countdownGameViewController.roomId = selectedInvite.roomId!
+            countdownGameViewController.timerCount = remainingCountdownTime
             
             self.present(destination, animated: true, completion: nil)
         }, fail: {

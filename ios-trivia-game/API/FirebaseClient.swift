@@ -130,6 +130,15 @@ class FirebaseClient {
             return FIRTransactionResult.success(withValue: data)
         }
     }
+
+    func incrementGameRoomCurQuestion(gameRoomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(gameRoomId)/current_question"
+        ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
+            let curVal = data.value as? Int ?? 0
+            data.value = curVal + 1
+            return FIRTransactionResult.success(withValue: data)
+        }
+    }
     
     // gets all game rooms
     func getGameRooms(complete: ((NSDictionary) -> ())?, onError: ((Error?) -> ())?) {
@@ -138,7 +147,12 @@ class FirebaseClient {
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all game rooms")
             
             let value = snapshot.value as? NSDictionary
-            complete!(value!)
+            if (value == nil) {
+                complete!([:])
+            } else {
+                complete!(value!)
+            }
+            
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all rooms, Error: \(error.localizedDescription)")
         }
@@ -146,9 +160,10 @@ class FirebaseClient {
     
     // get game by id
     func getGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
-        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)"
+        ref.child(path).observe(.value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(roomId)")
+            print(snapshot)
             complete(snapshot)
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(roomId), Error: \(error.localizedDescription)")
@@ -217,15 +232,42 @@ class FirebaseClient {
         }
     }
     
+    func getSuggestionsBy(questionId: Int, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.SUGGESTION_TABLE_NAME)/\(questionId)"
+        ref.child(path).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(questionId)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(questionId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
     // gets questions by categoryId
-    // NOTE: I haven't tested that this works yet
     func getQuestionsBy(categoryId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.QUESTION_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "category").queryEqual(toValue: Int(categoryId)!, childKey: "category/id").observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "category").queryEqual(toValue: Int(categoryId)!).observe(.value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) category/id=\(categoryId)")
             complete(snapshot)
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) id=\(categoryId), Error: \(error.localizedDescription)")
+            
+            if (onError != nil) {
+                onError!(error)
+            }
+        }
+    }
+    
+    func getCategories(complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.CATEGORY_TABLE_NAME)"
+        ref.child(path).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path), Error: \(error.localizedDescription)")
             
             if (onError != nil) {
                 onError!(error)
@@ -331,6 +373,35 @@ class FirebaseClient {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
         return ref.child(path).childByAutoId()
     }
+    
+    // gets the ids of random questions
+    func getRandomQuestions(categoryId: Int, maxNumOfQuestions: Int, complete: @escaping ([Int]) -> (), onError: ((Error?) -> ())?) {
+        self.getQuestionsBy(categoryId: "\(categoryId)", complete: {(snapshot) in
+            var ids : [Int] = []
+            print ("val \(snapshot.value)")
+            
+            if let questions = snapshot.value as? NSDictionary {
+                let allQuestions = questions.allValues
+                for questionData in allQuestions {
+                    if let questionDict = questionData as? NSDictionary {
+                        let triviaQuestion = TriviaQuestion(dictionary: questionDict)
+                        ids.append(triviaQuestion.id!)
+                    }
+                }
+            }
+            
+            let randomIndices = Utilities.generateRandomQuestionNumbers(numOfQuestions: maxNumOfQuestions, listOfSampleNumbers: ids)
+            var retVal:[Int] = []
+            
+            for i in randomIndices {
+                retVal.append(ids[i])
+            }
+            
+            complete(retVal)
+        }, onError: {(error) in
+            Logger.instance.log(logLevel: .error, message: "OOps \(error?.localizedDescription)")
+        })
+    }
 
     // Joins current user to game
     func joinGame(roomId: String, complete: ((_ remainingCountdownTime: Int) -> ())?, fail: (() -> ())?) {
@@ -339,18 +410,19 @@ class FirebaseClient {
         FirebaseClient.instance.getGameBy(roomId: roomId, complete: { (snapshot) in
             if let data = snapshot.value as? NSDictionary {
                 if data.count > 0 {
-                    let gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
+                    let gameRoom = GameRoom(dictionary: data)
                     
                     // check if we can add a player and whether the countdown isn't done yet
-                    let remainingCountdownTime = Date().timeIntervalSince(gameRoom.created_time)
+                    let timeSinceCreation = Date().timeIntervalSince(gameRoom.created_time)
                     if (gameRoom.current_num_players < gameRoom.max_num_of_people &&
-                        remainingCountdownTime > 0 && remainingCountdownTime <= Double(Constants.GAME_START_COUNTDOWN)) {
+                        timeSinceCreation > 0 && timeSinceCreation <= Double(Constants.GAME_START_COUNTDOWN)) {
                         
                         // update the user in game table
                         let currentUserId = User.currentUser?.uid!
                         let userInGame = UserInGame(roomId: roomId, userState: 0, userId: currentUserId!)
                         let userInGamePath = "\(Constants.USER_IN_GAME_TABLE_NAME)/\(currentUserId!)"
                         self.ref.child(userInGamePath).setValue(userInGame.getJson(), withCompletionBlock: { (error, setRef) in
+                            let remainingCountdownTime = Double(Constants.GAME_START_COUNTDOWN) - timeSinceCreation
                             complete?(Int(remainingCountdownTime))
                         })
                     }
@@ -360,6 +432,15 @@ class FirebaseClient {
                 }
             }
         }) { (error) in }
+    }
+    
+    func updateUserInGameState(state: Int, roomId: String, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
+        let currentUserId = User.currentUser?.uid!
+        let userInGame = UserInGame(roomId: roomId, userState: 0, userId: currentUserId!)
+        let userInGamePath = "\(Constants.USER_IN_GAME_TABLE_NAME)/\(currentUserId!)"
+        self.ref.child(userInGamePath).setValue(userInGame.getJson(), withCompletionBlock: { (error, setRef) in
+            complete(error, setRef)
+        })
     }
     
     // post a scored answer to the scored answer database table

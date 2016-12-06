@@ -17,7 +17,7 @@ class FinalScoreViewController: UIViewController {
     
     var roomId: String!
     
-    fileprivate var timerCount = 60
+    fileprivate var timerCount = Constants.GAME_QUESTION_ANSWER_COUNTDOWN
     fileprivate var countdownTimer = Timer()
     
     fileprivate var finalScores: [FinalScore] = []
@@ -40,20 +40,24 @@ class FinalScoreViewController: UIViewController {
             if let data = snapshot.value as? NSDictionary {
                 for (userId, _) in data {
                     
+                    print ("Got users in game: \(userId)")
                     // get each user
                     FirebaseClient.instance.getUser(userId: userId as! String, complete: { (snapshot) in
                         if let data = snapshot.value as? NSDictionary {
+                            print("Got user: \(data)")
                             let user = User(dictionary: data)
                             
                             // get each score
                             FirebaseClient.instance.getScoredAnswersBy(roomId: self.roomId, userId: user.uid!, complete: { (scoredAnswersData) in
                                 var playerGameScore: Int = 0
+                                print("Got my scored answers data: \(scoredAnswersData)")
                                 for scoredAnswerData in (scoredAnswersData as NSArray) {
                                     let scoredAnswer = ScoredAnswer(dictionary: scoredAnswerData as! NSDictionary)
                                     playerGameScore += scoredAnswer.score
                                 }
                                 
                                 let finalScore = FinalScore(roomId: self.roomId, user: user, score: playerGameScore)
+                                print("got my final score: \(finalScore)")
                                 
                                 if (finalScore.user.uid! == User.currentUser?.uid!) {
                                     self.currentUserFinalScore = finalScore
@@ -76,6 +80,7 @@ class FinalScoreViewController: UIViewController {
     }
     
     @IBAction func onFinish(_ sender: UIButton) {
+        print("Finishing the game")
         finishGame()
     }
     
@@ -96,13 +101,11 @@ class FinalScoreViewController: UIViewController {
         
         // update current user with added score value
         if self.currentUserFinalScore != nil {
+            print("Updated the score")
             FirebaseClient.instance.updateScore(userId: (User.currentUser?.uid)!, addValue: self.currentUserFinalScore!.score!)
         }
         
-        // remove game
-        if self.roomId != nil {
-            FirebaseClient.instance.removeGame(roomId: roomId, complete: { }, onError: { (error) in })
-        }
+        print ("Quitting the game")
         
         // quit game
         Utilities.quitGame(controller: self, roomId: roomId)

@@ -16,9 +16,13 @@ class Constants {
     static let ANSWER_TABLE_NAME = "answers"
     static let SCORED_ANSWER_TABLE_NAME = "scored_answers"
     static let INVITE_TABLE_NAME = "invites"
-    
+    static let CATEGORY_TABLE_NAME = "categories"
+    static let SUGGESTION_TABLE_NAME = "suggestions"
+
     // For segues
     static let LOGIN_MODAL_SEGUE = "com.iostriviagame.loginSegue"
+    static let COUNTDOWN_TO_QUESTION_SEGUE = "com.iostriviagame.countdowntoquestionsegue"
+    static let QUESTION_TO_ANSWER_SEGUE = "com.iostriviagame.questiontoanswersegue"
     static let ANSWER_TO_RESULTS_SEGUE = "com.iostriviagame.answertoresultssegue"
     static let GAME_OPTIONS_TO_COUNTDOWN_SEGUE = "com.iostriviagame.gameoptionstocountdownsegue"
     
@@ -41,6 +45,7 @@ class Constants {
     static let HOME_TABLE_VIEW_CELL = "com.iostriviagame.hometableviewcell"
     
     static let GAME_START_COUNTDOWN = 30
+    static let GAME_QUESTION_ANSWER_COUNTDOWN = 20
     static let REFRESH_GAME_ROOM_INTERVAL = 86400
     
     // Color Themes

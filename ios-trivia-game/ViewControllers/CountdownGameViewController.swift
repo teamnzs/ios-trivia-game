@@ -21,11 +21,9 @@ class CountdownGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         
-        FirebaseClient.instance.updatePlayerCount(roomId: roomId!, change: 1)
+        FirebaseClient.instance.updatePlayerCount(roomId: self.roomId!, change: 1)
+        self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: true)
         
         clickToJoin.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
         clickToJoin.tintColor = UIColor.white
@@ -46,21 +44,38 @@ class CountdownGameViewController: UIViewController {
         }
         else {
             self.countdownTimer.invalidate()
-            Utilities.quitGame(controller: self, roomId: roomId!, hasJoined: false)
+            
+            if (self.clickToJoin.isEnabled) {
+                Utilities.quitGame(controller: self, roomId: roomId!, hasJoined: true)
+            } else {
+                // means has already clicked JOIN
+                performSegue(withIdentifier: Constants.COUNTDOWN_TO_QUESTION_SEGUE, sender: nil)
+            }
         }
+    }
+    
+    @IBAction func joinButtonTapped(_ sender: UIButton) {
+        sender.isEnabled = false
+        self.cancelButton.isEnabled = false
+        self.clickToJoin.setTitle("Ready", for: .normal)
+        
+        FirebaseClient.instance.updateUserInGameState(state: 1, roomId: self.roomId!, complete: {(error, ref) in
+            if (error == nil) {
+                print("Successfully updated user in game state to active")
+            }
+        })
     }
     
     @IBAction func onCancelJoin(_ sender: UIButton) {
         self.countdownTimer.invalidate()
         
-        Utilities.quitGame(controller: self, roomId: roomId!, hasJoined: false)
+        Utilities.quitGame(controller: self, roomId: roomId!, hasJoined: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nav = segue.destination as? UINavigationController
-        
+        print ("My room ID in countdown: \(self.roomId)")
         if let questionViewController = nav?.topViewController as? QuestionViewController {
-            self.countdownTimer.invalidate()
             questionViewController.roomId = self.roomId
         }
     }

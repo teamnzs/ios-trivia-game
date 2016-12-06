@@ -20,8 +20,7 @@ class AnswerViewController: UIViewController {
     var roomId: String?
     
     fileprivate var answers: [Answer]? = []
-    fileprivate let MAX_COUNTDOWN = 60
-    fileprivate var timerCount = 60
+    fileprivate var timerCount = Constants.GAME_QUESTION_ANSWER_COUNTDOWN
     fileprivate var countdownTimer = Timer()
 
     override func viewDidLoad() {
@@ -39,12 +38,23 @@ class AnswerViewController: UIViewController {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timerButton.title = ""
         
+        print ("Answer VC room ID: \(roomId)")
+        
         FirebaseClient.instance.getAnswersBy(roomId: roomId!, questionId: (question?.id)!, complete: { (answers) in
             for answerDict in answers {
                 let answer = Answer(dictionary: answerDict as! NSDictionary)
                 self.answers?.append(answer)
                 
                 Logger.instance.log(logLevel: .info, message: "Adding \(answer.getJson())")
+            }
+            
+            // add the correct answer
+            let correctAnswer = self.question?.answer ?? ""
+            if (correctAnswer != "") {
+                let answer = Answer(userId: (User.currentUser?.firebaseId)!, answerText: correctAnswer, questionId: (self.question?.id)!, roomId: self.roomId!)
+                let randomIndex = Int(arc4random_uniform(UInt32((self.answers?.count)! - 1)))
+                print ("Random index \(randomIndex)")
+                self.answers?.insert(answer, at: randomIndex)
             }
             
             self.answerTableView.reloadData()
@@ -61,28 +71,19 @@ class AnswerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nav = segue.destination as? UINavigationController
+        countdownTimer.invalidate()
         
         if let resultsViewController = nav?.topViewController as? ResultsViewController {
-            let answerText = (answerTableView.indexPathForSelectedRow == nil) ? "" : answers?[(answerTableView.indexPathForSelectedRow?.row)!].answerText
-            let answer = Answer(userId: (User.currentUser?.uid)!, answerText: answerText!, questionId: (question?.id!)!, roomId: roomId!)
-            let score = calculateScore(answer: answer)
-            let scoredAnswer = ScoredAnswer(score: score, answer: answer)
-            
-            FirebaseClient.instance.postScoredAnswer(scoredAnswer: scoredAnswer, complete: {(error, ref) in
-                if (error == nil) {
-                    Logger.instance.log(logLevel: .info, message: "Success posting Scored Answer: \(scoredAnswer)")
-                }
-                else {
-                    Logger.instance.log(logLevel: .error, message: "Error posting Scored Answer: \(scoredAnswer)")
-                }
-            })
+          
+            if (self.submitButton.isEnabled) {
+                print("Submit button is still enabled")
+                submitAnswer()
+            }
             
             resultsViewController.roomId = self.roomId
             resultsViewController.question = self.question
         }
         else if let finalScoreViewController = nav?.topViewController as? FinalScoreViewController {
-            countdownTimer.invalidate()
-            
             finalScoreViewController.roomId = self.roomId
         }
     }
@@ -94,7 +95,27 @@ class AnswerViewController: UIViewController {
     }
     
     @IBAction func onSubmit(_ sender: UIButton) {
-        countdownTimer.invalidate()
+        sender.isEnabled = false
+        self.answerTableView.isScrollEnabled = false
+        self.answerTableView.allowsSelection = false
+        sender.setTitle("Submitted", for: .normal)
+        submitAnswer()
+    }
+    
+    @objc fileprivate func submitAnswer() {
+        let answerText = (answerTableView.indexPathForSelectedRow == nil) ? "" : answers?[(answerTableView.indexPathForSelectedRow?.row)!].answerText
+        let answer = Answer(userId: (User.currentUser?.uid)!, answerText: answerText!, questionId: (question?.id!)!, roomId: roomId!)
+        let score = calculateScore(answer: answer)
+        let scoredAnswer = ScoredAnswer(score: score, answer: answer)
+        
+        FirebaseClient.instance.postScoredAnswer(scoredAnswer: scoredAnswer, complete: {(error, ref) in
+            if (error == nil) {
+                Logger.instance.log(logLevel: .info, message: "Success posting Scored Answer: \(scoredAnswer)")
+            }
+            else {
+                Logger.instance.log(logLevel: .error, message: "Error posting Scored Answer: \(scoredAnswer)")
+            }
+        })
     }
     
     @objc fileprivate func updateCounter() {
@@ -107,14 +128,13 @@ class AnswerViewController: UIViewController {
         }
         else {
             // time is up. execute submission code
-            countdownTimer.invalidate()
             performSegue(withIdentifier: Constants.ANSWER_TO_RESULTS_SEGUE, sender: nil)
         }
     }
     
     fileprivate func calculateScore(answer: Answer) -> Int {
         if (question?.answer == answer.answerText) {
-            return Int(Float(timerCount) / Float(MAX_COUNTDOWN) * Float((question?.value)!))
+            return Int(Float(timerCount) / Float(Constants.GAME_QUESTION_ANSWER_COUNTDOWN) * Float((question?.value)!))
         }
         
         return 0

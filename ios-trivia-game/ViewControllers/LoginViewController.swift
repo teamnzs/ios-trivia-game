@@ -92,6 +92,7 @@ class LoginViewController: UIViewController {
                     }
                     
                     Logger.instance.log(logLevel: .debug, message: "Successfully logged in to Firebase and set the user")
+
                     let user = User.convertFirUserToUser(firUser: firUser!)
                     
                     // supplement FIRUser with actual facebook data to create the user
