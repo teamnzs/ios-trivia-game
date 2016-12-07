@@ -42,23 +42,22 @@ class QuestionViewController: UIViewController {
             self.gameRoom = GameRoom(dictionary: value as! NSDictionary)
             
             // get the current question
-            let curQuestionIndex = self.gameRoom?.current_question
+            let curQuestionIndex = (self.gameRoom?.current_question)!
             let questions = self.gameRoom?.questions
-            let maxQuestions = self.gameRoom?.max_num_of_questions
+            let maxQuestions = (self.gameRoom?.max_num_of_questions)!
             
-            self.questionNumber.text = "Question \(curQuestionIndex! + 1)/\(maxQuestions)"
-            
-            
-            if (curQuestionIndex! >= (questions?.count)!) {
+            self.questionNumber.text = "Question \(curQuestionIndex + 1)/\(maxQuestions)"
+ 
+            if (curQuestionIndex >= (questions?.count)!) {
                 // prevent index-out-of-bound error
                 return
             }
             
-            let curQuestionId = questions?[curQuestionIndex!]
+            let curQuestionId = questions?[curQuestionIndex]
             
             FirebaseClient.instance.getQuestionBy(questionId: curQuestionId!, complete: { (snapshot) in
                 if let questionDict = snapshot.value as? NSDictionary {
-                    let question = questionDict.value(forKey: "\(curQuestionId)") as? NSDictionary
+                    let question = questionDict.value(forKey: "\(curQuestionId!)") as? NSDictionary
                     self.question = TriviaQuestion(dictionary: question!)
                 }
                 
