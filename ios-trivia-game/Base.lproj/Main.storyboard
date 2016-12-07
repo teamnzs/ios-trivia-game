@@ -1033,7 +1033,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFV-wb-q5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1087,7 +1087,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.countdownnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dzo-UG-g8U" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pu8-hs-FhN">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Pu8-hs-FhN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1105,7 +1105,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.questionnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1123,7 +1123,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1262,7 +1262,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.finalscorenavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xWC-Yo-6sB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6s3-Jb-LfK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6s3-Jb-LfK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
