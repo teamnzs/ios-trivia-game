@@ -58,6 +58,10 @@
                             <constraint firstItem="KOy-CV-PiC" firstAttribute="centerY" secondItem="dbI-9K-579" secondAttribute="centerY" id="L1W-jm-cVa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="x7p-qk-2YF" kind="presentation" identifier="com.iostriviagame.splashToMainSegue" id="wCy-Sl-ddd"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="com.iostriviagame.splashToLoginSegue" id="mGF-HY-6UW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsw-Tf-j1W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1311,6 +1315,6 @@
         <image name="SplashImage" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1Mc-Ha-1gq"/>
+        <segue reference="wCy-Sl-ddd"/>
     </inferredMetricsTieBreakers>
 </document>
