@@ -32,6 +32,41 @@
             </objects>
             <point key="canvasLocation" x="1079.2" y="137.18140929535232"/>
         </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="AOP-IY-dRE">
+            <objects>
+                <viewController storyboardIdentifier="com.iostriviagame.tutorialviewcontroller" id="CDD-0N-brX" customClass="TutorialViewController" customModule="ios_trivia_game" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e1B-uV-hAZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="BI1-8S-Wdv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MhZ-PW-29t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to my App" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nui-WF-VcY">
+                                <rect key="frame" x="29" y="312" width="317" height="43"/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nui-WF-VcY" firstAttribute="centerX" secondItem="MhZ-PW-29t" secondAttribute="centerX" id="54K-Vw-fp2"/>
+                            <constraint firstAttribute="trailing" secondItem="Nui-WF-VcY" secondAttribute="trailing" constant="29" id="UJZ-1t-Onz"/>
+                            <constraint firstItem="Nui-WF-VcY" firstAttribute="leading" secondItem="MhZ-PW-29t" secondAttribute="leading" constant="29" id="jQN-lc-WvK"/>
+                            <constraint firstItem="Nui-WF-VcY" firstAttribute="centerY" secondItem="MhZ-PW-29t" secondAttribute="centerY" id="zCh-cm-ItI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="Nui-WF-VcY" id="WV0-wf-9fF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akT-5v-u6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037.5999999999999" y="846.9265367316342"/>
+        </scene>
         <!--Invites-->
         <scene sceneID="w6z-rM-C1D">
             <objects>
@@ -977,7 +1012,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="waU-E6-Kya">
-                                <rect key="frame" x="0.0" y="-44" width="375" height="760"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="com.iostriviagame.hometableviewcell" rowHeight="137" id="sZu-Nk-Kd0" customClass="HomeTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
@@ -1130,7 +1165,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.questionnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1166,7 +1201,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYM-1H-SDT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ECi-Sp-Mrl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ECi-Sp-Mrl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1291,6 +1326,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9qG-Ei-58r"/>
+        <segue reference="1Mc-Ha-1gq"/>
     </inferredMetricsTieBreakers>
 </document>

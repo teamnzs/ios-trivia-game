@@ -7,19 +7,22 @@
 //
 
 import UIKit
+import SwiftIconFont
 
 class MainTabViewController: UITabBarController {
     var notificationLabel: UILabel = UILabel()
-    
+
+    var itemLabels = ["Home", "Create", "Profile", "Invites"]
+    var itemIcons = ["home", "gamepad", "user", "paper-plane"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:.normal)
-        
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.blue], for:.selected)
-        
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.red], for:.selected)
+        UITabBar.appearance().tintColor = UIColor(hexString: Constants.TRIVIA_RED)
         
         notificationLabel = UILabel(frame: CGRect(x: 0, y: 35, width: self.view.bounds.width, height: 35))
         notificationLabel.backgroundColor = UIColor(hexString: Constants.TRIVIA_BLUE)
@@ -28,6 +31,15 @@ class MainTabViewController: UITabBarController {
         notificationLabel.textAlignment = .center
         notificationLabel.alpha = 0.0
         self.view.addSubview(notificationLabel)
+
+        let tabItems = self.tabBar.items as [UITabBarItem]!
+        
+        for index in 0..<itemLabels.count {
+            let currentItem = (tabItems?[index])! as UITabBarItem
+            currentItem.title = itemLabels[index]
+            currentItem.icon(from: .FontAwesome, code: itemIcons[index], imageSize: CGSize(width: 20, height: 20), ofSize: 20)
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

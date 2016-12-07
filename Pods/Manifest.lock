@@ -23,6 +23,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - EMPageViewController (3.0.0)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -87,6 +88,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.0.0)
   - Alamofire (~> 4.0)
   - BDBOAuth1Manager (~> 2.0.0)
+  - EMPageViewController
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -101,6 +103,7 @@ SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  EMPageViewController: 8e0abc2b2f53f56a83044527eadbb56bd71ae3e3
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
@@ -120,6 +123,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SwiftIconFont: bbe1f32e1e16bac87dad8566afc80132cb8d072c
 
-PODFILE CHECKSUM: 487dbf95317a0d2524206fe37e43924aa83a57e9
+PODFILE CHECKSUM: 7f779859260de0229283c04b9a921f16259bfa64
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0.beta.1
