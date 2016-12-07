@@ -81,7 +81,7 @@ class ResultsViewController: UIViewController {
     // update user_in_game to remove player from user_in_game
     @IBAction func onQuitFromResults(_ sender: UIBarButtonItem) {
         countdownTimer.invalidate()
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId!)
     }
     
     @objc fileprivate func updateCounter() {
@@ -99,7 +99,7 @@ class ResultsViewController: UIViewController {
             let destination: UIViewController
             let curQuestion = self.gameRoom?.current_question
             let maxQuestions = self.gameRoom?.max_num_of_questions
-            if ( curQuestion! >= maxQuestions!) {
+            if (curQuestion! >= maxQuestions!) {
                 destinationIdentifier = Constants.FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER
                 destination = storyboard.instantiateViewController(withIdentifier: destinationIdentifier)
                 let finalScoreNavigationController = destination as! UINavigationController
