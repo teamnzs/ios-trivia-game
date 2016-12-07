@@ -65,6 +65,10 @@ class CountdownGameViewController: UIViewController {
                 print("Successfully updated user in game state to active")
             }
         })
+        
+        if (User.currentUser?.uid == hostId) {
+            FirebaseClient.instance.updateGameState(roomId: self.roomId!, change: GameRoom.State.playing.rawValue)
+        }
     }
     
     @IBAction func onCancelJoin(_ sender: UIButton) {
@@ -78,10 +82,6 @@ class CountdownGameViewController: UIViewController {
         print ("My room ID in countdown: \(self.roomId)")
         if let questionViewController = nav?.topViewController as? QuestionViewController {
             questionViewController.roomId = self.roomId
-            
-            if (User.currentUser?.uid == hostId) {
-                FirebaseClient.instance.updateGameState(roomId: roomId!, change: GameRoom.State.playing.rawValue)
-            }
         }
     }
 }

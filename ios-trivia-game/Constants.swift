@@ -53,5 +53,6 @@ class Constants {
     static let TRIVIA_NAVY = "#ff2c3e50"
     static let TRIVIA_GRAY = "#ffd7dadb"
     static let TRIVIA_BLUE = "#ff6dbcdb"
+    static let TRIVIA_WHITE = "#ffffffff"
 }
 

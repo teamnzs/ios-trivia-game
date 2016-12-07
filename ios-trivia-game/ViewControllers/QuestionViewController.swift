@@ -34,9 +34,6 @@ class QuestionViewController: UIViewController {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timer.title = ""
 
-        submitButton.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
-        submitButton.tintColor = UIColor.white
-
         FirebaseClient.instance.getGameBy(roomId: roomId!, complete: {(snapshot) in
             let value = snapshot.value
             self.gameRoom = GameRoom(dictionary: value as! NSDictionary)
@@ -45,9 +42,9 @@ class QuestionViewController: UIViewController {
             let curQuestionIndex = (self.gameRoom?.current_question)!
             let questions = self.gameRoom?.questions
             let maxQuestions = (self.gameRoom?.max_num_of_questions)!
-            
-            self.questionNumber.text = "Question \(curQuestionIndex + 1)/\(maxQuestions)"
- 
+
+            self.questionNumber.text = "Round: \(curQuestionIndex + 1) of \(maxQuestions)"
+  
             if (curQuestionIndex >= (questions?.count)!) {
                 // prevent index-out-of-bound error
                 return
