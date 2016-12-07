@@ -11,6 +11,7 @@ import UIKit
 class QuestionViewController: UIViewController {
 
     var roomId: String?
+    var gameRoom: GameRoom?
 
     @IBOutlet weak var questionNumber: UILabel!
     @IBOutlet weak var questionTitle: UILabel!
@@ -38,24 +39,24 @@ class QuestionViewController: UIViewController {
 
         FirebaseClient.instance.getGameBy(roomId: roomId!, complete: {(snapshot) in
             let value = snapshot.value
-            let gameRoom = GameRoom(dictionary: value as! NSDictionary)
+            self.gameRoom = GameRoom(dictionary: value as! NSDictionary)
             
             // get the current question
-            let curQuestionIndex = gameRoom.current_question
-            let questions = gameRoom.questions
-            let maxQuestions = gameRoom.max_num_of_questions
+            let curQuestionIndex = self.gameRoom?.current_question
+            let questions = self.gameRoom?.questions
+            let maxQuestions = self.gameRoom?.max_num_of_questions
             
             self.questionNumber.text = "Question \(curQuestionIndex! + 1)/\(maxQuestions)"
             
             
-            if (curQuestionIndex! >= questions.count) {
+            if (curQuestionIndex! >= (questions?.count)!) {
                 // prevent index-out-of-bound error
                 return
             }
             
-            let curQuestionId = questions[curQuestionIndex!]
+            let curQuestionId = questions?[curQuestionIndex!]
             
-            FirebaseClient.instance.getQuestionBy(questionId: curQuestionId, complete: { (snapshot) in
+            FirebaseClient.instance.getQuestionBy(questionId: curQuestionId!, complete: { (snapshot) in
                 if let questionDict = snapshot.value as? NSDictionary {
                     let question = questionDict.value(forKey: "\(curQuestionId)") as? NSDictionary
                     self.question = TriviaQuestion(dictionary: question!)
@@ -150,11 +151,13 @@ class QuestionViewController: UIViewController {
                 
             countdownTimer.invalidate()
         
-            FirebaseClient.instance.incrementGameRoomCurQuestion(gameRoomId: self.roomId!, complete: { (snapshot) in
-                Logger.instance.log(logLevel: .debug, message: "Updated current question number: \(snapshot.value)")
-            }, onError: { (error) in
-                Logger.instance.log(logLevel: .error, message: "Current question cannot be incremented: \(error?.localizedDescription)")
-            })
+            if (User.currentUser?.uid == self.gameRoom?.host_id) {
+                FirebaseClient.instance.incrementGameRoomCurQuestion(gameRoomId: self.roomId!, complete: { (snapshot) in
+                    Logger.instance.log(logLevel: .debug, message: "Updated current question number: \(snapshot.value)")
+                }, onError: { (error) in
+                    Logger.instance.log(logLevel: .error, message: "Current question cannot be incremented: \(error?.localizedDescription)")
+                })
+            }
             
             performSegue(withIdentifier: Constants.QUESTION_TO_ANSWER_SEGUE, sender: nil)
         }
