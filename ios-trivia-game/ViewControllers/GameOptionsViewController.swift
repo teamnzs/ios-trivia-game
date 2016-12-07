@@ -90,7 +90,8 @@ class GameOptionsViewController: UIViewController {
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
         FirebaseClient.instance.getRandomQuestions(categoryId: category!, maxNumOfQuestions: numOfQuestions!, complete: {(questionList) in
-            let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 0, maxNumPlayers: self.numOfPlayers, state: GameRoom.State(rawValue: 0), isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions, questions: questionList, category: self.category)
+            let hostId = (User.currentUser?.uid)!
+            let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 0, maxNumPlayers: self.numOfPlayers, state: GameRoom.State(rawValue: 0), isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions, questions: questionList, category: self.category, host_id: hostId)
 
             FirebaseClient.instance.createGame(gameRoom: newGame.getJson() as NSDictionary, complete: {_, ref in
                 let roomId = ref.key
@@ -100,7 +101,6 @@ class GameOptionsViewController: UIViewController {
                 FirebaseClient.instance.joinGame(roomId: roomId, complete: {(remainingCountdownTime) in
 
                     // create invites in the invite table
-                    let hostId = (User.currentUser?.uid)!
                     for friendId in self.selectedFriends {
                         if Float(friendId) != nil {
                             // numeric friend ids mean that the user is registered. Create an invite
@@ -119,6 +119,7 @@ class GameOptionsViewController: UIViewController {
                     let countdownNavigationController = destination as! UINavigationController
                     let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
                     countdownGameViewController.roomId = roomId
+                    countdownGameViewController.hostId = hostId
                     countdownGameViewController.timerCount = remainingCountdownTime
                     
                     self.present(destination, animated: true, completion: nil)

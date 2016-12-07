@@ -106,6 +106,10 @@ class ResultsViewController: UIViewController {
                 let finalScoreViewController = finalScoreNavigationController.topViewController as! FinalScoreViewController
                 print("Moving to final score with room ID \(self.roomId)")
                 finalScoreViewController.roomId = self.roomId
+                
+                if (User.currentUser?.uid == self.gameRoom?.host_id) {
+                    FirebaseClient.instance.updateGameState(roomId: roomId!, change: GameRoom.State.end.rawValue)
+                }
             }
             else {
                 destinationIdentifier = Constants.QUESTION_NAVIGATION_VIEW_CONTROLLER

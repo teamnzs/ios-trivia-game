@@ -113,6 +113,8 @@ class LoginViewController: UIViewController {
                             let value = snapshot.value as? NSDictionary
                             if (value == nil) {
                                 FirebaseClient.instance.createUser(user: user, complete: { (_, _) in
+                                    
+                                    User.currentUser = user
                                     MBProgressHUD.hide(for: self.view, animated: true)
                                     self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
                                 })
@@ -120,6 +122,14 @@ class LoginViewController: UIViewController {
                             else {
                                 // If they do exist update the existing user with the values we received from Facebook
                                 FirebaseClient.instance.updateUser(user: user, fromFacebook: true)
+                                
+                                FirebaseClient.instance.getUser(userId: user.uid!, complete: { (snapshot) in
+                                    if let data = snapshot.value as? NSDictionary {
+                                        let loggedInUser = User(dictionary: data)
+                                        User.currentUser = loggedInUser
+                                    }
+                                }, onError: { (_) in })
+                                
                                 MBProgressHUD.hide(for: self.view, animated: true)
                                 self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
                             }
@@ -128,7 +138,6 @@ class LoginViewController: UIViewController {
                             self.performSegue(withIdentifier: Constants.LOGIN_MODAL_SEGUE, sender: self)
                         })
                         
-                        User.currentUser = user
                         Logger.instance.log(logLevel: .debug, message: "Successfully logged in to Firebase and set the user")
                     })
                 })

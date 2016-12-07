@@ -15,10 +15,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var contentViewCenterY: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var editPhotoButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     fileprivate var user: User!
     
@@ -50,26 +50,14 @@ class ProfileViewController: UIViewController {
         self.profileImageView.setImageWith(URL(string: self.user.photoUrl!)!)
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2;
         
-        self.nicknameLabel.text = self.user.nickname!
         self.nameLabel.text = self.user.name!
         self.emailLabel.text = self.user.email!
         editPhotoButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
+        self.scoreLabel.text = "\(self.user.score!) points"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

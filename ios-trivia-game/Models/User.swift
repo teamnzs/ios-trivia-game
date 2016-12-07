@@ -52,7 +52,7 @@ class User: NSObject {
             self.nickname = dictionary["nickname"] as? String ?? ""
             self.name = dictionary["name"] as? String ?? ""
             self.email = dictionary["email"] as? String ?? ""
-            self.photoUrl = dictionary["photo_url"] as? String ?? ""
+            self.photoUrl = dictionary["photoUrl"] as? String ?? ""
             self.facebookId = dictionary["facebook_id"] as? String ?? ""
             self.firebaseId = dictionary["firebase_id"] as? String ?? ""
             self.uid =  self.facebookId //User.getSanitizedEmailForId(email: self.email!)

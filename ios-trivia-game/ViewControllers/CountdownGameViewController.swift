@@ -15,6 +15,7 @@ class CountdownGameViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     var roomId: String?
+    var hostId: String?
     var timerCount: Int? = Constants.GAME_START_COUNTDOWN
     
     fileprivate var countdownTimer = Timer()
@@ -77,6 +78,10 @@ class CountdownGameViewController: UIViewController {
         print ("My room ID in countdown: \(self.roomId)")
         if let questionViewController = nav?.topViewController as? QuestionViewController {
             questionViewController.roomId = self.roomId
+            
+            if (User.currentUser?.uid == hostId) {
+                FirebaseClient.instance.updateGameState(roomId: roomId!, change: GameRoom.State.playing.rawValue)
+            }
         }
     }
 }
