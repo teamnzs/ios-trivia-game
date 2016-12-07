@@ -38,7 +38,11 @@ class FinalScoreViewController: UIViewController {
         // for each player, create a FinalScore
         FirebaseClient.instance.getUsersInGameBy(roomId: roomId, complete: { (snapshot) in
             if let data = snapshot.value as? NSDictionary {
-                for (userId, _) in data {
+                let sortedKeys = data.keysSortedByValue(comparator: {
+                    (($1 as! NSDictionary)["score"] as! NSNumber).compare((($0 as! NSDictionary)["score"]) as! NSNumber)
+                })
+                
+                for (userId) in sortedKeys {
                     
                     print ("Got users in game: \(userId)")
                     // get each user
@@ -104,8 +108,6 @@ class FinalScoreViewController: UIViewController {
             print("Updated the score")
             FirebaseClient.instance.updateScore(userId: (User.currentUser?.uid)!, addValue: self.currentUserFinalScore!.score!)
         }
-        
-        print ("Quitting the game")
         
         // quit game
         Utilities.quitGame(controller: self, roomId: roomId)

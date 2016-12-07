@@ -47,7 +47,7 @@ class ResultsViewController: UIViewController {
             if let data = snapshot.value as? NSDictionary {
                 self.gameRoom = GameRoom(dictionary: data)
                 
-                self.resultsTitleLabel.text = "Results: Round \(self.gameRoom!.current_question!) of \(self.gameRoom!.max_num_of_questions)"
+                self.resultsTitleLabel.text = "Round \(self.gameRoom!.current_question!) of \(self.gameRoom!.max_num_of_questions)"
                 
                 let curQues = self.gameRoom?.current_question
                 let maxQuestions = self.gameRoom?.max_num_of_questions
@@ -106,6 +106,10 @@ class ResultsViewController: UIViewController {
                 let finalScoreViewController = finalScoreNavigationController.topViewController as! FinalScoreViewController
                 print("Moving to final score with room ID \(self.roomId)")
                 finalScoreViewController.roomId = self.roomId
+                
+                if (User.currentUser?.uid == self.gameRoom?.host_id) {
+                    FirebaseClient.instance.updateGameState(roomId: roomId!, change: GameRoom.State.end.rawValue)
+                }
             }
             else {
                 destinationIdentifier = Constants.QUESTION_NAVIGATION_VIEW_CONTROLLER

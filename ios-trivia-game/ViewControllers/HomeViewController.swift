@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupTableview()
         
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController {
         FirebaseClient.instance.getGameRooms(complete: { (dictionary) in
             for (roomId, roomInfo) in dictionary {
                 let gameRoom = GameRoom(dictionary: roomInfo as! NSDictionary)
-                if gameRoom.state != GameRoom.State.end && Date().timeIntervalSince(gameRoom.created_time) <= Double(Constants.REFRESH_GAME_ROOM_INTERVAL){
+                if gameRoom.state == GameRoom.State.idle && Date().timeIntervalSince(gameRoom.created_time) <= Double(Constants.REFRESH_GAME_ROOM_INTERVAL){
                     self.gameRooms?.append(gameRoom)
                 }
                 Logger.instance.log(logLevel: .info, message: "RoomId: \(roomId) \(gameRoom.getJson())")

@@ -21,7 +21,7 @@ class MainTabViewController: UITabBarController {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.blue], for:.selected)
         
         
-        notificationLabel = UILabel(frame: CGRect(x: 0, y: 30, width: self.view.bounds.width, height: 30))
+        notificationLabel = UILabel(frame: CGRect(x: 0, y: 35, width: self.view.bounds.width, height: 35))
         notificationLabel.backgroundColor = UIColor(hexString: Constants.TRIVIA_BLUE)
         notificationLabel.text = "You've been invited to a new game!"
         notificationLabel.textColor = UIColor.white

@@ -15,6 +15,7 @@ class CountdownGameViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     
     var roomId: String?
+    var hostId: String?
     var timerCount: Int? = Constants.GAME_START_COUNTDOWN
     
     fileprivate var countdownTimer = Timer()
@@ -64,6 +65,10 @@ class CountdownGameViewController: UIViewController {
                 print("Successfully updated user in game state to active")
             }
         })
+        
+        if (User.currentUser?.uid == hostId) {
+            FirebaseClient.instance.updateGameState(roomId: self.roomId!, change: GameRoom.State.playing.rawValue)
+        }
     }
     
     @IBAction func onCancelJoin(_ sender: UIButton) {

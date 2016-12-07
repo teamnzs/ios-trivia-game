@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().barTintColor = UIColor(hexString: Constants.TRIVIA_NAVY)
         UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
         
+        UISearchBar.appearance().tintColor = UIColor(hexString: Constants.TRIVIA_RED)
         
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.userDidLogout), name: NSNotification.Name(rawValue: userDidLogoutNotification), object: nil)
         
