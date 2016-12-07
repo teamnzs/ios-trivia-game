@@ -119,6 +119,7 @@ class GameOptionsViewController: UIViewController {
                     let countdownNavigationController = destination as! UINavigationController
                     let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
                     countdownGameViewController.roomId = roomId
+                    countdownGameViewController.hostId = hostId
                     countdownGameViewController.timerCount = remainingCountdownTime
                     
                     self.present(destination, animated: true, completion: nil)

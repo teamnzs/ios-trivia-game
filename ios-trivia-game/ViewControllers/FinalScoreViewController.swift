@@ -105,8 +105,6 @@ class FinalScoreViewController: UIViewController {
             FirebaseClient.instance.updateScore(userId: (User.currentUser?.uid)!, addValue: self.currentUserFinalScore!.score!)
         }
         
-        print ("Quitting the game")
-        
         // quit game
         Utilities.quitGame(controller: self, roomId: roomId)
     }

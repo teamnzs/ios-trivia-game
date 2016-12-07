@@ -132,7 +132,19 @@ class FirebaseClient {
             return FIRTransactionResult.success(withValue: data)
         }
     }
+    
+    // Updates Game State
+    func updateGameState(roomId: String, change: Int) {
+        let gamePath = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)/state"
+        self.ref.child(gamePath).runTransactionBlock { (data: FIRMutableData) -> FIRTransactionResult in
+            if (data.value as? Int) != nil {
+                data.value = change
+            }
+            return FIRTransactionResult.success(withValue: data)
+        }
+    }
 
+    // Increments Current Question in game
     func incrementGameRoomCurQuestion(gameRoomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(gameRoomId)/current_question"
         ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
@@ -437,6 +449,7 @@ class FirebaseClient {
         }) { (error) in }
     }
     
+    // Updates User In Game State
     func updateUserInGameState(state: Int, roomId: String, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let currentUserId = User.currentUser?.uid!
         let userInGame = UserInGame(roomId: roomId, userState: 0, userId: currentUserId!)
@@ -460,17 +473,6 @@ class FirebaseClient {
         ref.child(path).queryOrdered(byChild: "guest_id").queryEqual(toValue: userId).observe(.value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all invites for userId: \(userId)")
 
-            complete(snapshot)
-        }) { (error) in
-            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all invites for userId: \(userId), Error: \(error.localizedDescription)")
-        }
-    }
-    
-    func listenInvitesFor(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
-        let path = "\(Constants.INVITE_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "guest_id").queryEqual(toValue: userId).observe(.value, with: { (snapshot) in
-            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all invites for userId: \(userId)")
-            
             complete(snapshot)
         }) { (error) in
             Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all invites for userId: \(userId), Error: \(error.localizedDescription)")

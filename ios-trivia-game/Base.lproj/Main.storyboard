@@ -193,37 +193,45 @@
                                             <segue destination="UpN-wj-CWf" kind="presentation" id="aoz-Yv-aQP"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDH-ay-JSE">
-                                        <rect key="frame" x="149" y="243" width="77" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-O6-8n2">
-                                        <rect key="frame" x="165" y="280" width="45" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="159" y="243" width="58.5" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-DI-ogF">
-                                        <rect key="frame" x="167" y="317" width="41" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMi-DC-9xl">
+                                        <rect key="frame" x="137.5" y="343" width="100" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUq-DI-ogF">
+                                        <rect key="frame" x="166" y="285.5" width="43.5" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <color key="textColor" red="0.47177683250000002" green="0.47177683250000002" blue="0.47177683250000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bab-Aa-32h">
+                                        <rect key="frame" x="164" y="385" width="47" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" red="0.47177683250000002" green="0.47177683250000002" blue="0.47177683250000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="KMi-DC-9xl" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="0mV-e1-Peg"/>
                                     <constraint firstItem="aov-bl-ZyF" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="36n-ap-L08"/>
+                                    <constraint firstItem="bab-Aa-32h" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="4Ja-TC-qEm"/>
+                                    <constraint firstItem="bab-Aa-32h" firstAttribute="top" secondItem="KMi-DC-9xl" secondAttribute="bottom" constant="18" id="6Xp-4h-mAd"/>
                                     <constraint firstItem="GMB-O6-8n2" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="9eM-6L-DDf"/>
                                     <constraint firstItem="aov-bl-ZyF" firstAttribute="top" secondItem="Kgp-wu-ZpO" secondAttribute="bottom" constant="24" id="IuJ-qT-lrs"/>
                                     <constraint firstItem="Kgp-wu-ZpO" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="NyV-s9-NhE"/>
-                                    <constraint firstItem="RDH-ay-JSE" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="Sdm-vm-KGM"/>
+                                    <constraint firstItem="GMB-O6-8n2" firstAttribute="top" secondItem="aov-bl-ZyF" secondAttribute="bottom" constant="36" id="UsT-iF-Pz5"/>
                                     <constraint firstItem="cUq-DI-ogF" firstAttribute="centerX" secondItem="iv5-fc-19D" secondAttribute="centerX" id="V32-t9-L8s"/>
-                                    <constraint firstItem="GMB-O6-8n2" firstAttribute="top" secondItem="RDH-ay-JSE" secondAttribute="bottom" constant="16" id="bes-XZ-VGX"/>
                                     <constraint firstItem="cUq-DI-ogF" firstAttribute="top" secondItem="GMB-O6-8n2" secondAttribute="bottom" constant="16" id="gnX-O5-KLe"/>
-                                    <constraint firstItem="RDH-ay-JSE" firstAttribute="top" secondItem="aov-bl-ZyF" secondAttribute="bottom" constant="36" id="kSK-4g-2sj"/>
                                     <constraint firstItem="Kgp-wu-ZpO" firstAttribute="top" secondItem="iv5-fc-19D" secondAttribute="top" constant="25" id="q8Q-Zd-L2N"/>
+                                    <constraint firstItem="KMi-DC-9xl" firstAttribute="top" secondItem="cUq-DI-ogF" secondAttribute="bottom" constant="36" id="v6Q-GX-nlC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -245,9 +253,9 @@
                         <outlet property="editPhotoButton" destination="aov-bl-ZyF" id="uyY-B6-WSy"/>
                         <outlet property="emailLabel" destination="cUq-DI-ogF" id="zXD-Wt-uhM"/>
                         <outlet property="nameLabel" destination="GMB-O6-8n2" id="dN4-oZ-heW"/>
-                        <outlet property="nicknameLabel" destination="RDH-ay-JSE" id="reX-s0-WVy"/>
                         <outlet property="profileImageView" destination="Kgp-wu-ZpO" id="BQh-eb-DPX"/>
                         <outlet property="profileLabel" destination="mDv-p2-PMF" id="x2v-b5-tIH"/>
+                        <outlet property="scoreLabel" destination="bab-Aa-32h" id="Ibt-ar-W14"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gr-U1-xoy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1033,7 +1041,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="zNZ-Aj-jh8"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nFV-wb-q5N">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nFV-wb-q5N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1051,7 +1059,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.selectfriendsnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5bb-5X-bDg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dcG-GP-j2w">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dcG-GP-j2w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1069,7 +1077,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.gameoptionsnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RHu-CO-bv6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dFq-ex-OQM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dFq-ex-OQM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1105,7 +1113,7 @@
             <objects>
                 <navigationController storyboardIdentifier="com.iostriviagame.questionnavigationviewcontroller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kGA-Pt-17m" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wvZ-YW-tHI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wvZ-YW-tHI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1123,7 +1131,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1wV-hE-H6O" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MXY-O0-zxP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MXY-O0-zxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
