@@ -20,6 +20,7 @@ class GameRoom: NSObject {
     }
     
     var id: String!
+    var host_id: String!
     var name: String!
     var state: State
     var questions: [Int]
@@ -43,9 +44,10 @@ class GameRoom: NSObject {
         self.max_num_of_questions = dictionary["max_num_of_questions"] as? Int ?? MAX_NUMBER_OF_QUESTIONS
         self.created_time = dictionary["created_time"] is String ? Utilities.convertToDate(dateString: dictionary["created_time"] as! String) : Date()
         self.questions = dictionary["questions"] as? [Int] ?? []
+        self.host_id = dictionary["host_id"] as? String ?? "0"
     }
     
-    init(id: String, name: String?, currentNumPlayers: Int?, maxNumPlayers: Int?, state: State?, isPublic: Bool?, currentQuestion: Int?, maxNumQuestions: Int?, questions: [Int]?, category: Int?) {
+    init(id: String, name: String?, currentNumPlayers: Int?, maxNumPlayers: Int?, state: State?, isPublic: Bool?, currentQuestion: Int?, maxNumQuestions: Int?, questions: [Int]?, category: Int?, host_id: String?) {
         self.id = id
         self.name = name ?? "-- Unnamed Room --"
         self.current_num_players = currentNumPlayers ?? 0
@@ -57,6 +59,7 @@ class GameRoom: NSObject {
         self.created_time = Date()
         self.questions = questions ?? []
         self.category = category ?? 0
+        self.host_id = host_id ?? "0"
     }
     
     func getJson() -> [String: Any] {
@@ -71,7 +74,8 @@ class GameRoom: NSObject {
             "current_question": self.current_question as Any,
             "max_num_of_questions": self.max_num_of_questions as Any,
             "created_time": String(describing: self.created_time) as Any,
-            "questions": self.questions as Any
+            "questions": self.questions as Any,
+            "host_id": self.host_id as Any
         ]
     }
 }
