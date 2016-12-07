@@ -26,7 +26,7 @@ class InviteTableViewCell: UITableViewCell {
             FirebaseClient.instance.getGameBy(roomId: invite.roomId!, complete: { (snapshot) in
                 if let data = snapshot.value as? NSDictionary {
                     if data.count > 0 {
-                        let gameRoom = GameRoom(dictionary: data[data.allKeys.first as! String] as! NSDictionary)
+                        let gameRoom = GameRoom(dictionary: data)
                         self.gameRoomLabel.text = gameRoom.name
                         self.playerCountLabel.text = "\(gameRoom.current_num_players) / \(gameRoom.max_num_of_people) players joined"
                     }

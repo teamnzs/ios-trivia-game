@@ -17,7 +17,7 @@ class FinalScoreViewController: UIViewController {
     
     var roomId: String!
     
-    fileprivate var timerCount = 60
+    fileprivate var timerCount = Constants.GAME_QUESTION_ANSWER_COUNTDOWN
     fileprivate var countdownTimer = Timer()
     
     fileprivate var finalScores: [FinalScore] = []
@@ -105,16 +105,10 @@ class FinalScoreViewController: UIViewController {
             FirebaseClient.instance.updateScore(userId: (User.currentUser?.uid)!, addValue: self.currentUserFinalScore!.score!)
         }
         
-        // remove game
-        if self.roomId != nil {
-            print ("Removed the game")
-            FirebaseClient.instance.removeGame(roomId: roomId, complete: { }, onError: { (error) in })
-        }
-        
         print ("Quitting the game")
         
         // quit game
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId)
     }
 }
 

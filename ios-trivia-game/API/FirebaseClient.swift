@@ -30,7 +30,7 @@ class FirebaseClient {
     // gets a user from the user table given a userId
     func getUser(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.USER_TABLE_NAME)/\(userId)"
-        ref.child(path).observe(.value, with: { (snapshot) in
+        ref.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
             complete(snapshot)
         }) { (error) in
@@ -115,8 +115,9 @@ class FirebaseClient {
     func updateScore(userId: String, addValue: Int) {
         let path = "\(Constants.USER_TABLE_NAME)/\(userId)/score"
         ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
-            let currentScore = data.value as! Int
-            data.value = currentScore + addValue
+            if let currentScore = data.value as? Int {
+                data.value = currentScore + addValue
+            }
             return FIRTransactionResult.success(withValue: data)
         }
     }
@@ -124,9 +125,10 @@ class FirebaseClient {
     // updates current player count of game
     func updatePlayerCount(roomId: String, change: Int) {
         let gamePath = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)/current_num_players"
-        self.ref.child(gamePath).runTransactionBlock { (data) -> FIRTransactionResult in
-            let currentNumPlayers = data.value as! Int
-            data.value = currentNumPlayers + change
+        self.ref.child(gamePath).runTransactionBlock { (data: FIRMutableData) -> FIRTransactionResult in
+            if let currentNumPlayers = data.value as? Int {
+                data.value = currentNumPlayers + change
+            }
             return FIRTransactionResult.success(withValue: data)
         }
     }
@@ -134,8 +136,9 @@ class FirebaseClient {
     func incrementGameRoomCurQuestion(gameRoomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(gameRoomId)/current_question"
         ref.child(path).runTransactionBlock { (data) -> FIRTransactionResult in
-            let curVal = data.value as? Int ?? 0
-            data.value = curVal + 1
+            if let curVal = data.value as? Int {
+                data.value = curVal + 1
+            }
             return FIRTransactionResult.success(withValue: data)
         }
     }
@@ -143,7 +146,7 @@ class FirebaseClient {
     // gets all game rooms
     func getGameRooms(complete: ((NSDictionary) -> ())?, onError: ((Error?) -> ())?) {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
-        ref.child(path).observe(.value, with: { (snapshot) in
+        ref.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all game rooms")
             
             let value = snapshot.value as? NSDictionary
@@ -161,7 +164,7 @@ class FirebaseClient {
     // get game by id
     func getGameBy(roomId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(roomId)"
-        ref.child(path).observe(.value, with: { (snapshot) in
+        ref.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(roomId)")
             print(snapshot)
             complete(snapshot)
@@ -220,7 +223,7 @@ class FirebaseClient {
     // gets question by id
     func getQuestionBy(questionId: Int, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.QUESTION_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: questionId).observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "id").queryEqual(toValue: questionId).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(questionId)")
             complete(snapshot)
         }) { (error) in
@@ -234,7 +237,7 @@ class FirebaseClient {
     
     func getSuggestionsBy(questionId: Int, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.SUGGESTION_TABLE_NAME)/\(questionId)"
-        ref.child(path).observe(.value, with: { (snapshot) in
+        ref.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) id=\(questionId)")
             complete(snapshot)
         }) { (error) in
@@ -249,7 +252,7 @@ class FirebaseClient {
     // gets questions by categoryId
     func getQuestionsBy(categoryId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.QUESTION_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "category").queryEqual(toValue: Int(categoryId)!).observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "category").queryEqual(toValue: Int(categoryId)!).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) category/id=\(categoryId)")
             complete(snapshot)
         }) { (error) in
@@ -263,7 +266,7 @@ class FirebaseClient {
     
     func getCategories(complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.CATEGORY_TABLE_NAME)"
-        ref.child(path).observe(.value, with: { (snapshot) in
+        ref.child(path).observeSingleEvent(of: .value, with: { (snapshot) in
             Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path)")
             complete(snapshot)
         }) { (error) in
@@ -278,7 +281,7 @@ class FirebaseClient {
     // gets answers by room id and question id
     func getAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.ANSWER_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? NSDictionary {
                 let filteredData: NSMutableArray = []
                 
@@ -304,7 +307,7 @@ class FirebaseClient {
     // gets scored answers by room id and question id
     func getScoredAnswersBy(roomId: String, questionId: Int, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observeSingleEvent(of: .value, with: { (snapshot) in
             let data = snapshot.value as! NSDictionary
             let filteredData: NSMutableArray = []
             
@@ -329,7 +332,7 @@ class FirebaseClient {
     // gets scored answers by room id and user id
     func getScoredAnswersBy(roomId: String, userId: String, complete: @escaping (NSArray) -> (), onError: ((Error?) -> ())?) {
         let path = "\(Constants.SCORED_ANSWER_TABLE_NAME)"
-        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observe(.value, with: { (snapshot) in
+        ref.child(path).queryOrdered(byChild: "room_id").queryEqual(toValue: roomId).observeSingleEvent(of: .value, with: { (snapshot) in
             let data = snapshot.value as! NSDictionary
             let filteredData: NSMutableArray = []
             
@@ -357,14 +360,15 @@ class FirebaseClient {
         let newAnswer = ref.child(path).childByAutoId()
         answer.timestamp = String(describing: NSDate())
         newAnswer.setValue(answer.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
+        Logger.instance.log(logLevel: .info, message: "FirebaseClient: Creating \(path)/\(newAnswer.key)")
     }
     
     // Creates a game
     func createGame(gameRoom: NSDictionary, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
-        let path = "\(Constants.GAME_ROOM_TABLE_NAME)"
-        let newGameRoom = ref.child(path).childByAutoId()
-        print (gameRoom)
+        let path = "\(Constants.GAME_ROOM_TABLE_NAME)/\(gameRoom["id"]!)"
+        let newGameRoom = ref.child(path)
         newGameRoom.setValue(gameRoom, withCompletionBlock: { (error, ref) in complete(error, ref)})
+        Logger.instance.log(logLevel: .info, message: "FirebaseClient: Creating \(path)")
     }
     
     // Creates AutoId for GameRoom
@@ -412,15 +416,16 @@ class FirebaseClient {
                     let gameRoom = GameRoom(dictionary: data)
                     
                     // check if we can add a player and whether the countdown isn't done yet
-                    let remainingCountdownTime = Date().timeIntervalSince(gameRoom.created_time)
-                    print ("Remaining countdown time: \(remainingCountdownTime)")
-                    if (gameRoom.current_num_players < gameRoom.max_num_of_people && remainingCountdownTime < Double(Constants.GAME_START_COUNTDOWN)) {
+                    let timeSinceCreation = Date().timeIntervalSince(gameRoom.created_time)
+                    if (gameRoom.current_num_players < gameRoom.max_num_of_people &&
+                        timeSinceCreation > 0 && timeSinceCreation <= Double(Constants.GAME_START_COUNTDOWN)) {
                         
                         // update the user in game table
                         let currentUserId = User.currentUser?.uid!
                         let userInGame = UserInGame(roomId: roomId, userState: 0, userId: currentUserId!)
                         let userInGamePath = "\(Constants.USER_IN_GAME_TABLE_NAME)/\(currentUserId!)"
                         self.ref.child(userInGamePath).setValue(userInGame.getJson(), withCompletionBlock: { (error, setRef) in
+                            let remainingCountdownTime = Double(Constants.GAME_START_COUNTDOWN) - timeSinceCreation
                             complete?(Int(remainingCountdownTime))
                         })
                     }
@@ -461,10 +466,44 @@ class FirebaseClient {
         }
     }
     
+    func listenInvitesFor(userId: String, complete: @escaping (FIRDataSnapshot) -> (), onError: ((Error?) -> ())?) {
+        let path = "\(Constants.INVITE_TABLE_NAME)"
+        ref.child(path).queryOrdered(byChild: "guest_id").queryEqual(toValue: userId).observe(.value, with: { (snapshot) in
+            Logger.instance.log(logLevel: .info, message: "FirebaseClient: Accessing \(path) all invites for userId: \(userId)")
+            
+            complete(snapshot)
+        }) { (error) in
+            Logger.instance.log(logLevel: .error, message: "FirebaseClient, \(path) Failed to get all invites for userId: \(userId), Error: \(error.localizedDescription)")
+        }
+    }
+    
     // creates invite
     func createInviteFor(invite: Invite, complete: @escaping (Error?, FIRDatabaseReference) -> Void) {
         let path = "\(Constants.INVITE_TABLE_NAME)"
         let newInvite = ref.child(path).childByAutoId()
+        invite.id = newInvite.key
         newInvite.setValue(invite.getJson(), withCompletionBlock: { (error, ref) in complete(error, ref) })
+    }
+    
+    // removes invite
+    func removeInvite(inviteId: String, complete: (() -> ())?, onError: ((Error?) -> ())?) {
+        let path = "\(Constants.INVITE_TABLE_NAME)/\(inviteId)"
+        ref.child(path).removeValue { (error, ref) in
+            if (error != nil) {
+                Logger.instance.log(logLevel: .error, message: "FirebaseClient, Failed to remove: \(path), Error: \(error.debugDescription)")
+                
+                if (onError != nil) {
+                    onError!(error)
+                }
+            }
+            else {
+                Logger.instance.log(logLevel: .info, message: "FirebaseClient, Removing: \(path)")
+                
+                if (complete != nil) {
+                    complete!()
+                }
+            }
+        }
+
     }
 }

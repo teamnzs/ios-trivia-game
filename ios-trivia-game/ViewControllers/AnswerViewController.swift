@@ -20,8 +20,7 @@ class AnswerViewController: UIViewController {
     var roomId: String?
     
     fileprivate var answers: [Answer]? = []
-    fileprivate let MAX_COUNTDOWN = 60
-    fileprivate var timerCount = 60
+    fileprivate var timerCount = Constants.GAME_QUESTION_ANSWER_COUNTDOWN
     fileprivate var countdownTimer = Timer()
 
     override func viewDidLoad() {
@@ -72,6 +71,7 @@ class AnswerViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nav = segue.destination as? UINavigationController
+        countdownTimer.invalidate()
         
         if let resultsViewController = nav?.topViewController as? ResultsViewController {
           
@@ -84,8 +84,6 @@ class AnswerViewController: UIViewController {
             resultsViewController.question = self.question
         }
         else if let finalScoreViewController = nav?.topViewController as? FinalScoreViewController {
-            countdownTimer.invalidate()
-            
             finalScoreViewController.roomId = self.roomId
         }
     }
@@ -93,7 +91,7 @@ class AnswerViewController: UIViewController {
     @IBAction func onQuitFromAnswer(_ sender: UIBarButtonItem) {
         // update user_in_game to remove player from user_in_game
         countdownTimer.invalidate()
-        Utilities.quitGame(controller: self)
+        Utilities.quitGame(controller: self, roomId: roomId!)
     }
     
     @IBAction func onSubmit(_ sender: UIButton) {
@@ -130,14 +128,13 @@ class AnswerViewController: UIViewController {
         }
         else {
             // time is up. execute submission code
-            countdownTimer.invalidate()
             performSegue(withIdentifier: Constants.ANSWER_TO_RESULTS_SEGUE, sender: nil)
         }
     }
     
     fileprivate func calculateScore(answer: Answer) -> Int {
         if (question?.answer == answer.answerText) {
-            return Int(Float(timerCount) / Float(MAX_COUNTDOWN) * Float((question?.value)!))
+            return Int(Float(timerCount) / Float(Constants.GAME_QUESTION_ANSWER_COUNTDOWN) * Float((question?.value)!))
         }
         
         return 0

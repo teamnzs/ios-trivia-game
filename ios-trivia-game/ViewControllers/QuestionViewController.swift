@@ -19,7 +19,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     
     fileprivate var countdownTimer = Timer()
-    fileprivate var timerCount = 60
+    fileprivate var timerCount = Constants.GAME_QUESTION_ANSWER_COUNTDOWN
 
     var question: TriviaQuestion?
     
@@ -109,6 +109,12 @@ class QuestionViewController: UIViewController {
             
             submitAnswer()
         }
+    }
+    
+    @IBAction func onQuitGame(_ sender: UIBarButtonItem) {
+        // update user_in_game to remove player from user_in_game
+        countdownTimer.invalidate()
+        Utilities.quitGame(controller: self, roomId: roomId!)
     }
     
     /** PRIVATE HELPER FUNCTIONS **/

@@ -762,7 +762,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Question" id="Fzj-KQ-vri">
-                        <barButtonItem key="leftBarButtonItem" title="Quit" id="R67-JY-3bU"/>
+                        <barButtonItem key="leftBarButtonItem" title="Quit" id="R67-JY-3bU">
+                            <connections>
+                                <action selector="onQuitGame:" destination="Y5u-Gb-HDi" id="hYI-sG-lf1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Timer" id="Gk5-Vk-rwh"/>
                     </navigationItem>
                     <connections>
@@ -791,7 +795,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xOd-pF-cfm">
-                                <rect key="frame" x="32" y="117" width="311" height="456"/>
+                                <rect key="frame" x="32" y="117" width="311" height="488"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="com.iostriviagame.answertableviewcell" rowHeight="102" id="rUh-fW-Bmr" customClass="AnswerTableViewCell" customModule="ios_trivia_game" customModuleProvider="target">
@@ -828,20 +832,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78r-jN-B4w">
-                                <rect key="frame" x="163" y="589" width="49" height="30"/>
+                                <rect key="frame" x="163" y="621" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="onSubmit:" destination="mI7-Lz-9Wi" eventType="touchUpInside" id="ShX-Ej-3k2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-d9-MHz">
-                                <rect key="frame" x="96" y="627" width="183" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="183" id="3Ee-3c-Hho"/>
-                                </constraints>
-                                <state key="normal" title="Last Question (Temporary)"/>
-                                <connections>
-                                    <segue destination="xWC-Yo-6sB" kind="presentation" id="ViW-uz-VHm"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -849,17 +843,12 @@
                         <constraints>
                             <constraint firstItem="xOd-pF-cfm" firstAttribute="top" secondItem="ui3-9m-13g" secondAttribute="bottom" constant="16" id="2Z0-5Z-wA9"/>
                             <constraint firstItem="78r-jN-B4w" firstAttribute="centerX" secondItem="bUL-wt-CUr" secondAttribute="centerX" id="7vc-oT-C0N"/>
-                            <constraint firstItem="5TV-d9-MHz" firstAttribute="bottom" secondItem="78r-jN-B4w" secondAttribute="bottom" constant="48" id="CEo-Cp-rVA"/>
                             <constraint firstItem="ui3-9m-13g" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leading" constant="16" id="D5b-tF-Osh"/>
-                            <constraint firstAttribute="trailing" secondItem="5TV-d9-MHz" secondAttribute="trailing" constant="96" id="FQ5-WK-lPn"/>
                             <constraint firstItem="xOd-pF-cfm" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leadingMargin" constant="16" id="GtO-XZ-bSA"/>
-                            <constraint firstItem="cte-39-Kot" firstAttribute="top" secondItem="5TV-d9-MHz" secondAttribute="bottom" id="HIC-mu-f0q"/>
                             <constraint firstItem="ui3-9m-13g" firstAttribute="top" secondItem="wfZ-Qu-Ekm" secondAttribute="bottom" constant="16" id="YjE-97-HFe"/>
+                            <constraint firstItem="cte-39-Kot" firstAttribute="top" secondItem="78r-jN-B4w" secondAttribute="bottom" constant="16" id="ZcD-gG-d9s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xOd-pF-cfm" secondAttribute="trailing" constant="16" id="c6V-J7-2Ih"/>
-                            <constraint firstItem="5TV-d9-MHz" firstAttribute="leading" secondItem="bUL-wt-CUr" secondAttribute="leading" constant="96" id="cNr-Tj-gNT"/>
                             <constraint firstItem="78r-jN-B4w" firstAttribute="top" secondItem="xOd-pF-cfm" secondAttribute="bottom" constant="16" id="ewU-IX-G64"/>
-                            <constraint firstItem="5TV-d9-MHz" firstAttribute="top" secondItem="78r-jN-B4w" secondAttribute="bottom" constant="8" id="fp6-yr-FEh"/>
-                            <constraint firstItem="5TV-d9-MHz" firstAttribute="centerX" secondItem="78r-jN-B4w" secondAttribute="centerX" id="l56-wU-rae"/>
                             <constraint firstAttribute="trailing" secondItem="ui3-9m-13g" secondAttribute="trailing" constant="16" id="nkd-sL-D8I"/>
                         </constraints>
                     </view>
@@ -873,7 +862,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="answerTableView" destination="xOd-pF-cfm" id="gp0-eO-463"/>
-                        <outlet property="lastQuestionButton" destination="5TV-d9-MHz" id="BhG-Q6-IAa"/>
                         <outlet property="questionLabel" destination="ui3-9m-13g" id="01Q-Kw-Fpb"/>
                         <outlet property="submitButton" destination="78r-jN-B4w" id="zUs-Y9-deb"/>
                         <outlet property="timerButton" destination="V83-n8-vR3" id="Usw-2I-BQt"/>

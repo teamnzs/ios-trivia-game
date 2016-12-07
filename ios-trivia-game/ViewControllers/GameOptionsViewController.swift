@@ -90,34 +90,39 @@ class GameOptionsViewController: UIViewController {
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
         FirebaseClient.instance.getRandomQuestions(categoryId: category!, maxNumOfQuestions: numOfQuestions!, complete: {(questionList) in
-            let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 1, maxNumPlayers: self.numOfPlayers, state: GameRoom.State(rawValue: 0), isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions, questions: questionList, category: self.category)
-            
+            let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 0, maxNumPlayers: self.numOfPlayers, state: GameRoom.State(rawValue: 0), isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions, questions: questionList, category: self.category)
+
             FirebaseClient.instance.createGame(gameRoom: newGame.getJson() as NSDictionary, complete: {_, ref in
                 let roomId = ref.key
                 
                 print("Created game room with roomID: \(roomId)")
-                // Go to CountdownGameViewController
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
-                let countdownNavigationController = destination as! UINavigationController
-                let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
-                countdownGameViewController.roomId = roomId
                 
-                // create invites in the invite table
-                let hostId = (User.currentUser?.uid)!
-                for friendId in self.selectedFriends {
-                    if Float(friendId) != nil {
-                        // numeric friend ids mean that the user is registered. Create an invite
-                        let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
-                        FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
-                            Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
-                        })
+                FirebaseClient.instance.joinGame(roomId: roomId, complete: {(remainingCountdownTime) in
+
+                    // create invites in the invite table
+                    let hostId = (User.currentUser?.uid)!
+                    for friendId in self.selectedFriends {
+                        if Float(friendId) != nil {
+                            // numeric friend ids mean that the user is registered. Create an invite
+                            let invite = Invite(roomId: newGame.id, guestId: friendId, hostId: hostId)
+                            FirebaseClient.instance.createInviteFor(invite: invite, complete: { (_, _) in
+                                Logger.instance.log(message: "\(hostId) invited \(friendId) to \(newGame.id)")
+                            })
+                        }
+                        
+                        // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
                     }
                     
-                    // when the friendId is a hashcode, they aren't registered in our DB.  Given more time, we will create custom UI to invite players
-                }
-                
-                self.present(destination, animated: true, completion: nil)
+                    // Go to CountdownGameViewController
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let destination = storyboard.instantiateViewController(withIdentifier: Constants.COUNTDOWN_NAVIGATION_VIEW_CONTROLLER)
+                    let countdownNavigationController = destination as! UINavigationController
+                    let countdownGameViewController = countdownNavigationController.topViewController as! CountdownGameViewController
+                    countdownGameViewController.roomId = roomId
+                    countdownGameViewController.timerCount = remainingCountdownTime
+                    
+                    self.present(destination, animated: true, completion: nil)
+                }, fail: {(_) in })
             })
         }, onError: {(error) in
             Logger.instance.log(logLevel: .error, message: "Found an error while trying to start game \(error?.localizedDescription)")
