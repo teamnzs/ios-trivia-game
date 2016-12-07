@@ -47,7 +47,7 @@ class ResultsViewController: UIViewController {
             if let data = snapshot.value as? NSDictionary {
                 self.gameRoom = GameRoom(dictionary: data)
                 
-                self.resultsTitleLabel.text = "Results: Round \(self.gameRoom!.current_question!) of \(self.gameRoom!.max_num_of_questions)"
+                self.resultsTitleLabel.text = "Round \(self.gameRoom!.current_question!) of \(self.gameRoom!.max_num_of_questions)"
                 
                 let curQues = self.gameRoom?.current_question
                 let maxQuestions = self.gameRoom?.max_num_of_questions

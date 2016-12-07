@@ -42,7 +42,7 @@ class QuestionViewController: UIViewController {
             let questions = gameRoom.questions
             let maxQuestions = gameRoom.max_num_of_questions
             
-            self.questionNumber.text = "Round \(curQuestionIndex! + 1)/\(maxQuestions)"
+            self.questionNumber.text = "Round: \(curQuestionIndex! + 1) of \(maxQuestions)"
             
             
             if (curQuestionIndex! >= questions.count) {
