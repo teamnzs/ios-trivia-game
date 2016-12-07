@@ -28,14 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.userDidLogout), name: NSNotification.Name(rawValue: userDidLogoutNotification), object: nil)
         
-        if User.currentUser != nil {
-            Logger.instance.log(message: "User is logged in")
-            
-            // push the view for tab bar
-            let mainTabViewController = storyboard.instantiateViewController(withIdentifier: Constants.MAIN_TAB_VIEW_CONTROLLER) as UIViewController
-            window?.rootViewController = mainTabViewController
-        }
-        
         return true
     }
     
