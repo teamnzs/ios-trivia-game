@@ -21,8 +21,8 @@ class MainTabViewController: UITabBarController {
         // Do any additional setup after loading the view.
         self.navigationController?.isNavigationBarHidden = true
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:.normal)
-        
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.blue], for:.selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(hexString: Constants.TRIVIA_RED) ?? UIColor.red], for:.selected)
+        UITabBar.appearance().tintColor = UIColor(hexString: Constants.TRIVIA_RED)
         
         notificationLabel = UILabel(frame: CGRect(x: 0, y: 35, width: self.view.bounds.width, height: 30))
         notificationLabel.backgroundColor = UIColor(hexString: Constants.TRIVIA_BLUE)
