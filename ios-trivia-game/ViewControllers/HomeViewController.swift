@@ -21,6 +21,7 @@ import MBProgressHUD
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var joinAGameLabel: UILabel!
     let refreshControl = UIRefreshControl()
     let ROOMS_TO_SHOW = 20
     
@@ -29,6 +30,8 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.joinAGameLabel.textColor = UIColor(hexString: Constants.TRIVIA_RED)
         
         // Do any additional setup after loading the view.
         setupTableview()

@@ -17,13 +17,12 @@ import EMPageViewController
 class LoginViewController: UIViewController {
     var pageViewController: EMPageViewController?
     
-    var greetings: [String] = ["Welcome!", "Let me show you how to play!", "I have no idea how?", "Hello world", "Ciao!"]
+    var greetings: [String] = ["Welcome to Mind Game!", "Pick a Trivia Category, Play with Friends", "Fool your friends with fake answers, Pick the right answer!", "Have Fun!"]
     var greetingColors: [UIColor] = [
-        UIColor(red: 108.0/255.0, green: 122.0/255.0, blue: 137.0/255.0, alpha: 1.0),
-        UIColor(red: 135.0/255.0, green: 211.0/255.0, blue: 124.0/255.0, alpha: 1.0),
-        UIColor(red: 34.0/255.0, green: 167.0/255.0, blue: 240.0/255.0, alpha: 1.0),
-        UIColor(red: 245.0/255.0, green: 171.0/255.0, blue: 53.0/255.0, alpha: 1.0),
-        UIColor(red: 214.0/255.0, green: 69.0/255.0, blue: 65.0/255.0, alpha: 1.0)
+        UIColor(hexString: Constants.TRIVIA_BLUE)!,
+        UIColor(hexString: Constants.TRIVIA_RED)!,
+        UIColor(hexString: Constants.TRIVIA_NAVY)!,
+        UIColor(hexString: Constants.TRIVIA_GRAY)!
     ]
 
     override func viewDidLoad() {
