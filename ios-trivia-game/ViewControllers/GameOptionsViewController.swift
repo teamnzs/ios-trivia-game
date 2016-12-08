@@ -18,7 +18,7 @@ class GameOptionsViewController: UIViewController {
     var numOfPlayers: Int?
     var category: Int?
     var isPublic: Bool?
-    var selectedFriends = Set<String>()
+    var selectedFriends: [String] = [String]()
     var nameOfGameroom: String?
     
     // UI Data

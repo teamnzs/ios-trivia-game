@@ -12,7 +12,8 @@ class SelectFriendsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var seletedFriendsLabel: UILabel!
+    @IBOutlet weak var selectedFriendNamesLabel: UILabel!
+    @IBOutlet weak var selectedFriendsLabel: UILabel!
     
     var numOfPlayers: Int?
     var isPublic: Bool?
@@ -25,7 +26,7 @@ class SelectFriendsViewController: UIViewController {
     var filteredFriendsList: [[Friend]] = [[], []]
     var currentSelectedCount:Int = 1
     var isFromUserEvent:Bool = true
-    var selectedFriends = Set<String>()
+    var selectedFriends: [String: String] = [:]
     
     internal let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     
@@ -33,6 +34,8 @@ class SelectFriendsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.selectedFriendNamesLabel.textColor = UIColor(hexString: Constants.TRIVIA_RED)
+        
         setupSearchBar()
         setupTableView()
         loadFriendsList()
@@ -88,7 +91,7 @@ class SelectFriendsViewController: UIViewController {
         gameOptionsViewController.numOfPlayers = self.numOfPlayers
         gameOptionsViewController.isPublic = self.isPublic
         gameOptionsViewController.nameOfGameroom = self.nameOfGameroom
-        gameOptionsViewController.selectedFriends = self.selectedFriends
+        gameOptionsViewController.selectedFriends = Array(self.selectedFriends.keys)
         self.navigationController?.pushViewController(gameOptionsViewController, animated: true)
     }
     
@@ -194,31 +197,20 @@ extension SelectFriendsViewController: SelectFriendsTableViewCellDelegate {
                 } else {
                     self.friends[indexPath.section][indexPath.row].isSelected = value
                 }
+                
                 if value {
                     currentSelectedCount += 1
-                    selectedFriends.insert(selectFriendsTableViewCell.friend.id!)
+                    selectedFriends[selectFriendsTableViewCell.friend.id!] = selectFriendsTableViewCell.friend.name!
                 } else {
                     currentSelectedCount -= 1
-                    selectedFriends.remove(selectFriendsTableViewCell.friend.id!)
+                    selectedFriends.removeValue(forKey: selectFriendsTableViewCell.friend.id!)
                 }
-        
-                if self.searchBar.text != nil && (self.searchBar.text?.characters.count)! > 0 {
-                    updateSelectedFriendsLabel(isSelected: value, name: filteredFriendsList[indexPath.section][indexPath.row].name!)
-                } else {
-                    updateSelectedFriendsLabel(isSelected: value, name: friends[indexPath.section][indexPath.row].name!)
-                }
+                
+                let names = Array(selectedFriends.values)
+                self.selectedFriendNamesLabel.text = names.joined(separator: ", ")
             } else {
                 isFromUserEvent = true
             }
         }
-    }
-    
-    func updateSelectedFriendsLabel(isSelected: Bool, name: String) {
-        
-        if isSelected {
-            self.seletedFriendsLabel.text = seletedFriendsLabel.text! + " \(name)"
-        }
-        
-        // TODO: Should handle the removing case.
     }
 }
