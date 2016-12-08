@@ -34,7 +34,7 @@ class SelectFriendsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.selectedFriendsLabel.textColor = UIColor(hexString: Constants.TRIVIA_RED)
+        self.selectedFriendNamesLabel.textColor = UIColor(hexString: Constants.TRIVIA_RED)
         
         setupSearchBar()
         setupTableView()
