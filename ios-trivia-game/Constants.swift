@@ -48,8 +48,8 @@ class Constants {
     static let CREATE_GAME_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.creategamenavigationviewcontroller"
     static let HOME_TABLE_VIEW_CELL = "com.iostriviagame.hometableviewcell"
     
-    static let GAME_START_COUNTDOWN = 30
-    static let GAME_QUESTION_ANSWER_COUNTDOWN = 20
+    static let GAME_START_COUNTDOWN = 15
+    static let GAME_QUESTION_ANSWER_COUNTDOWN = 15
     static let REFRESH_GAME_ROOM_INTERVAL = 86400
     
     // Color Themes
