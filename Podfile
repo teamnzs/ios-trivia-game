@@ -17,7 +17,9 @@ target 'ios-trivia-game' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
-  pod 'ALLoadingView' 
+  pod 'ALLoadingView'
+  pod 'EMPageViewController'
+
   post_install do |installer|
       installer.pods_project.targets.each do |target|
           target.build_configurations.each do |config|

@@ -27,6 +27,7 @@ class Constants {
     static let GAME_OPTIONS_TO_COUNTDOWN_SEGUE = "com.iostriviagame.gameoptionstocountdownsegue"
     
     // UI Identifiers
+    static let TUTORIAL_VIEW_CONTROLLER = "com.iostriviagame.tutorialviewcontroller"
     static let MAIN_TAB_VIEW_CONTROLLER = "com.iostriviagame.maintabviewcontroller"
     static let QUESTION_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.questionnavigationviewcontroller"
     static let FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.finalscorenavigationviewcontroller"

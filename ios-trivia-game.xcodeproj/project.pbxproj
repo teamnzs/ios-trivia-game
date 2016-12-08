@@ -10,6 +10,7 @@
 		1A3686111DD84B5800CBEB41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A3686101DD84B5800CBEB41 /* GoogleService-Info.plist */; };
 		1A805B6D1DD996F900A70691 /* TriviaCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B671DD996F900A70691 /* TriviaCategory.swift */; };
 		1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A805B681DD996F900A70691 /* TriviaQuestion.swift */; };
+		1AAACCE21DF64E97004542A1 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAACCE11DF64E97004542A1 /* TutorialViewController.swift */; };
 		A83ACC821DD2D14B00DAF701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */; };
 		A83ACC891DD2D14B00DAF701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC881DD2D14B00DAF701 /* Assets.xcassets */; };
 		A83ACC8C1DD2D14B00DAF701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83ACC8A1DD2D14B00DAF701 /* LaunchScreen.storyboard */; };
@@ -57,6 +58,7 @@
 		1A3686141DD853D100CBEB41 /* ios-trivia-game.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ios-trivia-game.entitlements"; sourceTree = "<group>"; };
 		1A805B671DD996F900A70691 /* TriviaCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriviaCategory.swift; path = Models/TriviaCategory.swift; sourceTree = "<group>"; };
 		1A805B681DD996F900A70691 /* TriviaQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TriviaQuestion.swift; path = Models/TriviaQuestion.swift; sourceTree = "<group>"; };
+		1AAACCE11DF64E97004542A1 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = ViewControllers/TutorialViewController.swift; sourceTree = "<group>"; };
 		381FCCC7CD6510BD05EB2001 /* Pods-ios-trivia-game.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-trivia-game.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios-trivia-game/Pods-ios-trivia-game.debug.xcconfig"; sourceTree = "<group>"; };
 		A83ACC7E1DD2D14B00DAF701 /* ios-trivia-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-trivia-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83ACC811DD2D14B00DAF701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		A8B32B8E1DDBE6E7003A0B1C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1AAACCE11DF64E97004542A1 /* TutorialViewController.swift */,
 				B2AFE4571DEC20B700999BD1 /* Invite */,
 				A8B32BB41DDC0379003A0B1C /* HomeViewController.swift */,
 				A8B32BA71DDC0129003A0B1C /* Game */,
@@ -416,6 +419,7 @@
 				B2009CED1DE5B70500CF0FB1 /* ScoredAnswer.swift in Sources */,
 				1A805B6E1DD996F900A70691 /* TriviaQuestion.swift in Sources */,
 				A8B32BA21DDC00C1003A0B1C /* SelectFriendsViewController.swift in Sources */,
+				1AAACCE21DF64E97004542A1 /* TutorialViewController.swift in Sources */,
 				B29BE1FD1DD7BB6B000DD684 /* Logger.swift in Sources */,
 				A8B32BB51DDC0379003A0B1C /* HomeViewController.swift in Sources */,
 				A8B32B961DDBFF4A003A0B1C /* CameraViewController.swift in Sources */,
