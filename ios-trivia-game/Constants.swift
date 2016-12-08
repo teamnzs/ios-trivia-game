@@ -30,6 +30,7 @@ class Constants {
     
     // UI Identifiers
     static let LOGIN_VIEW_CONTROLLER = "com.iostriviagame.loginviewcontroller"
+    static let TUTORIAL_VIEW_CONTROLLER = "com.iostriviagame.tutorialviewcontroller"
     static let MAIN_TAB_VIEW_CONTROLLER = "com.iostriviagame.maintabviewcontroller"
     static let QUESTION_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.questionnavigationviewcontroller"
     static let FINAL_SCORE_NAVIGATION_VIEW_CONTROLLER = "com.iostriviagame.finalscorenavigationviewcontroller"
