@@ -1,15 +1,16 @@
-# ios-trivia-game
+# MindGame
+- Welcome to Mind Game!
+- This is a trivia game with a twist.
+- You can pick from a large set of Trivia Categories and invite your Friends.
+- Next you'll need to fool your friends with fake answers, but remember to pick the right answer!
 
-## Milestone 1
+## Video walkthrough
+- https://www.youtube.com/watch?v=VWB5-ej6trs
 
-The following functionalities are completed:
-
-- [x] [Trivia API](http://jservice.io) integration
-- [x] Firebase SDK integration
-- [x] Facebook SDK integration
-- [x] Basic viewController flows
-
-## Milestone 2
-
-
-## Milestone 3
+## Implementation
+- Facebook 
+    - Login Authentication
+- Firebase
+    - NoSQL database for backend database that manages Game creation and operation, User registration, Import of Trivia questions
+- jService
+    - Sources over 150,000 trivia questions from the Jeopardy database
