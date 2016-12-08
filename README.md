@@ -12,7 +12,7 @@ Welcome to Mind Game! This is a trivia game with a twist. You can pick from a la
 - https://www.youtube.com/watch?v=VWB5-ej6trs
 
 ## GIF walkthrough
-- 
+<img src='https://github.com/teamnzs/ios-trivia-game/blob/master/mindgame.gif' title='Video Walkthrough' width='' alt='GIF walkthrough' />
 
 ## Dependent APIs
 - Facebook 
