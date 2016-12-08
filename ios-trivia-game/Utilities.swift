@@ -78,6 +78,10 @@ class Utilities {
         
         return randomNumArray
     }
+    
+    static func getRandomIndex(max: Int) -> Int {
+        return Int(arc4random_uniform(UInt32(max)))
+    }
 }
 
 extension UIColor {

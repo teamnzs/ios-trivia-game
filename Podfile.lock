@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - Alamofire (4.0.1)
+  - ALLoadingView (1.0.2)
   - BDBOAuth1Manager (2.0.0):
     - AFNetworking/NSURLSession (~> 3.0.0)
   - Bolts (1.8.4):
@@ -86,6 +87,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.0.0)
   - Alamofire (~> 4.0)
+  - ALLoadingView
   - BDBOAuth1Manager (~> 2.0.0)
   - FacebookCore
   - FacebookLogin
@@ -99,6 +101,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  ALLoadingView: 14a12aaff639a676de662634e3e44b62f17e96ec
   BDBOAuth1Manager: 92d17d06f8a648602962304cd2f35ae7394fa001
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
@@ -120,6 +123,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   SwiftIconFont: bbe1f32e1e16bac87dad8566afc80132cb8d072c
 
-PODFILE CHECKSUM: 487dbf95317a0d2524206fe37e43924aa83a57e9
+PODFILE CHECKSUM: 39e804f1510c29f827286dc7b3dcc2e4c66d4795
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0.beta.1

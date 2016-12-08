@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ALLoadingView
 
 class QuestionViewController: UIViewController {
 
@@ -34,6 +35,14 @@ class QuestionViewController: UIViewController {
         countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         timer.title = ""
 
+        submitButton.backgroundColor = UIColor(hexString: Constants.TRIVIA_RED)
+        submitButton.tintColor = UIColor.white
+
+        ALLoadingView.manager.showLoadingView(ofType: .message)
+        ALLoadingView.manager.blurredBackground = true
+        ALLoadingView.manager.messageText = "Preparing next question..."
+        ALLoadingView.manager.backgroundColor = UIColor(hexString: Constants.TRIVIA_NAVY)!
+        
         FirebaseClient.instance.getGameBy(roomId: roomId!, complete: {(snapshot) in
             let value = snapshot.value
             self.gameRoom = GameRoom(dictionary: value as! NSDictionary)
@@ -59,7 +68,7 @@ class QuestionViewController: UIViewController {
                 }
                 
                 self.questionTitle.text = self.question?.question
-                
+                ALLoadingView.manager.hideLoadingView()
             }, onError: { (error) in
                 print ("Error ")
             })

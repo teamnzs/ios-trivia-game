@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ALLoadingView
 
 class GameOptionsViewController: UIViewController {
 
@@ -25,7 +26,7 @@ class GameOptionsViewController: UIViewController {
     var numOfQuestionsPickerData: [String] = [String]()
     var categoryPickerNum: [Int] = [Int]()
     
-    var numOfQuestions: Int?
+    var numOfQuestions: Int? = 1
     
     let PICKER_TAG_FOR_CATEGORY = 1;
     let PICKER_TAG_FOR_NUM_OF_QUESTIONS = 2;
@@ -49,6 +50,7 @@ class GameOptionsViewController: UIViewController {
                     self.categoryPickerData.append(category.title!)
                     self.categoryPickerNum.append(category.id!)
                 }
+                self.category = self.categoryPickerNum[0]
                 self.setupPickerData()
             }
         }, onError: {(error) in
@@ -89,6 +91,11 @@ class GameOptionsViewController: UIViewController {
 
     // Make an api call to create a game room, and then go to CountdownTimerViewController if it succeeds.
     @IBAction func onStartGameClicked(_ sender: Any) {
+        ALLoadingView.manager.showLoadingView(ofType: .message)
+        ALLoadingView.manager.messageText = "Preparing the game..."
+        ALLoadingView.manager.blurredBackground = true
+        ALLoadingView.manager.backgroundColor = UIColor(hexString: Constants.TRIVIA_NAVY)!
+
         FirebaseClient.instance.getRandomQuestions(categoryId: category!, maxNumOfQuestions: numOfQuestions!, complete: {(questionList) in
             let hostId = (User.currentUser?.uid)!
             let newGame = GameRoom(id: FirebaseClient.instance.createGameRoomId().key, name: self.nameOfGameroom, currentNumPlayers: 0, maxNumPlayers: self.numOfPlayers, state: GameRoom.State(rawValue: 0), isPublic: self.isPublic, currentQuestion: 0, maxNumQuestions: self.numOfQuestions, questions: questionList, category: self.category, host_id: hostId)
@@ -122,6 +129,7 @@ class GameOptionsViewController: UIViewController {
                     countdownGameViewController.hostId = hostId
                     countdownGameViewController.timerCount = remainingCountdownTime
                     
+                    ALLoadingView.manager.hideLoadingView()
                     self.present(destination, animated: true, completion: nil)
                 }, fail: {(_) in })
             })

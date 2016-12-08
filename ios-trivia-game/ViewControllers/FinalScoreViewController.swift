@@ -25,7 +25,10 @@ class FinalScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
+        
+        
+        
         finishButton.tintColor = UIColor(hexString: Constants.TRIVIA_RED)
         self.countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         
