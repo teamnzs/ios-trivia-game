@@ -11,6 +11,9 @@ Welcome to Mind Game! This is a trivia game with a twist. You can pick from a la
 ## Video walkthrough
 - https://www.youtube.com/watch?v=VWB5-ej6trs
 
+## GIF walkthrough
+- 
+
 ## Dependent APIs
 - Facebook 
     - Login Authentication
